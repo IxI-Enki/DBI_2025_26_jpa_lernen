@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.dbi</groupId>
+    <artifactId>dbi-test-lernen</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>DBI Test Lernen</name>
+    <description>Aggregator POM so IDE recognizes all JPA exercises as project modules.</description>
+
+    <modules>
+        <module>Uebungen/jpa_uebung_01</module>
+        <module>Uebungen/jpa_uebung_02</module>
+        <module>Uebungen/jpa_uebung_03</module>
+        <module>Uebungen/jpa_uebung_04</module>
+        <module>Uebungen/jpa_uebung_05</module>
+    </modules>
+</project>
