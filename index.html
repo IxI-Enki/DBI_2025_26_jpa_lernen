@@ -143,9 +143,9 @@ a { color: var(--accent); }
 ═══════════════════════════════════════════ */
 #app-header {
   position: sticky; top: 0; z-index: 200;
-  background: rgba(13,17,23,.92);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(13,17,23,.85);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
   border-bottom: 1px solid var(--border);
   height: 52px;
   width: 100%;
@@ -230,6 +230,11 @@ a { color: var(--accent); }
 }
 .streak-badge.glow {
   box-shadow: 0 0 12px rgba(227,179,65,.4);
+  animation: subtlePulse 2s ease-in-out infinite;
+}
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
 .score-badge {
@@ -292,7 +297,10 @@ a { color: var(--accent); }
    SIDEBAR
 ═══════════════════════════════════════════ */
 #sidebar {
-  border-right: 1px solid var(--border);
+  background: rgba(22,27,34,.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(48,54,61,.6);
   position: sticky; top: 54px;
   height: calc(100vh - 54px);
   overflow-y: auto; overflow-x: hidden;
@@ -304,6 +312,48 @@ a { color: var(--accent); }
 }
 #sidebar::-webkit-scrollbar { width: 3px; }
 #sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Collapsible Sidebar (Gaming HUD) ──── */
+.sb-toggle {
+  position: absolute; top: 8px; right: -14px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  color: var(--text-dim); cursor: pointer; z-index: 20;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; line-height: 1;
+  transition: background var(--dur-fast) var(--ease-smooth),
+              color var(--dur-fast) var(--ease-smooth),
+              transform var(--dur-fast) var(--ease-spring);
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.sb-toggle:hover { background: var(--accent-dim); color: var(--accent); transform: scale(1.1); }
+.sb-toggle::after { content: "\276E"; }
+.sidebar-collapsed .sb-toggle::after { content: "\276F"; }
+#sidebar { position: relative; transition: width .3s var(--ease-smooth); }
+.sidebar-collapsed { width: 48px !important; }
+.sidebar-collapsed .sb-label,
+.sidebar-collapsed .nav-title,
+.sidebar-collapsed .nav-check,
+.sidebar-collapsed .nav-dots-row,
+.sidebar-collapsed .nav-prog-wrap,
+.sidebar-collapsed .sb-stats,
+.sidebar-collapsed .sb-tier-legend,
+.sidebar-collapsed .sb-divider,
+.sidebar-collapsed #sb-total-pct {
+  opacity: 0; pointer-events: none; height: 0; overflow: hidden;
+  margin: 0; padding-top: 0; padding-bottom: 0; border: none;
+  transition: opacity .2s var(--ease-smooth);
+}
+.sidebar-collapsed .nav-item {
+  padding: .5rem .6rem; justify-content: center;
+}
+.sidebar-collapsed .nav-item-inner { display: flex; justify-content: center; }
+.sidebar-collapsed .nav-item-row { justify-content: center; margin-bottom: 0; gap: 0; }
+.sidebar-collapsed .nav-badge { margin: 0; }
+body:has(.sidebar-collapsed) #app-body {
+  grid-template-columns: 48px 1fr;
+  transition: grid-template-columns .3s var(--ease-smooth);
+}
 
 .sb-label {
   font-size: 0.6rem; font-weight: 700;
@@ -446,15 +496,15 @@ a { color: var(--accent); }
 ═══════════════════════════════════════════ */
 .module-section { display: none; min-width: 0; }
 .module-section.active { display: block; width: 100%; }
-.module-section.enter-right { animation: slideRight .28s ease-out; }
-.module-section.enter-left  { animation: slideLeft  .28s ease-out; }
+.module-section.enter-right { animation: slideRight .4s var(--ease-smooth); }
+.module-section.enter-left  { animation: slideLeft  .4s var(--ease-smooth); }
 @keyframes slideRight {
-  from { opacity: 0; transform: translateX(16px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(24px); filter: blur(2px); }
+  to   { opacity: 1; transform: translateX(0);    filter: blur(0); }
 }
 @keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-16px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(-24px); filter: blur(2px); }
+  to   { opacity: 1; transform: translateX(0);     filter: blur(0); }
 }
 
 /* module accent strip */
@@ -560,7 +610,27 @@ a { color: var(--accent); }
 .mod-why-text {
   flex: 1; min-width: 0;
   overflow-wrap: break-word; word-break: break-word;
-  display: block; /* Als Block umbrechen, nicht als inline */
+  display: block;
+}
+
+/* ── Desktop collapsible "Why" ───────── */
+@media (min-width: 681px) {
+  .mod-why {
+    cursor: pointer; position: relative;
+    max-height: 2.8em; overflow: hidden;
+    transition: max-height .4s var(--ease-smooth);
+  }
+  .mod-why.why-expanded { max-height: 300px; }
+  .mod-why:not(.why-expanded)::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 1.5em;
+    background: linear-gradient(transparent, rgba(13,17,23,.95));
+    pointer-events: none;
+  }
+  .mod-why:not(.why-expanded) .mod-why-icon::after {
+    content: ' Details...'; font-size: .65rem; color: var(--text-muted);
+    font-style: italic; margin-left: .3rem;
+  }
 }
 
 /* module progress in header area */
@@ -595,10 +665,10 @@ a { color: var(--accent); }
   border: 1px solid var(--border);
   border-radius: 10px; overflow: hidden;
   transition:
-    border-color var(--dur-normal) var(--ease-smooth),
-    box-shadow   var(--dur-normal) var(--ease-smooth),
-    transform    var(--dur-normal) var(--ease-spring),
-    opacity      var(--dur-normal) var(--ease-smooth);
+    border-color var(--dur-slow) var(--ease-smooth),
+    box-shadow   var(--dur-slow) var(--ease-smooth),
+    transform    var(--dur-slow) var(--ease-spring),
+    opacity      var(--dur-slow) var(--ease-smooth);
   position: relative;
   transform-origin: center top;
 }
@@ -606,26 +676,35 @@ a { color: var(--accent); }
 .task-card:not(.solved):hover {
   transform: translateY(-1px);
   border-color: var(--border-hi);
-  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.1),
+    0 8px 16px rgba(0,0,0,.15),
+    0 16px 32px rgba(0,0,0,.2);
 }
 
 /* Focus-dimming: when any card in the list has focus, dim siblings */
 .tasks-list:has(.code-input:focus) .task-card:not(:has(.code-input:focus)):not(.solved) {
-  opacity: .45;
-  transform: scale(.995);
+  opacity: .3;
+  transform: scale(.99);
+  filter: blur(1px);
+  transition: opacity var(--dur-normal) var(--ease-smooth),
+              transform var(--dur-normal) var(--ease-smooth),
+              filter var(--dur-normal) var(--ease-smooth);
 }
 .tasks-list:has(.code-input:focus) .task-card:has(.code-input:focus) {
   box-shadow:
-    0 0 0 2px rgba(var(--mc-rgb), .25),
-    0 8px 32px rgba(0,0,0,.35);
-  border-color: rgba(var(--mc-rgb), .4);
-  transform: translateY(-1px);
+    0 0 0 2px rgba(var(--mc-rgb), .35),
+    0 0 20px rgba(var(--mc-rgb), .15),
+    0 8px 32px rgba(0,0,0,.4);
+  border-color: rgba(var(--mc-rgb), .5);
+  transform: translateY(-2px);
+  z-index: 2;
 }
 
 /* ── Card stagger entry animation ─── */
 @keyframes cardStagger {
-  from { opacity: 0; transform: translateY(14px) scale(.98); }
-  to   { opacity: 1; transform: translateY(0)    scale(1); }
+  from { opacity: 0; transform: translateY(14px) scale(.98); filter: blur(2px); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   filter: blur(0); }
 }
 /* Applied by JS via .is-entering class on module section */
 .module-section.is-entering .task-card {
@@ -676,7 +755,25 @@ a { color: var(--accent); }
 }
 .task-card.solved .task-head {
   background: rgba(63,185,80,.04);
+  padding-top: .4rem; padding-bottom: .4rem;
 }
+.task-card.solved .code-block {
+  padding: .5rem 1rem .4rem;
+  max-height: 80px; overflow: hidden;
+  opacity: .7;
+  position: relative;
+  transition: max-height .35s var(--ease-smooth), opacity .25s var(--ease-smooth);
+}
+.task-card.solved .code-block::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2em;
+  background: linear-gradient(transparent, rgba(13,17,23,.85));
+  pointer-events: none;
+}
+.task-card.solved:hover .code-block {
+  max-height: 600px; opacity: .85;
+}
+.task-card.solved:hover .code-block::after { opacity: 0; }
 .task-card.solved:focus-within {
   box-shadow: 0 0 0 3px rgba(63,185,80,.09);
 }
@@ -900,8 +997,7 @@ a { color: var(--accent); }
    EXPLANATION & HINT PANELS
 ═══════════════════════════════════════════ */
 .task-explanation {
-  display: none;
-  padding: 0.75rem 1.1rem;
+  padding: 0 1.1rem;
   background: rgba(63,185,80,.05);
   border-top: 1px solid rgba(63,185,80,.14);
   font-family: 'Inter', system-ui, sans-serif;
@@ -910,9 +1006,14 @@ a { color: var(--accent); }
   line-height: 1.65;
   overflow-wrap: break-word; word-break: break-word;
   width: 100%; box-sizing: border-box;
-  animation: fadeDown .25s ease;
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .35s var(--ease-smooth), opacity .35s var(--ease-smooth), padding .35s var(--ease-smooth);
 }
-.task-explanation.show { display: block; }
+.task-explanation.show {
+  max-height: 600px; opacity: 1;
+  padding: 0.75rem 1.1rem;
+  animation: fadeDown .35s var(--ease-smooth);
+}
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-4px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -1152,14 +1253,15 @@ a { color: var(--accent); }
   transition: all .25s cubic-bezier(.4,0,.2,1);
   max-width: 340px;
   border: 1px solid transparent;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   box-shadow: 0 8px 32px rgba(0,0,0,.5);
 }
 #toast.show { transform: translateY(0); opacity: 1; }
-#toast.t-success { background: rgba(13,17,23,.97); border-color: var(--green); color: var(--green); }
-#toast.t-error   { background: rgba(13,17,23,.97); border-color: var(--red);   color: var(--red);   }
-#toast.t-info    { background: rgba(13,17,23,.97); border-color: var(--accent);color: var(--accent);}
-#toast.t-warn    { background: rgba(13,17,23,.97); border-color: var(--yellow);color: var(--yellow);}
+#toast.t-success { background: rgba(13,17,23,.85); border-color: var(--green); color: var(--green); }
+#toast.t-error   { background: rgba(13,17,23,.85); border-color: var(--red);   color: var(--red);   }
+#toast.t-info    { background: rgba(13,17,23,.85); border-color: var(--accent);color: var(--accent);}
+#toast.t-warn    { background: rgba(13,17,23,.85); border-color: var(--yellow);color: var(--yellow);}
 
 /* ═══════════════════════════════════════════
    CHEAT SHEET PANEL
@@ -1167,7 +1269,9 @@ a { color: var(--accent); }
 #cheatsheet {
   position: fixed; top: 0; right: -100vw; bottom: 0;
   width: min(420px, 95vw); z-index: 300;
-  background: var(--bg-card);
+  background: rgba(22,27,34,.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-left: 1px solid var(--border);
   transition: right .3s cubic-bezier(.4,0,.2,1);
   display: flex; flex-direction: column;
@@ -1404,14 +1508,16 @@ a { color: var(--accent); }
   border: 1px solid var(--border-hi);
   border-radius: 14px;
   box-shadow:
-    0 2px 8px rgba(0,0,0,.3),
-    0 16px 48px rgba(0,0,0,.6),
+    0 4px 12px rgba(0,0,0,.2),
+    0 12px 36px rgba(0,0,0,.35),
     0 0 0 1px rgba(var(--mc-rgb),.08);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
   overflow: hidden;
   pointer-events: none;
   /* Smooth enter/exit via visibility trick */
   opacity: 0;
-  transform: scale(.92) translateY(8px);
+  transform: scale(.98) translateY(3px);
   transform-origin: top center;
   visibility: hidden;
   transition:
@@ -1427,8 +1533,8 @@ a { color: var(--accent); }
   visibility: visible;
   pointer-events: auto;
   transition:
-    opacity   .18s var(--ease-smooth),
-    transform .28s var(--ease-spring),
+    opacity   .3s var(--ease-smooth),
+    transform .4s var(--ease-spring),
     box-shadow .2s var(--ease-smooth),
     visibility 0s  linear 0s;
 }
@@ -1912,6 +2018,7 @@ a { color: var(--accent); }
 
 <!-- SIDEBAR -->
 <nav id="sidebar">
+  <button class="sb-toggle" title="Sidebar ein-/ausklappen" aria-label="Sidebar toggle"></button>
   <div class="sb-label" style="padding-bottom:.35rem;border-bottom:1px solid var(--border);margin-bottom:.5rem;padding-left:1rem;padding-right:1rem;display:flex;justify-content:space-between;align-items:center">
     <span>Lehrplan</span>
     <span id="sb-total-pct" style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--text-muted)">0%</span>
@@ -2577,6 +2684,24 @@ a { color: var(--accent); }
 </div>
 
 <script>
+// ── Smooth number counter ────────────────────────────────────────
+function animateCount(el, target) {
+  const current = parseInt(el.textContent) || 0;
+  if (current === target) return;
+  const diff = target - current;
+  const steps = Math.min(Math.abs(diff), 20);
+  const duration = 400;
+  const stepTime = duration / steps;
+  let step = 0;
+  const timer = setInterval(() => {
+    step++;
+    const progress = step / steps;
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(current + diff * eased);
+    if (step >= steps) { clearInterval(timer); el.textContent = target; }
+  }, stepTime);
+}
+
 // ══════════════════════════════════════════════════════════
 // DATA — 6 × 10 Tasks with tier & explanation
 // ══════════════════════════════════════════════════════════
@@ -3589,7 +3714,7 @@ function updateGlobalUI() {
   document.getElementById('prog-fill').style.width = pct + '%';
   document.getElementById('prog-pct').textContent = pct + '%';
   document.getElementById('prog-label').textContent = `${totalSolved}/80`;
-  document.getElementById('score-val').textContent = state.score;
+  animateCount(document.getElementById('score-val'), state.score);
   document.getElementById('streak-val').textContent = state.streak;
 
   // Sidebar total %
@@ -3739,7 +3864,7 @@ function showFinish() {
                 state.score >= 48 ? '⭐⭐ Gut (2)' :
                 state.score >= 40 ? '⭐ Befriedigend (3)' : '✓ Ausreichend (4)';
 
-  document.getElementById('fin-score').textContent  = state.score;
+  animateCount(document.getElementById('fin-score'), state.score);
   document.getElementById('fin-time').textContent   = `${mins}m`;
   document.getElementById('fin-hints').textContent  = state.hintCount;
   document.getElementById('fin-streak').textContent = state.maxStreak;
@@ -4057,7 +4182,7 @@ function updateMobileStats() {
   const s = document.getElementById('mob-streak');
   const sc = document.getElementById('mob-score');
   if (s) s.textContent = state.streak;
-  if (sc) sc.textContent = state.score;
+  if (sc) animateCount(sc, state.score);
 }
 
 // Patch markSolved to also update mobile nav
@@ -4101,12 +4226,24 @@ markSolved = function(taskId, modId, withFx) {
 // ── Collapsible "Why" box on mobile ──────────────
 document.querySelectorAll('.mod-why').forEach(el => {
   el.addEventListener('click', function(e) {
-    if (window.innerWidth > 680) return;
-    this.classList.toggle('collapsed');
+    if (window.innerWidth <= 680) {
+      this.classList.toggle('collapsed');
+    } else {
+      this.classList.toggle('why-expanded');
+    }
   });
 });
 
 // ── Initial build ─────────────────────────────────
+document.querySelector('.sb-toggle')?.addEventListener('click', () => {
+  const sb = document.getElementById('sidebar');
+  sb.classList.toggle('sidebar-collapsed');
+  localStorage.setItem('sb-collapsed', sb.classList.contains('sidebar-collapsed'));
+});
+if (localStorage.getItem('sb-collapsed') === 'true') {
+  document.getElementById('sidebar')?.classList.add('sidebar-collapsed');
+}
+
 buildMobileNav();
 updateMobileStats();
 </script>
