@@ -3860,7 +3860,7 @@ function closeShortcuts() {
 // ══════════════════════════════════════════════════════════
 function showFinish() {
   const mins = Math.floor((Date.now() - state.startTime) / 60000);
-  const grade = state.score >= 55 ? '⭐⭐⭐ Sehr gut (1)' :
+  const grade = state.score >= 55 ? '⭐⭐⭐ Sehr gut (1)|' :
                 state.score >= 48 ? '⭐⭐ Gut (2)' :
                 state.score >= 40 ? '⭐ Befriedigend (3)' : '✓ Ausreichend (4)';
 
