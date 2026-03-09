@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="theme-color" content="#0d1117">
+<link rel="icon" href="data:,">
 <title>JPA Mastery · HTL Leonding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -617,20 +618,25 @@ body:has(.sidebar-collapsed) #app-body {
 @media (min-width: 681px) {
   .mod-why {
     cursor: pointer; position: relative;
-    max-height: 2.8em; overflow: hidden;
-    transition: max-height .4s var(--ease-smooth);
+    max-height: 3.4em; overflow: hidden;
+    transition: max-height .4s var(--ease-smooth), border-color .3s;
   }
+  .mod-why:hover { border-color: rgba(88,166,255,.35); }
   .mod-why.why-expanded { max-height: 300px; }
   .mod-why:not(.why-expanded)::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 1.5em;
-    background: linear-gradient(transparent, rgba(13,17,23,.95));
+    content: '▼ Details anzeigen';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2.4em;
+    background: linear-gradient(transparent 0%, rgba(22,27,34,.95) 55%);
     pointer-events: none;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: .4rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: .62rem; font-weight: 600; color: var(--accent);
+    letter-spacing: .04em; opacity: .7;
   }
-  .mod-why:not(.why-expanded) .mod-why-icon::after {
-    content: ' Details...'; font-size: .65rem; color: var(--text-muted);
-    font-style: italic; margin-left: .3rem;
-  }
+  .mod-why:not(.why-expanded):hover::after { opacity: 1; }
+  .mod-why.why-expanded::after { content: none; }
 }
 
 /* module progress in header area */
@@ -3931,7 +3937,16 @@ function showDocPopover(taskId, triggerEl) {
 
   const pop = document.getElementById('doc-popover');
   document.getElementById('dp-badge').textContent = task.id;
-  document.getElementById('dp-title').textContent = doc.title;
+  // Hide title when unsolved to prevent spoilers
+  const isSolved = document.querySelector(`.task-card[data-id="${taskId}"].solved`);
+  const titleEl = document.getElementById('dp-title');
+  if (isSolved) {
+    titleEl.textContent = doc.title;
+    titleEl.style.fontStyle = '';
+  } else {
+    titleEl.textContent = 'Konzept-Hilfe';
+    titleEl.style.fontStyle = 'italic';
+  }
 
   // Build body
   let html = '';
