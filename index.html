@@ -625,26 +625,39 @@ body:has(.sidebar-collapsed) #app-body {
 /* ── Desktop collapsible "Why" ───────── */
 @media (min-width: 681px) {
   .mod-why {
-    cursor: pointer; position: relative;
-    max-height: 2.6em; overflow: hidden;
-    transition: max-height .4s var(--ease-smooth), border-color .3s;
+    cursor: pointer;
+    transition: border-color .3s;
   }
   .mod-why:hover { border-color: rgba(88,166,255,.35); }
-  .mod-why.why-expanded { max-height: 300px; overflow: visible; }
-  .mod-why:not(.why-expanded)::after {
-    content: '▼ Details';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 100%; box-sizing: border-box;
-    background: linear-gradient(rgba(13,17,23,0) 0%, rgba(13,17,23,1) 65%);
-    pointer-events: none;
-    display: flex; align-items: flex-end; justify-content: center;
-    padding-bottom: .45rem;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: .6rem; font-weight: 600; color: var(--accent);
-    letter-spacing: .04em; opacity: .65;
+  .mod-why:not(.why-expanded) .mod-why-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  .mod-why:not(.why-expanded):hover::after { opacity: 1; }
-  .mod-why.why-expanded::after { content: none; }
+  .mod-why.why-expanded .mod-why-text {
+    display: block;
+    white-space: normal;
+    -webkit-line-clamp: unset;
+  }
+  .mod-why:not(.why-expanded)::after {
+    content: '▸ Details';
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: .58rem; font-weight: 600; color: var(--accent);
+    letter-spacing: .03em; opacity: .5;
+    margin-left: .5rem; flex-shrink: 0;
+    transition: opacity .2s;
+  }
+  .mod-why:hover::after { opacity: 1; }
+  .mod-why.why-expanded::after {
+    content: '▾ Einklappen';
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: .58rem; font-weight: 600; color: var(--text-muted);
+    letter-spacing: .03em; opacity: .5;
+    margin-left: .5rem; flex-shrink: 0;
+  }
 }
 
 /* module progress in header area */
