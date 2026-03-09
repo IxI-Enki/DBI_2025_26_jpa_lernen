@@ -618,22 +618,22 @@ body:has(.sidebar-collapsed) #app-body {
 @media (min-width: 681px) {
   .mod-why {
     cursor: pointer; position: relative;
-    max-height: 3.4em; overflow: hidden;
+    max-height: 2.6em; overflow: hidden;
     transition: max-height .4s var(--ease-smooth), border-color .3s;
   }
   .mod-why:hover { border-color: rgba(88,166,255,.35); }
-  .mod-why.why-expanded { max-height: 300px; }
+  .mod-why.why-expanded { max-height: 300px; overflow: visible; }
   .mod-why:not(.why-expanded)::after {
-    content: '▼ Details anzeigen';
+    content: '▼ Details';
     position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2.4em;
-    background: linear-gradient(transparent 0%, rgba(22,27,34,.95) 55%);
+    height: 100%; box-sizing: border-box;
+    background: linear-gradient(rgba(13,17,23,0) 0%, rgba(13,17,23,1) 65%);
     pointer-events: none;
     display: flex; align-items: flex-end; justify-content: center;
-    padding-bottom: .4rem;
+    padding-bottom: .45rem;
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: .62rem; font-weight: 600; color: var(--accent);
-    letter-spacing: .04em; opacity: .7;
+    font-size: .6rem; font-weight: 600; color: var(--accent);
+    letter-spacing: .04em; opacity: .65;
   }
   .mod-why:not(.why-expanded):hover::after { opacity: 1; }
   .mod-why.why-expanded::after { content: none; }
