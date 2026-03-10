@@ -3,6 +3,7 @@ package jpa1.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Address {
 
     private Long id;

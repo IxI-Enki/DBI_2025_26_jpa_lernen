@@ -2190,7 +2190,7 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="nav-item-inner">
       <div class="nav-item-row">
         <span class="nav-badge" id="nav-badge-6">M6</span>
-        <span class="nav-title">JPQL &amp; Panache</span>
+        <span class="nav-title">JPQL &amp; NamedQuery</span>
         <span class="nav-check" id="nav-check-6"></span>
       </div>
       <div class="nav-dots-row" id="nav-dots-6">
@@ -2431,13 +2431,13 @@ body:has(.sidebar-collapsed) #app-body {
       <span>DBI/NVS</span><span class="mod-crumb-sep">›</span>
       <span class="mod-crumb-cur" style="color:var(--m5)">Vererbung</span>
     </div>
-    <div class="mod-done-banner" id="done-banner-5">✅<span>Modul 5 abgeschlossen! Letztes Modul: <strong>JPQL &amp; Panache</strong>.</span></div>
+    <div class="mod-done-banner" id="done-banner-5">✅<span>Modul 5 abgeschlossen! Weiter zu <strong>JPQL &amp; NamedQuery</strong>.</span></div>
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(255,166,87,.1);color:var(--m5)">🌳</div>
       <div class="mod-meta">
         <div class="mod-eyebrow" style="color:var(--m5)">Modul 05 · Tier 2–3</div>
-        <div class="mod-title">Vererbung &amp; Advanced Mapping</div>
-        <div class="mod-subtitle">Inheritance-Strategien, Discriminator, Composite Keys — Abschlussniveau.</div>
+        <div class="mod-title">Vererbung &amp; Performance</div>
+        <div class="mod-subtitle">InheritanceType-Strategien, N+1 Problem, JOIN FETCH — testentscheidend.</div>
       </div>
     </div>
     <div class="mod-why" style="border-left-color:var(--m5);background:rgba(255,166,87,.04);border-color:rgba(255,166,87,.15)">
@@ -2464,35 +2464,35 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="mod-strip" style="background:linear-gradient(90deg,var(--m6),transparent)"></div>
     <div class="mod-crumb">
       <span>DBI/NVS</span><span class="mod-crumb-sep">›</span>
-      <span class="mod-crumb-cur" style="color:var(--m6)">JPQL &amp; Panache</span>
+      <span class="mod-crumb-cur" style="color:var(--m6)">JPQL &amp; NamedQuery</span>
     </div>
     <div class="mod-done-banner" id="done-banner-6">✅<span>Modul 6 geschafft! Weiter zu <strong>JPQL Vertieft</strong> →</span></div>
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(121,192,255,.1);color:var(--m6)">🔍</div>
       <div class="mod-meta">
         <div class="mod-eyebrow" style="color:var(--m6)">Modul 06 · Tier 2–3</div>
-        <div class="mod-title">JPQL &amp; Panache</div>
-        <div class="mod-subtitle">Von <code style="color:var(--ann)">createQuery</code> zu Quarkus <code style="color:var(--cyan)">PanacheEntity</code> — HTL-spezifisch.</div>
+        <div class="mod-title">JPQL &amp; NamedQuery</div>
+        <div class="mod-subtitle">Von <code style="color:var(--ann)">createQuery</code> zu <code style="color:var(--ann)">@NamedQuery</code> — Named &amp; Positional Parameters.</div>
       </div>
     </div>
     <div class="mod-why" style="border-left-color:var(--m6);background:rgba(121,192,255,.04);border-color:rgba(121,192,255,.15)">
       <span class="mod-why-icon">💡</span>
-      <span class="mod-why-text"><strong style="color:var(--m6)">Warum wichtig?</strong> HTL Leonding unterrichtet Quarkus + Panache als primären Stack (DbiUebung-009). <code style="color:var(--cyan)">@Transactional</code> und <code style="color:var(--cyan)">PanacheRepository</code> ersetzen manuelles Transaction-Management.</span>
+      <span class="mod-why-text"><strong style="color:var(--m6)">Warum wichtig?</strong> JPQL mit <code style="color:var(--ann)">@NamedQuery</code> ist die zentrale Abfragetechnik im Test. Path-Navigation (<code>f.plane.seats</code>), Fetch Join mit WHERE und Parameter-Binding (:named vs ?1) kommen direkt in der Angabe vor.</span>
     </div>
 
     <div class="ref-collapse-wrap" id="ref-wrap-6">
-      <div class="ref-collapse-toggle" onclick="this.parentElement.classList.toggle('ref-expanded')">// EntityManager vs Panache</div>
+      <div class="ref-collapse-toggle" onclick="this.parentElement.classList.toggle('ref-expanded')">// JPQL Parameter-Typen</div>
       <div class="ref-collapse-content">
     <table class="compare-table">
       <thead>
-        <tr><th>Operation</th><th class="em-col">EntityManager</th><th class="pan-col">Panache</th></tr>
+        <tr><th>Typ</th><th class="em-col">Syntax</th><th class="pan-col">Beispiel</th></tr>
       </thead>
       <tbody>
-        <tr><td>Alle laden</td><td class="em-col">createQuery("SELECT e …").getResultList()</td><td class="pan-col">Entity.listAll()</td></tr>
-        <tr><td>Suchen</td><td class="em-col">find(Entity.class, id)</td><td class="pan-col">Entity.findById(id)</td></tr>
-        <tr><td>Speichern</td><td class="em-col">persist(entity)</td><td class="pan-col">entity.persist()</td></tr>
-        <tr><td>Löschen</td><td class="em-col">remove(entity)</td><td class="pan-col">entity.delete()</td></tr>
-        <tr><td>Zählen</td><td class="em-col">createQuery("SELECT COUNT…")</td><td class="pan-col">Entity.count()</td></tr>
+        <tr><td>Named</td><td class="em-col">:paramName</td><td class="pan-col">WHERE b.lastName = :name → setParameter("name", "Smith")</td></tr>
+        <tr><td>Positional</td><td class="em-col">?1, ?2</td><td class="pan-col">WHERE p.pType = ?1 → setParameter(1, "Airbus 380")</td></tr>
+        <tr><td>NamedQuery</td><td class="em-col">@NamedQuery(name=, query=)</td><td class="pan-col">em.createNamedQuery("Flight.findByOp", Flight.class)</td></tr>
+        <tr><td>Fetch Join</td><td class="em-col">JOIN FETCH</td><td class="pan-col">SELECT f FROM Flight f JOIN FETCH f.bookings WHERE …</td></tr>
+        <tr><td>MEMBER OF</td><td class="em-col">:x MEMBER OF c</td><td class="pan-col">WHERE :tire MEMBER OF p.tireTypes</td></tr>
       </tbody>
     </table>
       </div>
@@ -2531,7 +2531,7 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="mod-meta">
         <div class="mod-eyebrow" style="color:var(--m7)">Modul 07 · Tier 2</div>
         <div class="mod-title">JPQL Vertieft</div>
-        <div class="mod-subtitle">JOIN FETCH, Aggregate, Paginierung, Bulk-Ops und DTO-Projektion.</div>
+        <div class="mod-subtitle">JOIN FETCH, Aggregate, NamedQuery mit MEMBER OF &amp; Positional Parameters.</div>
       </div>
     </div>
     <div class="mod-why" style="border-left-color:var(--m7);background:rgba(255,123,114,.04);border-color:rgba(255,123,114,.15)">
@@ -2571,12 +2571,12 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="mod-meta">
         <div class="mod-eyebrow" style="color:var(--m8)">Modul 08 · Tier 2</div>
         <div class="mod-title">Konfiguration &amp; Lifecycle</div>
-        <div class="mod-subtitle">persistence.xml, Quarkus-Config, Lifecycle-Callbacks und Bean Validation.</div>
+        <div class="mod-subtitle">persistence.xml, Hibernate-Properties, @Column-Mapping und Lifecycle-Callbacks.</div>
       </div>
     </div>
     <div class="mod-why" style="border-left-color:var(--m8);background:rgba(201,209,217,.04);border-color:rgba(201,209,217,.15)">
       <span class="mod-why-icon">💡</span>
-      <span class="mod-why-text"><strong style="color:var(--m8)">Warum wichtig?</strong> Ohne Konfiguration läuft JPA nicht. <code>@PrePersist</code> und Co. sind elegante Alternativen zu manuellem Timestamp-Setzen. Bean Validation verhindert Bad Data <em>bevor</em> es die DB erreicht. Diese Topics trennen fortgeschrittene Entwickler von Anfängern.</span>
+      <span class="mod-why-text"><strong style="color:var(--m8)">Warum wichtig?</strong> Ohne <code>persistence.xml</code> läuft kein JPA-Projekt. <code>hibernate.show_sql</code>, <code>connection.url</code> und <code>schema-generation</code> sind Pflicht im Test. <code>@Column(name=)</code> mappt Java-Felder auf abweichende Spaltennamen — z.B. <code>flightoperator</code>.</span>
     </div>
     <div class="mod-prog-row">
       <div class="mod-prog-track"><div class="mod-prog-fill" id="mod-prog-8" style="background:var(--m8);width:0%"></div></div>
@@ -2668,34 +2668,34 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="cs-row"><span class="cs-ann">@DiscriminatorValue</span><span class="cs-desc">Typ-Wert in Diskriminator-Spalte</span></div>
     </div>
     <div class="cs-group">
-      <div class="cs-group-title">JPQL &amp; Panache</div>
+      <div class="cs-group-title">JPQL &amp; NamedQuery</div>
       <div class="cs-row"><span class="cs-ann">createQuery(jpql)</span><span class="cs-desc">JPQL-Query (Klassenname, nicht Tabelle!)</span></div>
+      <div class="cs-row"><span class="cs-ann">@NamedQuery</span><span class="cs-desc">name + query auf Entity-Klasse definieren</span></div>
       <div class="cs-row"><span class="cs-ann">createNamedQuery</span><span class="cs-desc">Vordefinierte @NamedQuery aufrufen</span></div>
-      <div class="cs-row"><span class="cs-ann">setParameter(k,v)</span><span class="cs-desc">Parameter binden</span></div>
-      <div class="cs-row"><span class="cs-ann">@Transactional</span><span class="cs-desc">CDI/Quarkus — automatische Tx</span></div>
-      <div class="cs-row"><span class="cs-ann">PanacheEntity</span><span class="cs-desc">Active Record Pattern</span></div>
-      <div class="cs-row"><span class="cs-ann">PanacheRepository</span><span class="cs-desc">Repository Pattern</span></div>
+      <div class="cs-row"><span class="cs-ann">:name (Named)</span><span class="cs-desc">setParameter("name", value)</span></div>
+      <div class="cs-row"><span class="cs-ann">?1 (Positional)</span><span class="cs-desc">setParameter(1, value)</span></div>
+      <div class="cs-row"><span class="cs-ann">MEMBER OF</span><span class="cs-desc">:param MEMBER OF collection</span></div>
     </div>
   
     <div class="cs-section">
       <div class="cs-section-title">JPQL Vertieft</div>
-      <div class="cs-row"><span>JOIN FETCH</span><code style="color:var(--m7);font-size:.68rem">SELECT s FROM Student s JOIN FETCH s.grades</code></div>
+      <div class="cs-row"><span>JOIN FETCH</span><code style="color:var(--m7);font-size:.68rem">SELECT f FROM Flight f JOIN FETCH f.bookings</code></div>
       <div class="cs-row"><span>TypedQuery</span><code style="color:var(--m7);font-size:.68rem">TypedQuery&lt;T&gt; q = em.createQuery("...", T.class)</code></div>
-      <div class="cs-row"><span>Paginierung</span><code style="color:var(--m7);font-size:.68rem">.setFirstResult(offset).setMaxResults(limit)</code></div>
+      <div class="cs-row"><span>Path-Navigation</span><code style="color:var(--m7);font-size:.68rem">WHERE f.plane.seats &gt; 200</code></div>
       <div class="cs-row"><span>Aggregate</span><code style="color:var(--m7);font-size:.68rem">SELECT COUNT(s), AVG(s.grade) FROM Student s</code></div>
       <div class="cs-row"><span>GROUP BY</span><code style="color:var(--m7);font-size:.68rem">GROUP BY s.dept HAVING COUNT(s) &gt; 5</code></div>
-      <div class="cs-row"><span>Bulk-Update</span><code style="color:var(--m7);font-size:.68rem">UPDATE Student s SET s.active=false WHERE ...</code></div>
-      <div class="cs-row"><span>DTO-Projektion</span><code style="color:var(--m7);font-size:.68rem">SELECT NEW StudentDTO(s.name) FROM Student s</code></div>
+      <div class="cs-row"><span>SIZE()</span><code style="color:var(--m7);font-size:.68rem">HAVING SIZE(f.bookings) &lt; 2</code></div>
+      <div class="cs-row"><span>MEMBER OF</span><code style="color:var(--m7);font-size:.68rem">WHERE :plane MEMBER OF t.planes</code></div>
     </div>
 
     <div class="cs-section">
-      <div class="cs-section-title">Konfiguration &amp; Lifecycle</div>
-      <div class="cs-row"><span>DDL Quarkus</span><code style="color:var(--m8);font-size:.68rem">quarkus.hibernate-orm.database.generation=drop-and-create</code></div>
-      <div class="cs-row"><span>SQL Logging</span><code style="color:var(--m8);font-size:.68rem">quarkus.hibernate-orm.log.sql=true</code></div>
+      <div class="cs-section-title">Konfiguration &amp; persistence.xml</div>
+      <div class="cs-row"><span>Schema-Gen</span><code style="color:var(--m8);font-size:.68rem">schema-generation.database.action = drop-and-create</code></div>
+      <div class="cs-row"><span>SQL Logging</span><code style="color:var(--m8);font-size:.68rem">hibernate.show_sql = true</code></div>
+      <div class="cs-row"><span>DB-Dialekt</span><code style="color:var(--m8);font-size:.68rem">hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect</code></div>
+      <div class="cs-row"><span>JDBC URL</span><code style="color:var(--m8);font-size:.68rem">javax.persistence.jdbc.url = jdbc:postgresql://...</code></div>
+      <div class="cs-row"><span>@Column</span><code style="color:var(--m8);font-size:.68rem">@Column(name="flightoperator") → Spaltenname überschreiben</code></div>
       <div class="cs-row"><span>Lifecycle</span><code style="color:var(--m8);font-size:.68rem">@PrePersist @PreUpdate @PostLoad @PreRemove</code></div>
-      <div class="cs-row"><span>Validation</span><code style="color:var(--m8);font-size:.68rem">@NotBlank @NotNull @Min(n) @Max(n) @Size @Email</code></div>
-      <div class="cs-row"><span>UniqueConstraint</span><code style="color:var(--m8);font-size:.68rem">@Table(uniqueConstraints=@UniqueConstraint(columnNames={"email"}))</code></div>
-      <div class="cs-row"><span>AttributeOverride</span><code style="color:var(--m8);font-size:.68rem">@AttributeOverride(name="street", column=@Column(name="home_street"))</code></div>
       <div class="cs-row"><span>EMF (SE)</span><code style="color:var(--m8);font-size:.68rem">Persistence.createEntityManagerFactory("myPU")</code></div>
     </div>
 </div>
@@ -2767,7 +2767,7 @@ body:has(.sidebar-collapsed) #app-body {
       </div>
     </div>
     <div class="finish-grade" id="fin-grade"></div>
-    <div style="font-size:.76rem;color:var(--text-dim)">Alle 60 Aufgaben gelöst.<br>Viel Erfolg bei der Matura am 23. Juni 2026! 🍀</div>
+    <div style="font-size:.76rem;color:var(--text-dim)">Alle 80 Aufgaben gelöst.<br>Viel Erfolg bei der Matura am 23. Juni 2026! 🍀</div>
     <button class="btn-restart" onclick="restartAll()">↺ Neustart</button>
   </div>
 </div>
@@ -2975,24 +2975,24 @@ const MODULES = [
       memo:"<strong>merge()</strong> gibt ein neues managed-Objekt zurück — das Original-Objekt bleibt detached. Häufiger Fehler!",
       explanation:"flush() synchronisiert den Persistence Context sofort mit der DB — ohne commit(). Nützlich vor nativen Queries.",
       doc: { title:'flush()', concept:'Synchronisiert den Persistence Context <em>sofort</em> mit der DB — schreibt alle SQL-Statements ohne die Transaktion zu beenden.', when:'Vor nativen SQL-Queries, die die gerade geänderten Daten lesen müssen.', code:'em.persist(student);\nem.<span style=\'color:#ffa657\'>[???]</span>();  <span class=\'c\'>// INSERT sofort ausgeführt</span>\n<span class=\'c\'>// Transaktion noch offen!</span>\nQuery q = em.createNativeQuery(<span style=\'color:#a5d6ff\'>"SELECT..."</span>);' } },
-    { id:"3-8",  tier:2, title:"Persistence Context leeren",
-      html:`em.<input class="code-input" data-ans="clear" style="width:52px" placeholder="???"> ();`,
-      hint:["Der EntityManager hat viele Objekte im Cache (first-level cache). Du willst alle los werden — alle Objekte sollen detached werden.","Alles entfernen, leeren — cl*** (wie 'clear' bei einer Liste).","→ <span class='hint-answer'>clear</span>() — alle managed Objekte werden detached. Wichtig für Batch-Processing um OutOfMemoryError zu vermeiden."],
-      memo:"<strong>flush()</strong> ≠ commit(). SQL gesendet, aber noch rückrollbar. Nützlich für native Queries im selben Tx-Kontext.",
-      explanation:"clear() entfernt alle Entities aus dem Context — danach sind alle Objekte DETACHED. Nützlich bei Batch-Processing.",
-      doc: { title:'clear()', concept:'Entfernt <em>alle Entities</em> aus dem Persistence Context — alle werden DETACHED. Nützlich bei Batch-Verarbeitung um Speicher freizugeben.', when:'Bei großen Batch-Jobs (z.B. 10.000 Datensätze importieren).', code:"<span class='k'>for</span> (<span class='k'>int</span> i = 0; i &lt; 10000; i++) {\n  em.persist(items.get(i));\n  <span class='k'>if</span> (i % 50 == 0) {\n    em.flush();  em.<span style='color:#ffa657'>[???]</span>();  <span class='c'>// Speicher leeren</span>\n  }\n}" } },
-    { id:"3-9",  tier:1, title:"JPQL-Query erstellen",
-      html:`em.create<input class="code-input" data-ans="Query" style="width:60px" placeholder="???">(<span class="str">"SELECT s FROM Student s"</span>)`,
-      hint:["Du schreibst einen JPQL-String und willst daraus ein ausführbares Query-Objekt erzeugen. Wie heißt die EM-Methode?","Du erzeugst ein Qu***y-Objekt — create + qu***y.","→ <span class='hint-answer'>createQuery</span>(jpql) — gibt Query-Objekt zurück. Typsicher: createQuery(jpql, Student.class) → TypedQuery."],
-      memo:"<strong>clear()</strong> bei großen Batch-Jobs nach jedem Chunk — verhindert, dass der Persistence Context ins Unendliche wächst.",
-      explanation:"createQuery() erzeugt eine JPQL-Query. JPQL arbeitet mit Klassennamen (Student), nicht Tabellennamen (students)!",
-      doc: { title:'createQuery()', concept:'Erstellt eine <em>JPQL-Abfrage</em>. JPQL arbeitet mit <em>Klassennamen</em> (Student), nicht Tabellennamen (students). Objektorientiert statt SQL.', when:'Für objektorientierte Abfragen über Entities und ihre Beziehungen.', code:'em.create<span style=\'color:#ffa657\'>[???]</span>(\n  <span style=\'color:#a5d6ff\'>"SELECT s FROM Student s WHERE s.name = :n"</span>\n)\n.setParameter(<span style=\'color:#a5d6ff\'>"n"</span>, <span style=\'color:#a5d6ff\'>"Max"</span>)\n.getResultList();' } },
-    { id:"3-10", tier:2, title:"Natives SQL ausführen",
-      html:`em.create<input class="code-input" data-ans="NativeQuery" style="width:106px" placeholder="???">(<span class="str">"SELECT * FROM students"</span>)`,
-      hint:["JPQL reicht nicht — du brauchst echtes SQL (z.B. für JSONB-Abfragen). Wie heißt die EM-Methode für natives SQL?","Nicht JPQL, sondern Na***ves SQL — create + Native + Query.","→ <span class='hint-answer'>createNativeQuery</span>(sql) — echtes DB-SQL. DB-spezifisch, verliert JPA-Abstraktion. Nur wenn JPQL nicht reicht."],
-      memo:"<strong>createQuery()</strong> für JPQL, <strong>createNamedQuery()</strong> für vordefinierte Queries, <strong>createNativeQuery()</strong> für SQL.",
-      explanation:"createNativeQuery() erlaubt echtes SQL — nützlich für DB-spezifische Features oder Performance-Optimierungen.",
-      doc: { title:'createNativeQuery()', concept:'Führt <em>echtes SQL</em> aus — umgeht JPQL und arbeitet direkt mit der Datenbank. Ergebnis ist eine Liste von Object[].', when:'Für datenbankspezifische Features, CTEs, Window Functions oder Performance-Optimierungen.', code:'em.create<span style=\'color:#ffa657\'>[???]</span>(\n  <span style=\'color:#a5d6ff\'>"SELECT * FROM students WHERE age > ?1"</span>\n)\n.setParameter(1, 18)\n.getResultList();' } },
+    { id:"3-8",  tier:1, title:"Lifecycle-Zustand: nach new",
+      html:`<span class="cmt">// Welcher Entity-Zustand?</span><br><span class="tp">Customer</span> c = <span class="kw">new</span> <span class="tp">Customer</span>();<br>c.setName(<span class="str">"Müller"</span>);<br><span class="cmt">// Zustand: </span><input class="code-input" data-ans="NEW" style="width:100px" placeholder="???">`,
+      hint:["Das Objekt wurde mit new erzeugt, aber noch nicht an den EntityManager übergeben.","Es ist ein ganz normales Java-Objekt — JPA weiß noch nichts davon. Der Zustand heißt wie die Erzeugung.","→ <span class='hint-answer'>NEW</span> — das Objekt existiert nur im Heap, nicht im Persistence Context."],
+      memo:"<strong>NEW</strong> = nach new — JPA kennt das Objekt noch nicht. Erst persist() macht es MANAGED.",
+      explanation:"Nach new Customer() befindet sich die Entity im Zustand NEW — sie existiert nur als Java-Objekt, ohne Verbindung zum Persistence Context.",
+      doc: { title:'Entity Lifecycle: NEW', concept:'Ein frisch mit <em>new</em> erzeugtes Objekt ist im Zustand <strong>NEW</strong> — JPA kennt es noch nicht. Erst <code>persist()</code> übergibt es an den Persistence Context.', when:'Immer wenn ein Objekt mit new erzeugt, aber noch nicht persistiert wurde.', code:"<span class='t'>Customer</span> c = <span class='k'>new</span> <span class='t'>Customer</span>();\nc.setName(<span class='str'>\"Müller\"</span>);\n<span class='c'>// Zustand: <span style='color:#ffa657'>[???]</span></span>\n<span class='c'>// → JPA weiß nichts von c!</span>" } },
+    { id:"3-9",  tier:1, title:"Lifecycle-Zustand: nach persist()",
+      html:`em.getTransaction().begin();<br>em.<span class="kw">persist</span>(customer);<br><span class="cmt">// Zustand: </span><input class="code-input" data-ans="MANAGED" style="width:120px" placeholder="???">`,
+      hint:["persist() nimmt das Objekt in den Persistence Context auf — JPA 'verwaltet' es jetzt.","Der EntityManager überwacht das Objekt auf Änderungen. Welches englische Wort beschreibt 'verwaltet'?","→ <span class='hint-answer'>MANAGED</span> — JPA trackt alle Änderungen und schreibt sie beim commit()."],
+      memo:"<strong>MANAGED</strong> = nach persist(), find(), merge() oder Query — JPA überwacht die Entity.",
+      explanation:"Nach em.persist() wird die Entity MANAGED — der Persistence Context trackt sie und synchronisiert Änderungen bei commit().",
+      doc: { title:'Entity Lifecycle: MANAGED', concept:'Nach <code>persist()</code>, <code>find()</code>, <code>merge()</code> oder einer Query ist die Entity <strong>MANAGED</strong> — JPA trackt alle Feldänderungen und synchronisiert sie automatisch.', when:'Nach jeder Operation die ein Objekt in den Persistence Context aufnimmt.', code:"em.persist(customer);\n<span class='c'>// Zustand: <span style='color:#ffa657'>[???]</span></span>\ncustomer.setName(<span class='str'>\"Neu\"</span>);\n<span class='c'>// → UPDATE bei commit()!</span>" } },
+    { id:"3-10", tier:2, title:"Lifecycle-Zustand: nach detach()",
+      html:`em.getTransaction().commit();<br>em.<span class="kw">detach</span>(customer);<br><span class="cmt">// Zustand: </span><input class="code-input" data-ans="DETACHED" style="width:120px" placeholder="???">`,
+      hint:["detach() entfernt das Objekt aus dem Persistence Context — aber löscht es nicht aus der DB.","Das Objekt ist 'losgelöst' — nicht mehr von JPA verwaltet, aber existiert noch in der DB.","→ <span class='hint-answer'>DETACHED</span> — Änderungen werden nicht mehr getrackt. Nur merge() bringt es zurück."],
+      memo:"<strong>DETACHED</strong> = nach detach(), clear() oder Session-Ende — Änderungen gehen verloren ohne merge().",
+      explanation:"Nach em.detach() ist die Entity DETACHED — sie existiert noch in der DB, aber JPA trackt keine Änderungen mehr. merge() kann sie zurückbringen.",
+      doc: { title:'Entity Lifecycle: DETACHED', concept:'Nach <code>detach()</code>, <code>clear()</code> oder Session-Ende ist die Entity <strong>DETACHED</strong> — sie existiert in der DB, aber Änderungen werden nicht mehr getrackt.', when:'Nach detach(), clear(), oder wenn der EntityManager geschlossen wird.', code:"em.detach(customer);\n<span class='c'>// Zustand: <span style='color:#ffa657'>[???]</span></span>\ncustomer.setName(<span class='str'>\"Neu\"</span>);\n<span class='c'>// → KEINE Auswirkung auf DB!</span>\n<span class='c'>// merge() nötig zum Zurückbringen</span>" } },
   ]},
   { id:4, tasks:[
     { id:"4-1",  tier:1, title:"One-To-Many Beziehung",
@@ -3025,12 +3025,12 @@ const MODULES = [
       memo:"<strong>@JoinColumn(name=...)</strong> benennt die FK-Spalte. Ohne: JPA generiert einen (oft hässlichen) Namen.",
       explanation:"LAZY: Die assoziierte Entity wird erst beim ersten Zugriff geladen (Proxy-Objekt). Standard bei @OneToMany und @ManyToMany. Achtung: @ManyToOne und @OneToOne sind standardmäßig EAGER — bei großen Datenmengen explizit auf LAZY setzen!",
       doc: { title:'FetchType.LAZY', concept:'Mit <em>LAZY</em> wird die assoziierte Entity erst beim ersten Zugriff geladen (Proxy). Standard-Defaults: <code>@OneToMany</code> = LAZY, <code>@ManyToMany</code> = LAZY, <code>@ManyToOne</code> = <strong>EAGER</strong>, <code>@OneToOne</code> = <strong>EAGER</strong>. EAGER kann N+1-Query-Probleme verursachen.', when:'@ManyToOne und @OneToOne explizit auf LAZY setzen wenn viele Objekte geladen werden.', code:"<span class='a'>@ManyToOne</span>(fetch = <span class='t'>FetchType</span>.<span style='color:#ffa657'>[???]</span>)\n<span class='k'>private</span> <span class='t'>Student</span> student;\n<span class='c'>// LAZY: Proxy bis student.getName() aufgerufen</span>\n<span class='c'>// EAGER: sofort per JOIN geladen</span>" } },
-    { id:"4-6",  tier:2, title:"Kaskadierung: Löschen weitergeben",
-      html:`<span class="ann">@OneToOne</span>(cascade = <span class="tp">CascadeType</span>.<input class="code-input" data-ans="REMOVE" style="width:78px" placeholder="???">)<br><span class="kw">private</span> <span class="tp">Profile</span> profile;`,
-      hint:["Wenn ein Kurs gelöscht wird sollen alle Einschreibungen automatisch mitgelöscht werden. Welcher CascadeType?","Kaskadiere den Remove-Vorgang — CascadeType.REM***.","→ <span class='hint-answer'>CascadeType.REMOVE</span> — Löschen wird an Kindelemente weitergegeben. Nur setzen wenn Children ohne Parent keinen Sinn ergeben."],
-      memo:"<strong>LAZY</strong> = auf Abruf laden. <strong>EAGER</strong> = sofort mitladen. @OneToMany ist defaultmäßig LAZY — gut so.",
-      explanation:"CascadeType.REMOVE: Wird der Student gelöscht, wird sein Profile automatisch mitgelöscht. Vorsicht bei bidirektionalen Beziehungen!",
-      doc: { title:'CascadeType.REMOVE', concept:'Wenn das Eltern-Objekt gelöscht wird, werden alle assoziierten Kind-Objekte <em>automatisch mitgelöscht</em>.', when:'Bei @OneToOne oder @OneToMany wenn Kind-Objekte ohne Elternteil keinen Sinn ergeben.', code:"<span class='a'>@OneToOne</span>(cascade = <span class='t'>CascadeType</span>.<span style='color:#ffa657'>[???]</span>)\n<span class='k'>private</span> <span class='t'>Profile</span> profile;\n<span class='c'>// Student löschen → Profile auch weg</span>" } },
+    { id:"4-6",  tier:2, title:"Kaskadierung: Persist weitergeben",
+      html:`<span class="ann">@OneToMany</span>(mappedBy = <span class="str">"flight"</span>,<br>    cascade = <span class="tp">CascadeType</span>.<input class="code-input" data-ans="PERSIST" style="width:78px" placeholder="???">) <br><span class="kw">private</span> <span class="tp">List</span>&lt;<span class="tp">Booking</span>&gt; bookings;`,
+      hint:["Beim Speichern eines Flugs sollen automatisch auch alle zugehörigen Buchungen gespeichert werden.","persist(flight) soll auch die Bookings persistieren — CascadeType.PER***.","→ <span class='hint-answer'>CascadeType.PERSIST</span> — persist() wird an die Kinder weitergegeben. Kein separater persist()-Aufruf nötig."],
+      memo:"<strong>CascadeType.PERSIST</strong> = beim Speichern des Parents werden auch Children automatisch persistiert. Häufigster CascadeType.",
+      explanation:"CascadeType.PERSIST sorgt dafür, dass em.persist(flight) automatisch auch alle Bookings in der Liste persistiert — kein separater persist()-Aufruf nötig. Im Test: 'Beim Persistieren eines Flugs sollen auch automatisch alle Buchungen gespeichert werden.'",
+      doc: { title:'CascadeType.PERSIST', concept:'Beim Persistieren des Eltern-Objekts werden alle assoziierten Kind-Objekte <em>automatisch mitpersistiert</em>. Kein separater persist()-Aufruf nötig.', when:'Wenn neue Kinder zusammen mit dem Parent in einem Schritt gespeichert werden sollen.', code:"<span class='a'>@OneToMany</span>(mappedBy=<span class='str'>\"flight\"</span>,\n  cascade=<span class='t'>CascadeType</span>.<span style='color:#ffa657'>[???]</span>)\n<span class='k'>private</span> <span class='t'>List</span>&lt;<span class='t'>Booking</span>&gt; bookings;\n<span class='c'>// persist(flight) → Bookings auch!</span>" } },
     { id:"4-7",  tier:2, title:"Verwaiste Objekte automatisch löschen",
       html:`<span class="ann">@OneToMany</span>(mappedBy = <span class="str">"student"</span>, <input class="code-input" data-ans="orphanRemoval" style="width:132px" placeholder="???"> = <span class="kw">true</span>)`,
       hint:["Du entfernst eine Note aus der notes-Collection eines Studenten — JPA soll die Note automatisch aus der DB löschen. Welches Attribut?","Verwaiste (orphan) Objekte sollen entfernt (removal) werden — orphan***.","→ <span class='hint-answer'>orphanRemoval</span>=true — Entfernen aus Collection = DELETE in DB. Ergänzt CascadeType.REMOVE für Collection-Operationen."],
@@ -3043,12 +3043,12 @@ const MODULES = [
       memo:"<strong>orphanRemoval=true</strong>: aus der Collection entfernen = aus der DB löschen. Ideal für Parent-owns-Children Muster.",
       explanation:"@JoinTable definiert die Zwischentabelle für ManyToMany mit joinColumns und inverseJoinColumns.",
       doc: { title:'@JoinTable', concept:'Definiert die <em>Zwischentabelle</em> für eine @ManyToMany-Beziehung mit joinColumns (eigener FK) und inverseJoinColumns (FK der anderen Seite).', when:'Auf der besitzenden Seite einer @ManyToMany-Beziehung.', code:'<span class=\'a\'>@ManyToMany</span>\n<span class=\'a\'>@Join</span><span style=\'color:#ffa657\'>[???]</span>(name = <span style=\'color:#a5d6ff\'>"student_course"</span>,\n  joinColumns = @JoinColumn(name=<span style=\'color:#a5d6ff\'>"s_id"</span>),\n  inverseJoinColumns = @JoinColumn(name=<span style=\'color:#a5d6ff\'>"c_id"</span>))' } },
-    { id:"4-9",  tier:1, title:"One-To-One Beziehung",
-      html:`<span class="ann">@</span><input class="code-input" data-ans="OneToOne" style="width:88px" placeholder="???"><br><span class="kw">private</span> <span class="tp">Address</span> address;`,
-      hint:["Ein User hat genau ein Profil, ein Profil gehört genau einem User. Wie annotierst du diese exklusive 1:1-Beziehung?","Ein zu Einem — One***ToOne.","→ <span class='hint-answer'>@OneToOne</span> — oft mit @JoinColumn. Default FetchType: EAGER (im Gegensatz zu @OneToMany)."],
-      memo:"<strong>@JoinTable</strong> bei ManyToMany für volle Kontrolle über den Verknüpfungstabellennamen und FK-Spalten.",
-      explanation:"@OneToOne: Jede Entity ist genau einer anderen zugeordnet. Typisch für Hauptdaten und Detailansichten (z.B. Student ↔ Studentenausweis).",
-      doc: { title:'@OneToOne', concept:'Beschreibt eine <em>1:1-Beziehung</em>: Eine Entity ist genau einer anderen zugeordnet. Einer der beiden besitzt den Fremdschlüssel.', when:'Für Haupt- und Detail-Objekte: Student ↔ Profil, Person ↔ Ausweis.', code:'<span class=\'a\'>@[???]</span>\n<span class=\'a\'>@JoinColumn</span>(name = <span style=\'color:#a5d6ff\'>"address_id"</span>)\n<span class=\'k\'>private</span> <span class=\'t\'>Address</span> address;' } },
+    { id:"4-9",  tier:2, title:"Unidirektionale Beziehung (ohne mappedBy)",
+      html:`<span class="cmt">// TireType → Plane (nur eine Richtung!)</span><br><span class="ann">@ManyToMany</span><br><span class="ann">@</span><input class="code-input" data-ans="JoinTable" style="width:80px" placeholder="???">(name = <span class="str">"tiretype_plane"</span>)<br><span class="kw">private</span> <span class="tp">List</span>&lt;<span class="tp">Plane</span>&gt; planes;`,
+      hint:["TireType kennt seine Planes, aber Plane weiß nichts von TireType — unidirektional. Welche Annotation definiert die Join-Tabelle?","Bei @ManyToMany braucht es eine Verknüpfungstabelle: @Join***.","→ <span class='hint-answer'>@JoinTable</span> — bei unidirektionalen Beziehungen gibt es KEIN mappedBy. Die owning side hat die @JoinTable."],
+      memo:"<strong>Unidirektional</strong> = nur eine Seite kennt die Beziehung. Kein mappedBy nötig — dafür @JoinTable auf der owning side.",
+      explanation:"Unidirektionale Beziehungen haben nur auf einer Seite Annotationen. TireType→Plane: TireType hat @ManyToMany List&lt;Plane&gt; planes, aber Plane hat KEIN Feld für TireType. Assoziativtabelle wird durch @JoinTable definiert.",
+      doc: { title:'Unidirektionale Beziehung', concept:'Nur <em>eine Seite</em> kennt die Beziehung — kein mappedBy auf der Gegenseite. Die besitzende Seite definiert @JoinTable oder @JoinColumn.', when:'Wenn nur eine Entity die andere referenzieren muss (z.B. TireType kennt Planes, aber Plane kennt keine TireTypes).', code:"<span class='a'>@ManyToMany</span>\n<span class='a'>@<span style='color:#ffa657'>[???]</span></span>(name=<span class='str'>\"tiretype_plane\"</span>)\n<span class='k'>private</span> <span class='t'>List</span>&lt;<span class='t'>Plane</span>&gt; planes;\n<span class='c'>// Plane hat KEIN Feld für TireType!</span>" } },
     { id:"4-10", tier:2, title:"Alle Operationen kaskadieren",
       html:`<span class="ann">@OneToMany</span>(cascade = <span class="tp">CascadeType</span>.<input class="code-input" data-ans="ALL" style="width:42px" placeholder="???">)<br><span class="kw">private</span> <span class="tp">List</span>&lt;<span class="tp">Grade</span>&gt; grades;`,
       hint:["Alle JPA-Operationen (persist, merge, remove, refresh, detach) sollen auf Kindelemente weitergegeben werden — welcher CascadeType?","Alle ohne Ausnahme — die kürzeste Cascade-Konstante: 3 Buchstaben.","→ <span class='hint-answer'>CascadeType.ALL</span> — umfasst PERSIST, MERGE, REMOVE, REFRESH, DETACH. Vorsicht: beinhaltet auch REMOVE!"],
@@ -3093,30 +3093,30 @@ const MODULES = [
       memo:"<strong>@DiscriminatorValue</strong> explizit setzen — sonst nimmt JPA den Klassennamen, der sich bei Refactoring ändert!",
       explanation:"@MappedSuperclass: Klasse hat keine eigene Tabelle, ihre Felder (id, createdAt…) werden in alle Subklassen-Tabellen kopiert. Ideal für Basis-Entities.",
       doc: { title:'@MappedSuperclass', concept:'Eine abstrakte Basisklasse die <em>keine eigene Tabelle</em> hat. Ihre Felder (typisch: id, createdAt, updatedAt) werden in alle Subklassen-Tabellen kopiert.', when:'Für gemeinsame Basis-Felder ohne eigene Tabelle.', code:"<span class='a'>@[???]</span>  <span class='c'>// ← keine eigene Tabelle!</span>\n<span class='k'>public abstract class</span> <span class='t'>BaseEntity</span> {\n  <span class='a'>@Id</span> <span class='a'>@GeneratedValue</span>\n  <span class='k'>private</span> <span class='t'>Long</span> id;\n  <span class='k'>private</span> <span class='t'>LocalDateTime</span> createdAt;\n}" } },
-    { id:"5-7",  tier:3, title:"Zusammengesetzter Schlüssel via IdClass",
-      html:`<span class="ann">@</span><input class="code-input" data-ans="IdClass" style="width:72px" placeholder="???">(EnrollmentPK.class)<br><span class="kw">public class</span> <span class="tp">Enrollment</span> { }`,
-      hint:["Der Primärschlüssel besteht aus zwei Feldern (z.B. studentId + kursId). Wie deklarierst du die Klasse die diesen zusammengesetzten Key repräsentiert?","Id-Klasse — @Id***.","→ <span class='hint-answer'>@IdClass</span>(EnrollmentId.class) — die Id-Klasse muss Serializable + equals/hashCode implementieren."],
-      memo:"<strong>@MappedSuperclass</strong> für gemeinsame Felder (id, timestamps) — aber keine Polymorphie, keine Queries auf die Basisklasse.",
-      explanation:"@IdClass referenziert eine separate PK-Klasse. Die Entity-Felder und PK-Klasse müssen identische @Id-Felder haben.",
-      doc: { title:'@IdClass', concept:'Definiert einen <em>zusammengesetzten Primärschlüssel</em> über eine separate PK-Klasse. Entity und PK-Klasse müssen die gleichen @Id-Felder haben.', when:'Wenn die Entity mehrere Felder als gemeinsamen Schlüssel braucht.', code:"<span class='a'>@<span style='color:#ffa657'>[???]</span></span>(<span class='t'>EnrollmentPK</span>.class)\n<span class='k'>public class</span> <span class='t'>Enrollment</span> {\n  <span class='a'>@Id</span> <span class='k'>private</span> <span class='t'>Long</span> studentId;\n  <span class='a'>@Id</span> <span class='k'>private</span> <span class='t'>Long</span> courseId;\n}" } },
-    { id:"5-8",  tier:3, title:"Eingebetteter Composite Key",
-      html:`<span class="ann">@</span><input class="code-input" data-ans="EmbeddedId" style="width:93px" placeholder="???"><br><span class="kw">private</span> <span class="tp">EnrollmentPK</span> id;`,
-      hint:["Zusammengesetzter PK als eingebettetes Objekt — das Composite-Key-Feld wird direkt mit der kombinierten Schlüsselklasse annotiert.","Embedded + Id — Emb***Id.","→ <span class='hint-answer'>@EmbeddedId</span> — das Composite-Key-Objekt ist mit @Embeddable annotiert. Im Code als Objekt direkt zugänglich."],
-      memo:"<strong>@IdClass</strong> vs <strong>@EmbeddedId</strong>: IdClass ist einfacher zu implementieren, EmbeddedId ist objektorientierter.",
-      explanation:"@EmbeddedId: Der PK ist eine @Embeddable-Klasse, direkt als Feld eingebettet. Alternative zu @IdClass — eleganter, aber schwieriger in JPQL.",
-      doc: { title:'@EmbeddedId', concept:'Alternativer Ansatz für zusammengesetzte PKs: Der PK wird als <em>@Embeddable-Klasse</em> direkt in der Entity eingebettet.', when:'Alternative zu @IdClass — eleganter, aber komplexer in JPQL-Queries.', code:"<span class='a'>@Embeddable</span>\n<span class='k'>class</span> <span class='t'>EnrollPK</span> { Long studentId; Long courseId; }\n\n<span class='a'>@<span style='color:#ffa657'>[???]</span></span>  <span class='c'>// ← der zusammengesetzte PK</span>\n<span class='k'>private</span> <span class='t'>EnrollPK</span> id;" } },
-    { id:"5-9",  tier:3, title:"Liste einfacher Werte persistieren",
-      html:`<span class="ann">@</span><input class="code-input" data-ans="ElementCollection" style="width:146px" placeholder="???"><br><span class="kw">private</span> <span class="tp">List</span>&lt;<span class="tp">String</span>&gt; phoneNumbers;`,
-      hint:["Eine Liste von Strings (Tags, Telefonnummern) soll gespeichert werden — aber nicht als eigene Entity mit PK.","Collection von einfachen Elementen — Element***Collection.","→ <span class='hint-answer'>@ElementCollection</span> — JPA erzeugt automatisch eine Hilfstabelle. Für einfache Werte/Embeddables ohne eigenen PK."],
-      memo:"<strong>@EmbeddedId</strong>: der PK ist ein eigenes Objekt. Zugriff über entity.getId().getStudentId() — expliziter als @IdClass.",
-      explanation:"@ElementCollection persistiert einfache Werte oder @Embeddable-Objekte in einer separaten Tabelle — kein eigenes Entity nötig.",
-      doc: { title:'@ElementCollection', concept:'Persistiert eine <em>Collection einfacher Werte</em> (String, Integer, Enum) oder @Embeddable-Objekte in einer separaten Tabelle — ohne eigenes Entity.', when:'Für Listen/Sets von Strings, Zahlen oder Wert-Objekten ohne eigenen PK.', code:"<span class='a'>@[???]</span>\n<span class='k'>private</span> <span class='t'>List</span>&lt;<span class='t'>String</span>&gt; tags;\n<span class='c'>// → Tabelle: entity_id | tag_value</span>\n<span class='c'>// kein eigenes Entity nötig!</span>" } },
-    { id:"5-10", tier:3, title:"Collection-Tabelle benennen",
-      html:`<span class="ann">@ElementCollection</span><br><span class="ann">@Collection</span><input class="code-input" data-ans="Table" style="width:54px" placeholder="???">(name = <span class="str">"phone_numbers"</span>)<br><span class="kw">private</span> <span class="tp">List</span>&lt;<span class="tp">String</span>&gt; phones;`,
-      hint:["Die von @ElementCollection automatisch erzeugte Hilfstabelle soll einen bestimmten Namen bekommen.","@Collection*** — benennt die Collection-Tabelle: @CollectionTab***.","→ <span class='hint-answer'>@CollectionTable</span>(name=\"student_tags\") — ohne diese Annotation generiert JPA einen automatischen Namen."],
-      memo:"<strong>@ElementCollection</strong> für Listen einfacher Werte. JPA erstellt eine Hilfstabelle automatisch — mit @CollectionTable benennbar.",
-      explanation:"@CollectionTable gibt der automatisch erzeugten Collection-Tabelle einen eigenen Namen und definiert den JoinColumn.",
-      doc: { title:'@CollectionTable', concept:'Gibt der automatisch erzeugten @ElementCollection-Tabelle einen <em>eigenen Namen</em> und definiert den Join-Column.', when:'Immer zusammen mit @ElementCollection wenn der Tabellenname kontrolliert werden soll.', code:'<span class=\'a\'>@ElementCollection</span>\n<span class=\'a\'>@Collection</span><span style=\'color:#ffa657\'>[???]</span>(name=<span style=\'color:#a5d6ff\'>"student_phones"</span>,\n  joinColumns = @JoinColumn(name=<span style=\'color:#a5d6ff\'>"s_id"</span>))\n<span class=\'k\'>private</span> <span class=\'t\'>List</span>&lt;<span class=\'t\'>String</span>&gt; phones;' } },
+    { id:"5-7",  tier:2, title:"Strategie-Wahl: SELECT b FROM Booking b",
+      html:`<span class="cmt">// Welche Strategie ist am effizientesten</span><br><span class="cmt">// für: SELECT b FROM Booking b</span><br><span class="cmt">// (Booking hat Subklasse FirstClassBooking)</span><br>InheritanceType.<input class="code-input" data-ans="SINGLE_TABLE" style="width:140px" placeholder="???">`,
+      hint:["Die Query selektiert ALLE Booking-Typen (inkl. Subklassen). Bei welcher Strategie ist alles in EINER Tabelle?","Polymorphe Abfragen (Basis + alle Subklassen) sind am schnellsten, wenn keine JOINs oder UNIONs nötig sind.","→ <span class='hint-answer'>SINGLE_TABLE</span> — ein simples SELECT ohne JOIN. Die Discriminator-Spalte filtert den Typ."],
+      memo:"<strong>SINGLE_TABLE</strong> = optimal für polymorphe Queries (SELECT auf Basisklasse). Ein SELECT, kein JOIN, kein UNION.",
+      explanation:"Für SELECT b FROM Booking b (polymorphe Query) ist SINGLE_TABLE am effizientesten: alle Daten in einer Tabelle, kein JOIN oder UNION nötig. JOINED bräuchte JOINs, TABLE_PER_CLASS bräuchte UNION ALL.",
+      doc: { title:'Strategie: SINGLE_TABLE', concept:'Für <em>polymorphe Queries</em> (SELECT auf Basisklasse) ist SINGLE_TABLE am schnellsten — alle Daten in einer Tabelle, nur Discriminator filtert.', when:'Wenn häufig alle Subklassen gleichzeitig abgefragt werden.', code:"<span class='c'>// SELECT b FROM Booking b</span>\n<span class='c'>// → SINGLE_TABLE: 1 SELECT, kein JOIN</span>\n<span class='c'>// → JOINED: JOINs auf Subtabellen</span>\n<span class='c'>// → TABLE_PER_CLASS: UNION ALL</span>" } },
+    { id:"5-8",  tier:2, title:"Strategie-Wahl: SELECT fcb FROM FirstClassBooking",
+      html:`<span class="cmt">// Welche Strategie ist am effizientesten</span><br><span class="cmt">// für: SELECT fcb FROM FirstClassBooking fcb</span><br><span class="cmt">// WHERE fcb.menu = 'Lachsfilet'</span><br>InheritanceType.<input class="code-input" data-ans="TABLE_PER_CLASS" style="width:160px" placeholder="???">`,
+      hint:["Die Query selektiert NUR FirstClassBooking — keine andere Subklasse und nicht die Basisklasse.","Wenn nur eine konkrete Klasse gefragt ist, welche Strategie hat eine eigene vollständige Tabelle pro konkreter Klasse?","→ <span class='hint-answer'>TABLE_PER_CLASS</span> — jede konkrete Klasse hat ihre eigene vollständige Tabelle. Ein SELECT auf eine Tabelle reicht."],
+      memo:"<strong>TABLE_PER_CLASS</strong> = optimal für Queries auf genau EINE konkrete Subklasse. Eigene Tabelle, kein JOIN, kein Discriminator.",
+      explanation:"Für eine Query auf nur FirstClassBooking ist TABLE_PER_CLASS am effizientesten: die Subklasse hat ihre eigene Tabelle mit allen Feldern (auch geerbten). Kein JOIN wie bei JOINED, kein Discriminator-Filter wie bei SINGLE_TABLE.",
+      doc: { title:'Strategie: TABLE_PER_CLASS', concept:'Für Queries auf <em>genau eine konkrete Subklasse</em> ist TABLE_PER_CLASS am schnellsten — eigene vollständige Tabelle, kein JOIN nötig.', when:'Wenn häufig nur eine spezifische Subklasse abgefragt wird.', code:"<span class='c'>// SELECT fcb FROM FirstClassBooking fcb</span>\n<span class='c'>// → TABLE_PER_CLASS: 1 Tabelle, alles da</span>\n<span class='c'>// → SINGLE_TABLE: Filter auf DTYPE</span>\n<span class='c'>// → JOINED: JOIN mit Basistabelle</span>" } },
+    { id:"5-9",  tier:2, title:"N+1 Select Problem erkennen",
+      html:`<span class="cmt">// Was verursacht dieses Pattern?</span><br><span class="tp">List</span>&lt;<span class="tp">Flight</span>&gt; flights = em.createQuery(<br>  <span class="str">"SELECT f FROM Flight f"</span>).getResultList();<br><span class="kw">for</span> (<span class="tp">Flight</span> f : flights) {<br>  f.getBookings().size(); <span class="cmt">// → je 1 Query!</span><br>}<br><span class="cmt">// Problem: N+</span><input class="code-input" data-ans="1" style="width:40px" placeholder="?">`,
+      hint:["1 Query holt die Flights. Dann wird für JEDEN Flight eine zusätzliche Query für die Bookings ausgelöst.","Bei N Flights werden N zusätzliche Queries ausgeführt — plus die initiale Query. Das nennt man N+...","→ <span class='hint-answer'>N+1</span> — 1 Query für die Liste + N Queries für die Lazy-Beziehungen. Lösung: JOIN FETCH."],
+      memo:"<strong>N+1 Problem</strong> = 1 Query holt N Entitäten, dann N weitere Queries für Lazy-Beziehungen. Lösung: JOIN FETCH.",
+      explanation:"Das N+1-Select Problem entsteht bei Lazy Loading: 1 Query lädt N Flights, dann löst jeder Zugriff auf flight.getBookings() eine weitere Query aus → N+1 Queries statt 1. Lösung: JOIN FETCH in der JPQL-Query.",
+      doc: { title:'N+1 Select Problem', concept:'1 Query lädt N Entitäten, dann löst jeder Zugriff auf eine <em>Lazy-Beziehung</em> eine weitere Query aus → N+1 Queries statt 1. Massives Performance-Problem.', when:'Bei jeder @OneToMany/@ManyToMany Beziehung mit LAZY Loading und Iteration über die Ergebnisliste.', code:"<span class='c'>// 1 Query: SELECT f FROM Flight f</span>\n<span class='c'>// N Queries: für JEDEN Flight</span>\n<span class='c'>//   → SELECT b FROM Booking b</span>\n<span class='c'>//     WHERE b.flight_id = ?</span>\n<span class='c'>// Lösung: JOIN FETCH!</span>" } },
+    { id:"5-10", tier:2, title:"N+1 Lösung: JOIN FETCH",
+      html:`<span class="cmt">// N+1 Problem lösen:</span><br><span class="tp">List</span>&lt;<span class="tp">Flight</span>&gt; flights = em.createQuery(<br>  <span class="str">"SELECT f FROM Flight f</span><br>   <span class="str"> JOIN </span><input class="code-input" data-ans="FETCH" style="width:72px" placeholder="???"><span class="str"> f.bookings"</span>,<br>  <span class="tp">Flight</span>.class).getResultList();`,
+      hint:["Statt N+1 einzelner Queries soll EINE Query sowohl Flights als auch Bookings laden.","JOIN allein reicht nicht — JPA muss wissen, dass die Beziehungsdaten auch initialisiert werden sollen.","→ JOIN <span class='hint-answer'>FETCH</span> — lädt die Beziehung in derselben Query mit. Keine zusätzlichen SELECTs."],
+      memo:"<strong>JOIN FETCH</strong> = lädt Beziehungen in einer Query statt N+1 separater Queries. Die wichtigste JPQL-Optimierung.",
+      explanation:"JOIN FETCH f.bookings lädt Flights UND Bookings in einem einzigen SQL JOIN — statt N+1 separater Queries. Es ist die Standard-Lösung für das N+1-Select Problem.",
+      doc: { title:'JOIN FETCH', concept:'Lädt Beziehungen in <em>einer einzigen Query</em> statt N+1 separater Queries. Die wichtigste Performance-Optimierung in JPQL.', when:'Bei jeder Lazy-Beziehung die in einer Schleife zugegriffen wird.', code:"<span class='k'>SELECT</span> f <span class='k'>FROM</span> <span class='t'>Flight</span> f\n  <span class='k'>JOIN</span> <span style='color:#ffa657'>[???]</span> f.bookings\n<span class='c'>// 1 SQL statt N+1!</span>" } },
   ]},
   { id:6, tasks:[
     { id:"6-1",  tier:2, title:"Named Query auf Klasse definieren",
@@ -3143,48 +3143,48 @@ const MODULES = [
       memo:"<strong>setParameter()</strong> mit :namedParam ist sicherer als ?1 — Code ist lesbarer und Reihenfolge egal.",
       explanation:"getResultList() gibt alle Treffer als List zurück — leere Liste wenn nichts gefunden (kein null, kein Exception).",
       doc: { title:'getResultList()', concept:'Führt die Query aus und gibt alle Treffer als <code>List</code> zurück. Gibt immer eine Liste zurück — <em>leer</em> wenn nichts gefunden, nie null.', when:'Wenn 0 bis N Ergebnisse erwartet werden.', code:"<span class='t'>List</span>&lt;<span class='t'>Student</span>&gt; list = query.get<span style='color:#ffa657'>[???]</span>();\n<span class='c'>// leere Liste: new ArrayList&lt;&gt;()</span>\n<span class='c'>// nie: null</span>\n<span class='c'>// vs. getSingleResult() → wirft Exception</span>" } },
-    { id:"6-5",  tier:2, title:"CDI Scope für Repository (Quarkus)",
-      html:`<span class="ann">@Application</span><input class="code-input" data-ans="Scoped" style="width:64px" placeholder="???"><br><span class="kw">public class</span> <span class="tp">StudentRepository</span> { }`,
-      hint:["Dein Quarkus-Repository soll eine Instanz für die gesamte Laufzeit haben. Welche CDI-Scope-Annotation?","@Application*** — der weiteste CDI Scope: ApplicationScop***.","→ <span class='hint-answer'>@ApplicationScoped</span> — eine Instanz für die gesamte Laufzeit. Für stateless Repositories ideal."],
-      memo:"<strong>getResultList()</strong> gibt nie null zurück — leere List statt null. Sicherer als getSingleResult() bei unklarer Ergebnismenge.",
-      explanation:"@ApplicationScoped (CDI) — eine Instanz für die gesamte App-Laufzeit. Quarkus-Standard für Service- und Repository-Klassen.",
-      doc: { title:'@ApplicationScoped', concept:'CDI-Scope: Es gibt genau <em>eine Instanz</em> dieser Klasse für die gesamte Laufzeit der Anwendung. Standard für stateless Services und Repositories in Quarkus.', when:'Für Service- und Repository-Klassen ohne UI-State.', code:"<span class='a'>@Application</span><span style='color:#ffa657'>[???]</span>  <span class='c'>// CDI managed bean</span>\n<span class='k'>public class</span> <span class='t'>StudentService</span> {\n  <span class='a'>@Inject</span> <span class='t'>EntityManager</span> em;\n  <span class='c'>// 1 Instanz für die ganze App</span>\n}" } },
-    { id:"6-6",  tier:2, title:"Panache Entity (Active Record)",
-      html:`<span class="kw">public class</span> <span class="tp">Student</span> <span class="kw">extends</span> <span class="tp">Panache</span><input class="code-input" data-ans="Entity" style="width:65px" placeholder="???"> { }`,
-      hint:["Im Active-Record-Pattern erbt die Entity-Klasse direkt von einer Panache-Basisklasse und hat eingebaute Methoden wie persist(). Welche Klasse?","Panache*** — die Basisklasse im Active Record Muster: PanacheEnt***.","→ <span class='hint-answer'>PanacheEntity</span> — erbt automatisch id, persist(), delete(), findAll() etc. Kein separates Repository nötig."],
-      memo:"<strong>@ApplicationScoped</strong> für stateless Services/Repositories. <strong>@RequestScoped</strong> für stateful Objekte pro HTTP-Request.",
-      explanation:"PanacheEntity: Die Klasse selbst trägt persistence-Methoden — Student.findAll(), student.persist()… Active Record Pattern.",
-      doc: { title:'PanacheEntity', concept:'Quarkus Active Record Pattern: Die Entity-Klasse trägt selbst alle CRUD-Methoden. Sehr kompakt.', when:'Für einfache Quarkus-Projekte wo wenig Repository-Trennung nötig ist.', code:"<span class='k'>public class</span> <span class='t'>Student</span> <span class='k'>extends</span> <span class='t'>Panache</span><span style='color:#ffa657'>[???]</span> {\n  <span class='k'>public</span> <span class='t'>String</span> name;\n}\n\n<span class='c'>// Aufruf: Student.findAll()</span>\n<span class='c'>// statt: em.createQuery(...)</span>" } },
-    { id:"6-7",  tier:2, title:"Panache Repository Pattern",
-      html:`<span class="kw">public class</span> <span class="tp">StudentRepo</span> <span class="kw">implements</span> <span class="tp">Panache</span><input class="code-input" data-ans="Repository" style="width:96px" placeholder="???">&lt;<span class="tp">Student</span>&gt; { }`,
-      hint:["Statt vom Entity zu erben willst du ein separates Repository-Objekt mit der Datenbanklogik. Welches Panache-Interface?","Panache*** — das Repository-Interface: PanacheRepo***.","→ <span class='hint-answer'>PanacheRepository</span>&lt;Student&gt; — trennt DB-Logik von der Entity. Empfohlen für größere Projekte."],
-      memo:"<strong>PanacheEntity</strong> (Active Record) vs <strong>PanacheRepository</strong> (Repository Pattern) — beide Ansätze sind gültig.",
-      explanation:"PanacheRepository<T> — Repository Pattern mit eingebauten CRUD-Methoden. Trennt Persistence-Logik von der Entity.",
-      doc: { title:'PanacheRepository', concept:'Repository Pattern in Quarkus: Trennung von Entity und Persistence-Logik. Die Entity ist ein POJO, das Repository enthält die CRUD-Methoden.', when:'Wenn Repository-Logik getrennt von der Entity bleiben soll (Clean Architecture).', code:"<span class='a'>@ApplicationScoped</span>\n<span class='k'>public class</span> <span class='t'>StudentRepo</span>\n  <span class='k'>implements</span> <span class='t'>Panache</span><span style='color:#ffa657'>[???]</span>&lt;<span class='t'>Student</span>&gt; {\n  <span class='c'>// findAll(), findById(), persist()...</span>\n  <span class='c'>// alle Methoden bereits eingebaut!</span>\n}" } },
-    { id:"6-8",  tier:2, title:"Alle Einträge mit Panache laden",
-      html:`<span class="tp">List</span>&lt;<span class="tp">Student</span>&gt; all = <span class="tp">Student</span>.<input class="code-input" data-ans="listAll" style="width:76px" placeholder="???"> ();`,
-      hint:["Du willst alle Studenten aus der DB laden ohne eine Query zu schreiben — wie heißt die Panache-Methode?","list + All — alle auflisten.","→ <span class='hint-answer'>listAll</span>() — entspricht 'SELECT * FROM student'. Für Filter: find(\"name\", name).list()."],
-      memo:"<strong>PanacheRepository</strong> folgt dem Repository-Pattern — die Entity bleibt sauber, DB-Logik liegt im Repository.",
-      explanation:"listAll() ist ein statischer Panache-Helper — entspricht 'SELECT s FROM Student s'. Gibt immer eine Liste zurück (nie null).",
-      doc: { title:'listAll()', concept:'Panache-Shortcut für <em>alle Einträge laden</em> — entspricht <code>SELECT e FROM Entity e</code>. Gibt immer eine Liste zurück, nie null.', when:'Zum Laden aller Einträge ohne Filter.', code:'<span class=\'t\'>List</span>&lt;<span class=\'t\'>Student</span>&gt; all = <span class=\'t\'>Student</span>.<span style=\'color:#ffa657\'>[???]</span>();\n<span class=\'c\'>// Äquivalent zu:</span>\n<span class=\'c\'>// em.createQuery("SELECT s FROM Student s")</span>\n<span class=\'c\'>//   .getResultList()</span>' } },
-    { id:"6-9",  tier:1, title:"Transaktion deklarativ (CDI/Quarkus)",
-      html:`<span class="ann">@</span><input class="code-input" data-ans="Transactional" style="width:116px" placeholder="???"><br><span class="kw">public void</span> save(<span class="tp">Student</span> s) { em.persist(s); }`,
-      hint:["Statt manuell begin/commit zu schreiben soll eine Methode automatisch in einer Transaktion laufen — welche CDI-Annotation?","@Trans*** — macht die Methode transaktional.","→ <span class='hint-answer'>@Transactional</span> — Quarkus startet automatisch Tx und committed. RuntimeException → Rollback. Checked Exception → kein Rollback."],
-      memo:"<strong>listAll()</strong> lädt alles — bei großen Tabellen mit filter/pagination kombinieren: find(...).page(...).list().",
-      explanation:"@Transactional (CDI): Quarkus öffnet automatisch eine Transaktion für die Methode — kein manuelles begin()/commit() nötig. Bei RuntimeException → automatischer Rollback. Bei checked Exception → kein Rollback (außer explizit mit rollbackOn konfiguriert).",
-      doc: { title:'@Transactional', concept:'CDI/Quarkus: Öffnet <em>automatisch</em> eine Transaktion für die annotierte Methode. Nach return → commit. Bei Exception → rollback. Kein manuelles begin()/commit() nötig.', when:'Auf Service-/Repository-Methoden die DB-Schreiboperationen enthalten.', code:"<span class='a'>@<span style='color:#ffa657'>[???]</span></span>  <span class='c'>// automatisch begin+commit</span>\n<span class='k'>public void</span> save(<span class='t'>Student</span> s) {\n  em.persist(s);\n  <span class='c'>// kein getTransaction().begin()!</span>\n}" } },
-    { id:"6-10", tier:3, title:"Sicheres erstes Ergebnis (Optional)",
-      html:`<span class="tp">Optional</span>&lt;<span class="tp">Student</span>&gt; s = <span class="tp">Student</span>.find(<span class="str">"name"</span>, <span class="str">"M"</span>).<input class="code-input" data-ans="firstResultOptional" style="width:172px" placeholder="???"> ();`,
-      hint:["Du willst das erste Ergebnis einer Query, aber es könnte leer sein — wie heißt die Panache-Methode die Optional zurückgibt?","first + Result + Optional — gibt Optional statt null oder Exception.","→ <span class='hint-answer'>firstResultOptional</span>() — gibt Optional.empty() statt null oder NoResultException. Ideal für find-or-create."],
-      memo:"<strong>@Transactional</strong> + RuntimeException = Rollback. Checked Exception = kein Rollback (außer rollbackOn= explizit gesetzt).",
-      explanation:"firstResultOptional() gibt ein Optional zurück — sicherer als firstResult() welches null liefern kann (NullPointerException-Falle).",
-      doc: { title:'firstResultOptional()', concept:'Gibt das erste Ergebnis als <code>Optional</code> zurück. Sicherer als <code>firstResult()</code> das null liefern kann.', when:'Wenn genau 0 oder 1 Ergebnisse erwartet werden und NullPointerExceptions vermieden werden sollen.', code:'<span class=\'t\'>Optional</span>&lt;<span class=\'t\'>Student</span>&gt; s =\n  <span class=\'t\'>Student</span>.find(<span style=\'color:#a5d6ff\'>"name"</span>, <span style=\'color:#a5d6ff\'>"Max"</span>).<span style=\'color:#ffa657\'>[???]</span>();\n<span class=\'c\'>// s.isPresent() statt s != null</span>\n<span class=\'c\'>// vs. firstResult() → NPE-Gefahr!</span>' } },
+    { id:"6-5",  tier:2, title:"JPQL: Beziehung traversieren",
+      html:`<span class="cmt">// Flüge mit Flugzeugen &gt; 200 Sitze</span><br>em.createQuery(<br>  <span class="str">"SELECT f FROM Flight f WHERE f.</span><input class="code-input" data-ans="plane" style="width:64px" placeholder="???"><span class="str">.seats &gt; 200"</span>);`,
+      hint:["In JPQL navigiert man über Java-Feldnamen, nicht über SQL-Joins. Flight hat ein Feld 'plane' vom Typ Plane.","Objekt-Navigation: flight.plane.seats — wie in Java!","→ f.<span class='hint-answer'>plane</span>.seats — JPQL nutzt Entity-Attribute, nicht Tabellenspalten."],
+      memo:"<strong>JPQL-Navigation</strong> = Beziehungen mit Punkt traversieren: f.plane.seats statt SQL JOIN.",
+      explanation:"JPQL erlaubt Objekt-Navigation über Punkt-Notation: f.plane.seats traversiert die @ManyToOne-Beziehung Flight→Plane und greift auf das seats-Feld zu. Im Test: 'Flüge mit Flugzeugen die mehr als 200 Sitzplätze aufweisen.'",
+      doc: { title:'JPQL Pfad-Navigation', concept:'In JPQL können <em>Beziehungen per Punkt-Notation</em> traversiert werden — wie in Java. f.plane.seats navigiert von Flight über die plane-Beziehung zu Plane.seats.', when:'Immer wenn Felder über Beziehungen hinweg gefiltert oder selektiert werden.', code:"<span class='k'>SELECT</span> f <span class='k'>FROM</span> <span class='t'>Flight</span> f\n<span class='k'>WHERE</span> f.<span style='color:#ffa657'>[???]</span>.seats > 200\n<span class='c'>// → Impliziter JOIN auf Plane!</span>" } },
+    { id:"6-6",  tier:2, title:"JPQL: Fetch-Join mit WHERE",
+      html:`<span class="cmt">// Buchungen &gt; 400€, Flight eager laden</span><br>em.createQuery(<br>  <span class="str">"SELECT b FROM Booking b JOIN </span><input class="code-input" data-ans="FETCH" style="width:72px" placeholder="???"><span class="str"> b.flight"</span><br>  + <span class="str">" WHERE b.price &gt; 400"</span>);`,
+      hint:["Die Buchungen sollen MIT ihren Flights in einer einzigen Query geladen werden — nicht lazy nachladen.","Nach JOIN kommt das Schlüsselwort, das JPA sagt: 'Lade die Beziehung gleich mit.'","→ JOIN <span class='hint-answer'>FETCH</span> — eine Query statt N+1. Kombinierbar mit WHERE-Bedingungen."],
+      memo:"<strong>JOIN FETCH + WHERE</strong> = Beziehung eager laden UND filtern in einer Query. Häufiges Test-Pattern.",
+      explanation:"JOIN FETCH b.flight lädt Buchungen mit Preis > 400 und initialisiert gleichzeitig die Flight-Beziehung — keine zweite Query nötig. Im Test: 'Buchungen mit price > 400, dabei Flight-Entities mittels Fetch-Join laden.'",
+      doc: { title:'JOIN FETCH + WHERE', concept:'<em>JOIN FETCH</em> lädt Beziehungen eager in derselben Query. Kombinierbar mit WHERE-Bedingungen für gefiltertes Eager Loading.', when:'Wenn eine Beziehung in der Ergebnisverarbeitung benötigt wird und N+1 vermieden werden soll.', code:"<span class='k'>SELECT</span> b <span class='k'>FROM</span> <span class='t'>Booking</span> b\n  <span class='k'>JOIN</span> <span style='color:#ffa657'>[???]</span> b.flight\n<span class='k'>WHERE</span> b.price > 400\n<span class='c'>// Flight ist sofort initialisiert!</span>" } },
+    { id:"6-7",  tier:2, title:"JPQL: Named Parameter binden",
+      html:`<span class="cmt">// Buchungen für Alice Smith</span><br>em.createQuery(<span class="str">"SELECT b FROM Booking b"</span><br>  + <span class="str">" WHERE b.firstName = :</span><input class="code-input" data-ans="firstName" style="width:100px" placeholder="???"><span class="str">"</span><br>  + <span class="str">" AND b.lastName = :lastName"</span>)<br>.setParameter(<span class="str">"firstName"</span>, <span class="str">"Alice"</span>)<br>.setParameter(<span class="str">"lastName"</span>, <span class="str">"Smith"</span>);`,
+      hint:["Named Parameters beginnen mit Doppelpunkt (:) in der Query und werden per setParameter gebunden.","Der Parametername nach dem : muss exakt dem String in setParameter() entsprechen.","→ :<span class='hint-answer'>firstName</span> — benannter Parameter. Sicherer als String-Konkatenation (SQL-Injection!)."],
+      memo:"<strong>Named Parameter</strong> = :name in JPQL + setParameter(\"name\", value). Sicher und lesbar.",
+      explanation:"Named Parameters (:firstName, :lastName) werden mit setParameter(\"firstName\", \"Alice\") gebunden — typsicher und vor SQL-Injection geschützt. Im Test: 'Buchungen auf Alice Smith, Vor- und Nachname per NamedParameter übergeben.'",
+      doc: { title:'Named Parameter', concept:'<em>Named Parameters</em> (:name) in JPQL werden mit <code>setParameter("name", value)</code> gebunden. Sicher vor SQL-Injection und gut lesbar.', when:'Für alle parametrisierten JPQL-Queries — immer Named Parameters statt String-Konkatenation!', code:"<span class='k'>WHERE</span> b.firstName = :<span style='color:#ffa657'>[???]</span>\n  <span class='k'>AND</span> b.lastName = :lastName\n.setParameter(<span class='str'>\"firstName\"</span>, <span class='str'>\"Alice\"</span>)\n.setParameter(<span class='str'>\"lastName\"</span>, <span class='str'>\"Smith\"</span>)" } },
+    { id:"6-8",  tier:2, title:"JPQL: Positional Parameter",
+      html:`<span class="cmt">// Planes nach Typ suchen</span><br>em.createQuery(<br>  <span class="str">"SELECT p FROM Plane p WHERE p.pType = ?</span><input class="code-input" data-ans="1" style="width:30px" placeholder="?"><span class="str">"</span>)<br>.setParameter(<span class="pn">1</span>, <span class="str">"Boeing 777"</span>);`,
+      hint:["Positional Parameters werden mit ?N in der Query referenziert, wobei N die Position ist.","Der erste Parameter hat die Nummer 1, nicht 0. Also ?1, ?2, ?3 usw.","→ ?<span class='hint-answer'>1</span> — Positional Parameter. setParameter(1, value) bindet den Wert."],
+      memo:"<strong>Positional Parameter</strong> = ?1, ?2 in JPQL + setParameter(1, value). Alternative zu Named Parameters.",
+      explanation:"Positional Parameters (?1) sind eine Alternative zu Named Parameters. Sie werden mit setParameter(1, \"Boeing 777\") gebunden. Zählung beginnt bei 1, nicht bei 0.",
+      doc: { title:'Positional Parameter', concept:'<em>Positional Parameters</em> (?1, ?2) in JPQL werden mit <code>setParameter(1, value)</code> gebunden. Alternative zu Named Parameters — weniger lesbar, aber kürzer.', when:'In NamedQueries wenn Kürze gewünscht ist. Named Parameters sind meist besser lesbar.', code:"<span class='k'>WHERE</span> p.pType = ?<span style='color:#ffa657'>[?]</span>\n.setParameter(<span class='pn'>1</span>, <span class='str'>\"Boeing 777\"</span>)\n<span class='c'>// Zählung ab 1, nicht ab 0!</span>" } },
+    { id:"6-9",  tier:2, title:"NamedQuery auf Entity definieren",
+      html:`<span class="ann">@Entity</span><br><span class="ann">@NamedQuery</span>(<br>  name = <span class="str">"Flight.lessThanTwoBookings"</span>,<br>  query = <span class="str">"SELECT f FROM Flight f WHERE SIZE(f.</span><input class="code-input" data-ans="bookings" style="width:90px" placeholder="???"><span class="str">) &lt; 2"</span>)<br><span class="kw">public class</span> <span class="tp">Flight</span> { ... }`,
+      hint:["Die NamedQuery soll Flüge mit weniger als 2 Buchungen finden. SIZE() zählt Collection-Elemente.","Flight hat eine Collection namens 'bookings' — SIZE() zählt deren Elemente.","→ SIZE(f.<span class='hint-answer'>bookings</span>) — zählt die Anzahl der Bookings. &lt; 2 bedeutet: 0 oder 1 Buchung."],
+      memo:"<strong>@NamedQuery</strong> = vordefinierte JPQL auf der Entity-Klasse. SIZE() für Collection-Größe in JPQL.",
+      explanation:"@NamedQuery wird auf der Entity-Klasse definiert und mit em.createNamedQuery() aufgerufen. SIZE(f.bookings) zählt die Elemente der bookings-Collection. Im Test: 'Flight.lessThanTwoBookings — Flüge mit weniger als 2 Buchungen.'",
+      doc: { title:'@NamedQuery + SIZE()', concept:'<em>@NamedQuery</em> definiert eine vorkompilierte JPQL auf der Entity-Klasse. <code>SIZE(collection)</code> zählt Collection-Elemente in JPQL.', when:'Für häufig verwendete Queries — werden beim Deployment validiert (Tippfehler fallen früh auf).', code:"<span class='a'>@NamedQuery</span>(\n  name=<span class='str'>\"Flight.lessThanTwoBookings\"</span>,\n  query=<span class='str'>\"SELECT f FROM Flight f\n    WHERE SIZE(f.<span style='color:#ffa657'>[???]</span>) < 2\"</span>)" } },
+    { id:"6-10", tier:2, title:"NamedQuery aufrufen",
+      html:`<span class="cmt">// Vordefinierte Query aufrufen</span><br><span class="tp">TypedQuery</span>&lt;<span class="tp">Flight</span>&gt; q = em.create<input class="code-input" data-ans="NamedQuery" style="width:120px" placeholder="???">(  <span class="str">"Flight.lessThanTwoBookings"</span>, <span class="tp">Flight</span>.class);<br>List&lt;<span class="tp">Flight</span>&gt; result = q.getResultList();`,
+      hint:["NamedQueries werden NICHT mit createQuery aufgerufen — es gibt eine eigene Methode.","Die Methode heißt create + [Typ der Query] — eine benannte (named) Query.","→ em.create<span class='hint-answer'>NamedQuery</span>() — ruft eine @NamedQuery per Name auf."],
+      memo:"<strong>createNamedQuery(name, Class)</strong> = ruft @NamedQuery per Name auf. Wird beim Deployment vorab validiert.",
+      explanation:"em.createNamedQuery(\"Flight.lessThanTwoBookings\", Flight.class) ruft die auf der Entity definierte @NamedQuery auf und gibt eine TypedQuery zurück.",
+      doc: { title:'createNamedQuery()', concept:'Ruft eine <em>@NamedQuery</em> per Name auf und gibt eine TypedQuery zurück. NamedQueries werden beim Deployment <em>vorab validiert</em>.', when:'Zum Aufrufen vordefinierter Queries. Sicherer als createQuery() weil Syntax-Fehler früh erkannt werden.', code:"em.create<span style='color:#ffa657'>[???]</span>(\n  <span class='str'>\"Flight.lessThanTwoBookings\"</span>,\n  <span class='t'>Flight</span>.class)\n.getResultList();" } },
   ]},
   { id:7, tasks:[
     { id:"7-1",  tier:1, title:"JOIN FETCH — N+1 vermeiden",
       html:`<span class="kw">SELECT</span> s <span class="kw">FROM</span> <span class="tp">Student</span> s <input class="code-input" data-ans="JOIN FETCH" style="width:108px" placeholder="???"> s.grades`,
       hint:["Du lädst 100 Studenten — jeder hat Noten. JPA macht 1 + 100 = 101 separate Queries. Wie löst du das N+1-Problem in einer einzigen JPQL-Query?","Du verbindest (JOIN) und lädst gleichzeitig (FETCH) — JOIN ***.","→ <span class='hint-answer'>JOIN FETCH</span> s.noten — lädt Studenten UND Noten in einem Query. Bei *ToMany: DISTINCT nötig um Duplikate zu vermeiden."],
-      memo:"<strong>firstResultOptional()</strong> ist getSingleResult() ohne Exceptions — sicherer für 'vielleicht vorhanden'-Abfragen.",
+      memo:"<strong>JOIN FETCH</strong> löst das N+1-Problem — lädt Entity + Collection in einem einzigen SQL statt 1+N separaten Queries.",
       explanation:"JOIN FETCH lädt die assoziierte Collection in einem einzigen SQL-Statement statt N+1 separaten Queries. Ohne JOIN FETCH: 1 Query für 100 Students + 100 Queries für je ihre Grades = 101 SQLs!",
       doc: { title:'JOIN FETCH', concept:'Löst das <em>N+1-Query-Problem</em>: Lädt Entity + alle assoziierten Objekte in einem SQL-JOIN statt 1+N separaten Queries.', when:'Wenn LAZY-assoziierte Collections sicher innerhalb der TX gebraucht werden.', code:'em.createQuery(\n  <span style="color:#a5d6ff">"SELECT s FROM Student s\n   <span style="color:#ffa657">[???]</span> s.grades"</span>)\n.getResultList();\n<span class="c">// 1 SQL statt 1+N!</span>' } },
 
@@ -3223,33 +3223,33 @@ const MODULES = [
       explanation:"HAVING filtert NACH der Gruppierung — WHERE filtert VOR der Gruppierung. Merkregel: WHERE filtert Rows, HAVING filtert Groups.",
       doc: { title:'HAVING', concept:'Filtert Gruppen nach der Aggregation — wie WHERE aber für Gruppen. <strong>HAVING</strong> kommt nach GROUP BY, WHERE vor GROUP BY.', when:'Wenn du nur Gruppen mit bestimmten Aggregatwerten willst (z.B. nur Abteilungen mit >5 Studenten).', code:'<span class="kw">GROUP BY</span> s.dept\n<span style="color:#ffa657">[???]</span> COUNT(s) > 5\n<span class="c">// WHERE ≠ HAVING:</span>\n<span class="c">// WHERE: vor Aggregation</span>\n<span class="c">// HAVING: nach Aggregation</span>' } },
 
-    { id:"7-7",  tier:2, title:"Bulk-Update per JPQL",
-      html:`em.createQuery(<span class="str">"<input class="code-input" data-ans="UPDATE" style="width:68px" placeholder="???"> Student s SET s.active = false WHERE s.lastLogin < :d"</span>).executeUpdate();`,
-      hint:["Du willst alle Studenten mit Status 'inactive' setzen — ohne jedes Objekt einzeln zu laden und zu ändern.","Massen-UPDATE — das SQL/JPQL Keyword dafür.","→ <span class='hint-answer'>UPDATE</span> Student s SET s.status=... WHERE... — kein Laden der Objekte! Aber: Persistence Context danach stale → clear() aufrufen."],
-      memo:"<strong>WHERE</strong> filtert Zeilen vor der Gruppierung, <strong>HAVING</strong> filtert Gruppen nach der Aggregation.",
-      explanation:"JPQL-Bulk-UPDATE/-DELETE operiert direkt auf der DB ohne Objekte in den Persistence Context zu laden — sehr effizient für Massenoperationen. ACHTUNG: Persistence Context wird NICHT aktualisiert!",
-      doc: { title:'Bulk UPDATE / DELETE', concept:'Direkte Massenoperation auf der DB ohne Entities zu laden. <em>Achtung</em>: Der Persistence Context kennt diese Änderungen nicht — danach em.clear() aufrufen!', when:'Für Massenoperationen: alle inaktiven User deaktivieren, alte Records löschen etc.', code:'em.createQuery(\n  "<span style="color:#ffa657">[???]</span> Student s\n   SET s.active = false\n   WHERE s.lastLogin < :d"\n).executeUpdate();\nem.clear(); <span class="c">// Cache leeren!</span>' } },
+    { id:"7-7",  tier:2, title:"NamedQuery: MEMBER OF für Beziehung",
+      html:`<span class="ann">@NamedQuery</span>(name = <span class="str">"TireType.findForPlane"</span>,<br>  query = <span class="str">"SELECT t FROM TireType t</span><br>   <span class="str"> WHERE :</span><input class="code-input" data-ans="plane" style="width:68px" placeholder="???"><span class="str"> MEMBER OF t.planes"</span>)<br><span class="kw">public class</span> <span class="tp">TireType</span> { ... }`,
+      hint:["Die Query soll TireTypes finden, die für ein bestimmtes Plane passen. Das Plane wird als Parameter übergeben.","MEMBER OF prüft, ob ein Element in einer Collection enthalten ist. Der Parameter-Name?","→ :<span class='hint-answer'>plane</span> MEMBER OF t.planes — prüft ob das übergebene Plane in der planes-Liste ist."],
+      memo:"<strong>MEMBER OF</strong> = prüft Collection-Mitgliedschaft in JPQL. Ideal für @ManyToMany-Beziehungen.",
+      explanation:":plane MEMBER OF t.planes prüft, ob das per NamedParameter übergebene Plane-Objekt in der planes-Collection des TireType enthalten ist. Im Test: 'TireType.findForPlane — TireType-Entitäten die für ein per NamedParameter übergebenes Flugzeug passen.'",
+      doc: { title:'MEMBER OF', concept:'Prüft ob ein Objekt <em>in einer Collection enthalten</em> ist. Ideal für @ManyToMany: <code>:param MEMBER OF entity.collection</code>.', when:'Für Abfragen die prüfen ob ein Objekt in einer Beziehungs-Collection vorkommt.', code:"<span class='k'>SELECT</span> t <span class='k'>FROM</span> <span class='t'>TireType</span> t\n<span class='k'>WHERE</span> :<span style='color:#ffa657'>[???]</span> <span class='k'>MEMBER OF</span> t.planes\n<span class='c'>// → findet TireTypes für ein Plane</span>" } },
 
-    { id:"7-8",  tier:2, title:"Existenz prüfen (Subquery)",
-      html:`<span class="kw">SELECT</span> s <span class="kw">FROM</span> <span class="tp">Student</span> s <span class="kw">WHERE</span> <input class="code-input" data-ans="EXISTS" style="width:62px" placeholder="???"> (<span class="kw">SELECT</span> g <span class="kw">FROM</span> <span class="tp">Grade</span> g <span class="kw">WHERE</span> g.student = s)`,
-      hint:["Du willst Studenten filtern die mindestens eine bestandene Note haben — geprüft über eine Subquery.","EX*** — prüft ob die Subquery mindestens ein Ergebnis liefert.","→ <span class='hint-answer'>EXISTS</span> (SELECT n FROM...) — effizienter als IN bei großen Mengen, da JPA stoppen kann sobald ein Treffer gefunden."],
-      memo:"<strong>Bulk-UPDATE</strong> in JPQL umgeht den Persistence Context — danach em.clear() aufrufen um veraltete Objekte zu entfernen.",
-      explanation:"EXISTS prüft ob eine Subquery mindestens ein Ergebnis liefert. Effizienter als IN bei großen Datenmengen, da der DB-Optimizer früh abbrechen kann.",
-      doc: { title:'EXISTS (Subquery)', concept:'Prüft ob eine Subquery mindestens ein Ergebnis liefert. Effizienter als <code>IN</code> bei großen Datenmengen — die DB bricht ab sobald ein Treffer gefunden wird.', when:'Für Filter wie "nur Students die mindestens eine Note haben".', code:'<span class="kw">SELECT</span> s <span class="kw">FROM</span> Student s\n<span class="kw">WHERE</span> <span style="color:#ffa657">[???]</span> (\n  <span class="kw">SELECT</span> g <span class="kw">FROM</span> Grade g\n  <span class="kw">WHERE</span> g.student = s\n)\n<span class="c">// Nur Students mit Noten</span>' } },
+    { id:"7-8",  tier:2, title:"NamedQuery: Positional Parameter",
+      html:`<span class="ann">@NamedQuery</span>(name = <span class="str">"Plane.findByPType"</span>,<br>  query = <span class="str">"SELECT p FROM Plane p WHERE p.pType = ?</span><input class="code-input" data-ans="1" style="width:30px" placeholder="?"><span class="str">"</span>)`,
+      hint:["In NamedQueries können auch Positional Parameters verwendet werden — ?N.","Positional Parameters beginnen bei ?1, nicht bei ?0.","→ ?<span class='hint-answer'>1</span> — Positional Parameter in der NamedQuery. Binding: setParameter(1, value)."],
+      memo:"<strong>?1 in NamedQuery</strong> = Positional Parameter. Wird beim Aufruf mit setParameter(1, value) gebunden.",
+      explanation:"NamedQueries unterstützen sowohl Named (:name) als auch Positional (?1) Parameters. Im Test: 'Plane.findByPType — Plane-Entitäten die den angegebenen pType aufweisen, mittels Positional Parameter.'",
+      doc: { title:'Positional Parameter in NamedQuery', concept:'Auch <em>NamedQueries</em> können Positional Parameters (?1, ?2) verwenden. Binding erfolgt beim Aufruf mit <code>setParameter(1, value)</code>.', when:'Wenn eine NamedQuery kurze, nummerierte Parameter haben soll.', code:"<span class='a'>@NamedQuery</span>(\n  name=<span class='str'>\"Plane.findByPType\"</span>,\n  query=<span class='str'>\"SELECT p FROM Plane p\n    WHERE p.pType = ?<span style='color:#ffa657'>[?]</span>\"</span>)" } },
 
-    { id:"7-9",  tier:3, title:"Konstruktor-Ausdruck (DTO)",
-      html:`<span class="kw">SELECT</span> <input class="code-input" data-ans="NEW" style="width:44px" placeholder="???"> <span class="tp">StudentDTO</span>(s.name, s.email) <span class="kw">FROM</span> <span class="tp">Student</span> s`,
-      hint:["Du willst nicht ganze Entities laden, sondern nur name und email in ein leichtgewichtiges DTO-Objekt — welches JPQL-Keyword?","SELECT *** dto.Klasse(...) — das Java-Keyword für Objekterzeugung wird auch in JPQL verwendet.","→ <span class='hint-answer'>NEW</span> dto.StudentDTO(s.name, s.email) — ruft den DTO-Konstruktor auf. Kein managed Entity, spart Speicher und Overhead."],
-      memo:"<strong>EXISTS</strong> ist oft effizienter als IN — die Datenbank bricht ab sobald der erste Treffer gefunden wurde.",
-      explanation:"SELECT NEW in JPQL: ruft direkt einen DTO-Konstruktor auf — spart das manuelle Mappen von Entities zu DTOs. Nur die nötigen Felder werden geladen (kein full Entity-Overhead). Der voll qualifizierte Klassenname oder ein Import ist nötig.",
-      doc: { title:'NEW (Konstruktor-Ausdruck)', concept:'Instanziiert direkt ein DTO/POJO via Konstruktor in JPQL — kein manuelles Mapping. Lädt nur die benötigten Felder statt die gesamte Entity.', when:'Für REST-APIs: wenn nur ein Subset der Felder nach außen gegeben werden soll.', code:'<span class="kw">SELECT</span> <span style="color:#ffa657">[???]</span> <span class="tp">StudentDTO</span>(\n  s.name, s.email\n)\n<span class="kw">FROM</span> <span class="tp">Student</span> s\n<span class="c">// DTO muss passenden Konstruktor haben</span>' } },
+    { id:"7-9",  tier:1, title:"JPQL: alle Stewards selektieren",
+      html:`<span class="cmt">// Alle Steward-Entitäten laden</span><br><span class="tp">List</span>&lt;<span class="tp">Steward</span>&gt; stewards = em.createQuery(<br>  <span class="str">"SELECT s FROM </span><input class="code-input" data-ans="Steward" style="width:80px" placeholder="???"><span class="str"> s"</span>,<br>  <span class="tp">Steward</span>.class).getResultList();`,
+      hint:["In JPQL verwendet man den Java-Klassennamen, NICHT den Tabellennamen.","FROM [Klassenname] [alias] — genau wie in SQL, aber mit dem Entity-Namen.","→ FROM <span class='hint-answer'>Steward</span> s — JPQL arbeitet mit Entity-Namen, nicht mit SQL-Tabellennamen."],
+      memo:"<strong>JPQL FROM</strong> = Entity-Klassenname, NICHT Tabellenname. SELECT s FROM Steward s.",
+      explanation:"In JPQL steht nach FROM der Java-Klassenname der Entity (Steward), nicht der SQL-Tabellenname. Dies ist ein fundamentaler Unterschied zu SQL. Im Test: 'Selektieren Sie alle Steward-Entitäten.'",
+      doc: { title:'JPQL Entity-Name', concept:'In JPQL steht nach FROM der <em>Java-Klassenname</em> der Entity, nicht der SQL-Tabellenname. Fundamentaler Unterschied zu SQL.', when:'In jeder JPQL-Query. Häufiger Fehler: Tabellennamen statt Klassennamen verwenden.', code:"<span class='k'>SELECT</span> s <span class='k'>FROM</span> <span style='color:#ffa657'>[???]</span> s\n<span class='c'>// Entity-Klassenname, nicht Tabelle!</span>\n<span class='c'>// Steward (nicht stewards)</span>" } },
 
     { id:"7-10", tier:3, title:"Genau ein Ergebnis erwarten",
       html:`<span class="tp">Long</span> count = (<span class="tp">Long</span>) em.createQuery(<span class="str">"SELECT COUNT(s) FROM Student s"</span>).<input class="code-input" data-ans="getSingleResult" style="width:132px" placeholder="???">();`,
-      hint:["Deine Query soll genau ein Objekt zurückgeben — welche Methode wirft eine Exception wenn es 0 oder mehr als 1 Ergebnis gibt?","get + Single + Result — holt genau ein einzelnes Ergebnis.","→ <span class='hint-answer'>getSingleResult</span>() — NoResultException wenn leer, NonUniqueResultException wenn mehr als eins. Für 'vielleicht leer': firstResultOptional()."],
+      hint:["Deine Query soll genau ein Objekt zurückgeben — welche Methode wirft eine Exception wenn es 0 oder mehr als 1 Ergebnis gibt?","get + Single + Result — holt genau ein einzelnes Ergebnis.","→ <span class='hint-answer'>getSingleResult</span>() — NoResultException wenn leer, NonUniqueResultException wenn mehr als eins. Für COUNT/MAX immer korrekt."],
       memo:"<strong>SELECT NEW</strong> erzeugt DTOs direkt in JPQL — spart den Overhead vollständig geladener Entities bei read-only Abfragen.",
       explanation:"getSingleResult() wirft eine Exception wenn kein Ergebnis oder mehr als eines gefunden wird: NoResultException (0 Treffer) bzw. NonUniqueResultException (>1 Treffer). Nur für Abfragen verwenden, die garantiert genau 1 Ergebnis liefern — z.B. COUNT, MAX, oder PK-Lookup.",
-      doc: { title:'getSingleResult()', concept:'Gibt genau <em>ein</em> Ergebnis zurück. Wirft <code>NoResultException</code> bei 0 Treffern und <code>NonUniqueResultException</code> bei >1 Treffern. Für unsichere Abfragen statt <code>getResultList().get(0)</code> oder Panaches <code>firstResultOptional()</code> verwenden.', when:'Für COUNT, MAX/MIN-Aggregate. Niemals für User-Lookups — dort firstResultOptional() bevorzugen.', code:'<span class="tp">Long</span> count =\n  (<span class="tp">Long</span>) em.createQuery(\n    <span style="color:#a5d6ff">"SELECT COUNT(s)\n     FROM Student s"</span>\n  ).<span style="color:#ffa657">[???]</span>();\n<span class="c">// 0 Treffer → NoResultException</span>\n<span class="c">>1 Treffer → NonUniqueResultException</span>' } },
+      doc: { title:'getSingleResult()', concept:'Gibt genau <em>ein</em> Ergebnis zurück. Wirft <code>NoResultException</code> bei 0 Treffern und <code>NonUniqueResultException</code> bei >1 Treffern. Für unsichere Abfragen besser <code>getResultList()</code> + isEmpty()-Check verwenden.', when:'Für COUNT, MAX/MIN-Aggregate. Bei User-Lookups besser getResultList() + isEmpty()-Check.', code:'<span class="tp">Long</span> count =\n  (<span class="tp">Long</span>) em.createQuery(\n    <span style="color:#a5d6ff">"SELECT COUNT(s)\n     FROM Student s"</span>\n  ).<span style="color:#ffa657">[???]</span>();\n<span class="c">// 0 Treffer → NoResultException</span>\n<span class="c">>1 Treffer → NonUniqueResultException</span>' } },
   ]},
 
   { id:8, tasks:[
@@ -3260,19 +3260,19 @@ const MODULES = [
       explanation:"Die persistence.xml definiert die <strong>Persistence Unit</strong> (nicht den Persistence Context!). Bei Quarkus ersetzt application.properties die persistence.xml. Bei SE-Applikationen (ohne Container) ist RESOURCE_LOCAL korrekt — JTA nur mit Container (WildFly, GlassFish).",
       doc: { title:'persistence-unit', concept:'Konfigurationseinheit in der <em>persistence.xml</em> — definiert welche Entities, welche DataSource und welche Einstellungen verwendet werden. <strong>Achtung:</strong> <em>Persistence Unit</em> ≠ <em>Persistence Context</em>! Die Unit ist statische Konfiguration; der Context ist die Laufzeitinstanz des EntityManagers. Bei Quarkus ersetzt application.properties die persistence.xml.', when:'Für jede JPA-Applikation außerhalb von Quarkus. Quarkus: application.properties verwenden.', code:'&lt;<span style="color:#ffa657">[???]</span>\n  name="myPU"\n  transaction-type="RESOURCE_LOCAL"&gt;\n  &lt;class&gt;at.htl.Student&lt;/class&gt;\n&lt;/persistence-unit&gt;' } },
 
-    { id:"8-2",  tier:1, title:"DDL-Generierung steuern (Quarkus)",
-      html:`<span class="c"># application.properties</span>\nquarkus.hibernate-orm.database.<input class="code-input" data-ans="generation" style="width:92px" placeholder="???"> = drop-and-create`,
-      hint:["Du willst dass JPA beim Start die DB-Tabellen automatisch erstellt. Wie heißt der letzte Teil der Quarkus-Property 'quarkus.hibernate-orm.database.???'","Tabellen automatisch erzeugen — database.gen***eration.","→ <span class='hint-answer'>generation</span>=drop-and-create — Werte: none, create, drop-and-create, update. Nur für Entwicklung, nie Produktion!"],
-      memo:"<strong>&lt;persistence-unit&gt;</strong> ist der Einstiegspunkt in persistence.xml. In Quarkus/Spring meist durch framework-Config ersetzt.",
-      explanation:"drop-and-create: löscht und erstellt alle Tabellen beim Start — nur für Entwicklung! validate: prüft ob Schema zur Entity passt. update: fügt fehlende Spalten hinzu. none: nichts tun (Produktion).",
-      doc: { title:'database.generation', concept:'Steuert wie Hibernate das DB-Schema behandelt: <code>drop-and-create</code> (Dev), <code>update</code> (vorsichtig), <code>validate</code> (Prod-Check), <code>none</code> (Produktion).', when:'Dev: drop-and-create. Test: create-drop. Produktion: none + Flyway/Liquibase.', code:'quarkus.hibernate-orm\n  .database.<span style="color:#ffa657">[???]</span>\n  = drop-and-create\n<span class="c">// Dev: Tabellen neu bei jedem Start</span>\n<span class="c">// Prod: none!</span>' } },
+    { id:"8-2",  tier:1, title:"persistence.xml: Entity registrieren",
+      html:`<span class="cmt">&lt;!-- persistence.xml --&gt;</span><br>&lt;persistence-unit name=<span class="str">"FlightsPU"</span>&gt;<br>  &lt;<input class="code-input" data-ans="class" style="width:60px" placeholder="???">&gt;flights.entities.Booking&lt;/class&gt;<br>  &lt;class&gt;flights.entities.Flight&lt;/class&gt;<br>&lt;/persistence-unit&gt;`,
+      hint:["Jede Entity-Klasse muss in der persistence.xml registriert werden, damit JPA sie findet.","Das XML-Element heißt genau wie das Java-Konzept: eine Klasse.","→ &lt;<span class='hint-answer'>class</span>&gt; — registriert eine Entity-Klasse in der Persistence Unit. Vollqualifizierter Name!"],
+      memo:"<strong>&lt;class&gt;</strong> in persistence.xml = registriert Entity-Klassen. Vollqualifizierter Klassenname (mit Package) nötig.",
+      explanation:"In persistence.xml muss jede Entity mit &lt;class&gt;package.ClassName&lt;/class&gt; registriert werden, damit der JPA-Provider sie beim Startup findet.",
+      doc: { title:'&lt;class&gt; in persistence.xml', concept:'Registriert eine <em>Entity-Klasse</em> in der Persistence Unit. Vollqualifizierter Klassenname nötig (z.B. flights.entities.Booking).', when:'In Java SE Projekten — jede Entity muss explizit registriert werden.', code:"&lt;persistence-unit name=<span class='str'>\"FlightsPU\"</span>&gt;\n  &lt;<span style='color:#ffa657'>[???]</span>&gt;flights.entities.Booking&lt;/class&gt;\n  &lt;class&gt;flights.entities.Flight&lt;/class&gt;\n&lt;/persistence-unit&gt;" } },
 
-    { id:"8-3",  tier:1, title:"SQL-Logging aktivieren",
-      html:`<span class="c"># application.properties</span>\nquarkus.hibernate-orm.<input class="code-input" data-ans="log.sql" style="width:74px" placeholder="???"> = true`,
-      hint:["Du willst sehen welche SQL-Statements JPA im Hintergrund ausführt. Welche Quarkus-Property aktiviert das SQL-Logging?","log + Punkt + sql — Logging für SQL-Statements.","→ <span class='hint-answer'>log.sql</span>=true — zeigt alle SQL-Statements in der Konsole. Für Lesbarkeit: format.sql=true zusätzlich."],
-      memo:"<strong>database.generation=drop-and-create</strong> nur in Entwicklung! In Produktion: Flyway oder Liquibase für Migrationen verwenden.",
-      explanation:"log.sql=true zeigt alle generierten SQL-Statements in der Konsole. Unverzichtbar für Debugging von N+1-Problemen, unerwarteten JOINs oder fehlenden Indices.",
-      doc: { title:'log.sql', concept:'Gibt alle von Hibernate generierten SQL-Statements in der Konsole aus. Unverzichtbar für Debugging, N+1-Analyse und Performance-Checks.', when:'Immer während der Entwicklung. In Produktion deaktivieren (Performance + Security).', code:'quarkus.hibernate-orm\n  .<span style="color:#ffa657">[???]</span> = true\n<span class="c">// Ausgabe: Hibernate: SELECT ...</span>\n<span class="c">// Bonus: format_sql für lesbare Ausgabe</span>' } },
+    { id:"8-3",  tier:1, title:"persistence.xml: Schema-Generierung",
+      html:`<span class="cmt">&lt;!-- Tabellen neu erzeugen --&gt;</span><br>&lt;property<br>  name=<span class="str">"jakarta.persistence.schema-generation.database.action"</span><br>  value=<span class="str">"<input class="code-input" data-ans="drop-and-create" style="width:140px" placeholder="???">"</span>/&gt;`,
+      hint:["Beim Start sollen alle Tabellen gelöscht und neu erstellt werden — ideal für Entwicklung/Tests.","Die Aktion heißt: erst löschen (drop), dann erstellen (create).","→ <span class='hint-answer'>drop-and-create</span> — löscht bestehende Tabellen und erstellt sie neu aus den Entity-Definitionen."],
+      memo:"<strong>drop-and-create</strong> = DB-Schema bei jedem Start komplett neu generieren. Nur für Entwicklung!",
+      explanation:"drop-and-create löscht alle Tabellen und erstellt sie aus den @Entity-Annotationen neu. Weitere Optionen: create, drop, none. In der persistence.xml des Tests: jakarta.persistence.schema-generation.database.action.",
+      doc: { title:'Schema Generation', concept:'Steuert wie JPA das DB-Schema behandelt. <code>drop-and-create</code> löscht und erstellt Tabellen bei jedem Start. Nur für <em>Entwicklung</em>!', when:'Dev: drop-and-create. Produktion: none.', code:"&lt;property\n  name=<span class='str'>\"jakarta.persistence.schema-generation\n    .database.action\"</span>\n  value=<span class='str'>\"<span style='color:#ffa657'>[???]</span>\"</span>/&gt;" } },
 
     { id:"8-4",  tier:1, title:"PrePersist: vor dem Insert",
       html:`<span class="ann">@</span><input class="code-input" data-ans="PrePersist" style="width:94px" placeholder="???">\n<span class="kw">void</span> onInsert() { this.createdAt = <span class="tp">LocalDateTime</span>.now(); }`,
@@ -3288,33 +3288,33 @@ const MODULES = [
       explanation:"@PreUpdate: direkt vor jedem UPDATE-Statement. @PostLoad: nach dem Laden aus der DB. @PostPersist: nach dem INSERT. @PreRemove: vor dem DELETE. Alle sind optionale Methoden in der Entity-Klasse.",
       doc: { title:'@PreUpdate / @PostLoad', concept:'Entity Lifecycle Callbacks: <code>@PreUpdate</code> vor UPDATE, <code>@PostLoad</code> nach SELECT, <code>@PostPersist</code> nach INSERT, <code>@PreRemove</code> vor DELETE.', when:'Für updatedAt-Timestamps (@PreUpdate), berechnete Felder befüllen (@PostLoad), Audit-Log (@PostPersist).', code:'<span style="color:#ffa657">@[???]</span>   // vor UPDATE\n<span class="kw">void</span> onUpdate() {\n  this.updatedAt =\n    <span class="tp">LocalDateTime</span>.now();\n}' } },
 
-    { id:"8-6",  tier:2, title:"Bean Validation: Pflichtfeld",
-      html:`<span class="ann">@</span><input class="code-input" data-ans="NotBlank" style="width:80px" placeholder="???">(message = <span class="str">"Name ist Pflicht"</span>)\n<span class="kw">private</span> <span class="tp">String</span> name;`,
-      hint:["Ein Name darf nicht null, nicht leer und nicht nur aus Leerzeichen bestehen. Welche Bean-Validation-Annotation prüft das für Strings?","Not + Blank (leer/Leerzeichen) — @Not***Blank.","→ <span class='hint-answer'>@NotBlank</span> — prüft auf null UND leer UND nur Leerzeichen. @NotNull nur auf null. @NotEmpty auch auf leere Collections."],
-      memo:"<strong>@PreUpdate</strong> wird bei JEDEM Update aufgerufen — ideal für updatedAt. Kombiniert mit @PrePersist für vollständiges Timestamp-Tracking.",
-      explanation:"@NotBlank: darf nicht null und nicht leer (auch nicht nur Leerzeichen). @NotNull: darf nicht null (kann aber leer sein). @NotEmpty: darf nicht null und nicht leer (Leerzeichen erlaubt). Import: jakarta.validation.constraints.*",
-      doc: { title:'@NotBlank / @NotNull', concept:'Bean Validation Annotations (Jakarta Validation API). <code>@NotBlank</code>: nicht null, nicht leer, nicht nur Whitespace. <code>@NotNull</code>: nicht null (kann leer sein).', when:'Für alle Pflichtfelder — wird von JPA beim persist()/merge() automatisch validiert wenn Hibernate Validator im Classpath.', code:'<span style="color:#ffa657">@[???]</span>\n<span class="k">private</span> <span class="tp">String</span> name;\n\n<span class="c">// @NotNull  → nicht null</span>\n<span class="c">// @NotBlank → nicht null/leer</span>\n<span class="c">// @NotEmpty → nicht null/leer</span>' } },
+    { id:"8-6",  tier:1, title:"Spaltenname überschreiben (@Column)",
+      html:`<span class="cmt">// Java-Feld 'operator' → DB-Spalte 'flightoperator'</span><br><span class="ann">@Column</span>(name = <span class="str">"<input class="code-input" data-ans="flightoperator" style="width:130px" placeholder="???">"</span>)<br><span class="kw">private</span> <span class="tp">String</span> operator;`,
+      hint:["Das Java-Feld heißt 'operator', soll aber in einer anders benannten DB-Spalte gespeichert werden.","@Column(name=...) überschreibt den Standard-Spaltennamen. Laut Angabe: 'flightoperator'.","→ <span class='hint-answer'>flightoperator</span> — @Column(name=\"flightoperator\") mappt das Feld auf die gewünschte Spalte."],
+      memo:"<strong>@Column(name=...)</strong> = überschreibt den DB-Spaltennamen. Java-Feld und DB-Spalte müssen nicht gleich heißen.",
+      explanation:"@Column(name=\"flightoperator\") speichert das Java-Feld 'operator' in der DB-Spalte 'flightoperator'. Im Test: 'Die Membervariable operator soll in der Datenbankspalte flightoperator gespeichert werden.'",
+      doc: { title:'@Column(name=...)', concept:'Überschreibt den <em>DB-Spaltennamen</em> für ein Entity-Feld. Ohne @Column verwendet JPA den Java-Feldnamen als Spaltennamen.', when:'Wenn Java-Feldname und DB-Spaltenname abweichen sollen (z.B. reservierte Wörter, Naming-Konventionen).', code:"<span class='a'>@Column</span>(name=<span class='str'>\"<span style='color:#ffa657'>[???]</span>\"</span>)\n<span class='k'>private</span> <span class='t'>String</span> operator;\n<span class='c'>// DB-Spalte: flightoperator</span>\n<span class='c'>// Java-Feld: operator</span>" } },
 
-    { id:"8-7",  tier:2, title:"Bean Validation: Wertebereich",
-      html:`<span class="ann">@</span><input class="code-input" data-ans="Min" style="width:38px" placeholder="???">(1) <span class="ann">@</span><span class="ann">Max</span>(100)\n<span class="kw">private</span> <span class="tp">Integer</span> grade;`,
-      hint:["Eine Note muss mindestens den Wert 1 haben. Welche Bean-Validation-Annotation erzwingt einen Mindestwert?","@Min — der Name sagt es direkt: Minimum-Wert.","→ <span class='hint-answer'>@Min</span>(1) — für numerische Felder. Zusammen mit @Max(5) für Notenskala 1-5. Greift bei persist() und merge()."],
-      memo:"<strong>@NotBlank</strong> ist die strengste String-Validierung: kein null, kein '', kein '   '. Für Strings fast immer die richtige Wahl.",
-      explanation:"@Min/@Max für Zahlen, @Size(min,max) für Strings/Collections, @Email für E-Mail-Format, @Pattern(regexp) für Regex. Alle aus jakarta.validation.constraints.*",
-      doc: { title:'@Min / @Max / @Size', concept:'Numerische Constraints: <code>@Min(n)</code>, <code>@Max(n)</code>. Text/Collection: <code>@Size(min,max)</code>. Format: <code>@Email</code>, <code>@Pattern</code>.', when:'Für Validierung von Eingabedaten bevor sie in die DB kommen.', code:'<span style="color:#ffa657">@[???]</span>(1) @Max(100)\n<span class="k">private</span> <span class="tp">Integer</span> grade;\n\n@Size(min=2, max=50)\n<span class="k">private</span> <span class="tp">String</span> name;\n\n@Email\n<span class="k">private</span> <span class="tp">String</span> email;' } },
+    { id:"8-7",  tier:1, title:"persistence.xml: SQL-Logging",
+      html:`<span class="cmt">&lt;!-- SQL im Log anzeigen --&gt;</span><br>&lt;property<br>  name=<span class="str">"hibernate.</span><input class="code-input" data-ans="show_sql" style="width:90px" placeholder="???"><span class="str">"</span><br>  value=<span class="str">"true"</span>/&gt;`,
+      hint:["Hibernate soll die generierten SQL-Statements in der Konsole ausgeben.","Die Property heißt hibernate.[???] — sie 'zeigt' das 'SQL' an.","→ hibernate.<span class='hint-answer'>show_sql</span> — gibt jedes generierte SQL-Statement in der Konsole aus."],
+      memo:"<strong>hibernate.show_sql</strong> = zeigt SQL in der Konsole. Essentiell für Debugging und zum Erkennen von N+1.",
+      explanation:"hibernate.show_sql=true gibt alle von Hibernate generierten SQL-Statements aus — hilfreich zum Debuggen und zum Erkennen von N+1-Problemen. Steht in der persistence.xml des Test-Projekts.",
+      doc: { title:'hibernate.show_sql', concept:'Gibt alle von Hibernate generierten <em>SQL-Statements</em> in der Konsole aus. Unverzichtbar für Debugging.', when:'Immer während der Entwicklung — zum Erkennen von N+1 und ineffizienten Queries.', code:"&lt;property\n  name=<span class='str'>\"hibernate.<span style='color:#ffa657'>[???]</span>\"</span>\n  value=<span class='str'>\"true\"</span>/&gt;" } },
 
-    { id:"8-8",  tier:2, title:"Spalten-Eindeutigkeit erzwingen",
-      html:`<span class="ann">@Table</span>(uniqueConstraints = <span class="ann">@UniqueConstraint</span>(column<span class="ann">Names</span> = {<input class="code-input" data-ans='"email"' style="width:62px" placeholder="???">}))\n<span class="kw">public class</span> <span class="tp">Student</span>`,
-      hint:["Die email-Spalte soll einen UNIQUE Constraint bekommen — definiert bei @Table(uniqueConstraints=...). Was trägst du bei columnNames ein?","@Table(uniqueConstraints=@UniqueConstraint(columnNames={\"???\"})) — der DB-Spaltenname des email-Felds.","→ <span class='hint-answer'>email</span> — columnNames={\"email\"} — der String ist der DB-Spaltenname (nicht Feldname wenn sie abweichen)."],
-      memo:"<strong>@Min</strong>/@Max für Wertebereiche, <strong>@DecimalMin</strong>/@DecimalMax für BigDecimal. Bean Validation greift automatisch bei JPA-Operationen.",
-      explanation:"@UniqueConstraint auf @Table-Ebene erzeugt einen UNIQUE-Index in der DB. Alternativ: @Column(unique=true) für einzelne Spalten. @UniqueConstraint erlaubt auch Composite Unique über mehrere Spalten.",
-      doc: { title:'@UniqueConstraint', concept:'Erzeugt einen <em>UNIQUE-Index</em> in der DB — JPA wirft eine <code>ConstraintViolationException</code> wenn ein Duplikat eingefügt wird.', when:'Für eindeutige Felder: E-Mail, Matrikelnummer, Username.', code:'@Table(\n  uniqueConstraints = @UniqueConstraint(\n    columnNames = {<span style="color:#ffa657">[???]</span>}\n  )\n)\n<span class="c">// Alternativ: @Column(unique=true)</span>' } },
+    { id:"8-8",  tier:2, title:"persistence.xml: DB-Dialekt",
+      html:`<span class="cmt">&lt;!-- PostgreSQL Dialekt --&gt;</span><br>&lt;property<br>  name=<span class="str">"hibernate.dialect"</span><br>  value=<span class="str">"org.hibernate.dialect.</span><input class="code-input" data-ans="PostgreSQLDialect" style="width:165px" placeholder="???"><span class="str">"</span>/&gt;`,
+      hint:["Hibernate muss wissen, welche Datenbank verwendet wird, um SQL korrekt zu generieren.","Für PostgreSQL: PostgreSQL + Dialect.","→ <span class='hint-answer'>PostgreSQLDialect</span> — optimiert SQL-Generierung für PostgreSQL-spezifische Features."],
+      memo:"<strong>Hibernate Dialect</strong> = sagt Hibernate welche DB-spezifische SQL-Syntax zu verwenden ist.",
+      explanation:"Der Hibernate-Dialekt steuert die SQL-Generierung für eine spezifische Datenbank. PostgreSQLDialect für PostgreSQL. Steht in der persistence.xml des Test-Projekts.",
+      doc: { title:'Hibernate Dialect', concept:'Steuert die <em>DB-spezifische SQL-Generierung</em>. Jede Datenbank hat eigene SQL-Syntax und Features.', when:'Immer in persistence.xml — muss zur verwendeten Datenbank passen.', code:"&lt;property\n  name=<span class='str'>\"hibernate.dialect\"</span>\n  value=<span class='str'>\"org.hibernate.dialect.<span style='color:#ffa657'>[???]</span>\"</span>/&gt;" } },
 
-    { id:"8-9",  tier:2, title:"Spaltenname überschreiben (@Embedded)",
-      html:`<span class="ann">@Embedded</span>\n<span class="ann">@</span><input class="code-input" data-ans="AttributeOverride" style="width:148px" placeholder="???">(name=<span class="str">"street"</span>, column=<span class="ann">@Column</span>(name=<span class="str">"home_street"</span>))\n<span class="kw">private</span> <span class="tp">Address</span> homeAddress;`,
-      hint:["Ein @Embeddable Address wird in zwei Entities eingebettet, jede braucht andere Spaltennamen. Wie überschreibst du das Mapping für einzelne Felder?","@Att***Override — das Attribut-Mapping überschreiben.","→ <span class='hint-answer'>@AttributeOverride</span>(name=\"street\", column=@Column(name=\"home_street\")) — pro Feld ein Override. Mehrere: @AttributeOverrides."],
-      memo:"<strong>@UniqueConstraint</strong> bei @Table für Unique-Constraints über einzelne oder mehrere Spalten — DB-seitig erzwungen.",
-      explanation:"@AttributeOverride überschreibt den Spaltennamen eines @Embeddable-Feldes in der Host-Entity. Nötig wenn dieselbe @Embeddable-Klasse zweimal in einer Entity verwendet wird (z.B. homeAddress und workAddress).",
-      doc: { title:'@AttributeOverride', concept:'Überschreibt den Spaltennamen eines <code>@Embeddable</code>-Feldes. <em>Pflicht</em> wenn dieselbe @Embeddable-Klasse mehrfach in einer Entity vorkommt.', when:'Bei zwei Adressen (home/work), zwei Geldbeträgen (price/tax) in derselben Entity.', code:'@Embedded\n<span style="color:#ffa657">@[???]</span>(\n  name="street",\n  column=@Column(name="home_street")\n)\n<span class="k">private</span> <span class="tp">Address</span> homeAddr;' } },
+    { id:"8-9",  tier:2, title:"persistence.xml: JDBC-Verbindung",
+      html:`<span class="cmt">&lt;!-- Datenbankverbindung --&gt;</span><br>&lt;property<br>  name=<span class="str">"hibernate.connection.</span><input class="code-input" data-ans="url" style="width:50px" placeholder="???"><span class="str">"</span><br>  value=<span class="str">"jdbc:postgresql://localhost:5432/postgres"</span>/&gt;`,
+      hint:["Hibernate braucht die Verbindungsadresse zur Datenbank — die JDBC-URL.","Die Property heißt hibernate.connection.[???] — das Wort für eine Web-/DB-Adresse.","→ hibernate.connection.<span class='hint-answer'>url</span> — die JDBC-Verbindungs-URL zur Datenbank."],
+      memo:"<strong>hibernate.connection.url</strong> = JDBC-Verbindungsstring. Format: jdbc:postgresql://host:port/dbname.",
+      explanation:"Die connection.url enthält den JDBC-Verbindungsstring zur Datenbank. Zusammen mit driver_class, username und password bilden sie die Verbindungskonfiguration in persistence.xml.",
+      doc: { title:'connection.url', concept:'JDBC-Verbindungsstring zur Datenbank. Format: <code>jdbc:postgresql://host:port/dbname</code>.', when:'In jeder persistence.xml — definiert die Datenbankverbindung.', code:"&lt;property\n  name=<span class='str'>\"hibernate.connection.<span style='color:#ffa657'>[???]</span>\"</span>\n  value=<span class='str'>\"jdbc:postgresql://\n    localhost:5432/postgres\"</span>/&gt;" } },
 
     { id:"8-10", tier:3, title:"EntityManagerFactory direkt erstellen (SE)",
       html:`<span class="tp">EntityManagerFactory</span> emf =\n  <span class="tp">Persistence</span>.<input class="code-input" data-ans="createEntityManagerFactory" style="width:220px" placeholder="???">("myPU");`,
@@ -4209,7 +4209,7 @@ showModule(state.currentModule || 1);
 // Module short labels for bottom nav
 const MOD_LABELS = {
   1:'Entity',2:'Felder',3:'EntityMgr',4:'Relations',
-  5:'Vererbung',6:'JPQL/Pana',7:'JPQL+',8:'Konfig'
+  5:'Vererbung',6:'JPQL/Named',7:'JPQL+',8:'Konfig'
 };
 const MOB_MC_RGB = {
   1:'88,166,255',2:'63,185,80',3:'227,179,65',4:'210,168,255',
