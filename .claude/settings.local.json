@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(which java:*)",
+      "Bash(pip list:*)",
+      "Bash(py -c \"\nimport sys, io, os, tempfile\nsys.stdout = io.TextIOWrapper\\(sys.stdout.buffer, encoding='utf-8', errors='replace'\\)\nimport fitz\ndoc = fitz.open\\('D:/_Repositories/year_2025_26/DBI_2025_26/dbi_test-lernen/pdfs_docs_from_professor/1_JavaEE_JPA_2_Intro.pdf'\\)\npage = doc[8]  # page 9\npix = page.get_pixmap\\(dpi=200\\)\npath = 'C:/Users/janri/AppData/Local/Temp/tmp1sn89i9e/intro_page_9.png'\npix.save\\(path\\)\nprint\\(f'Saved to {path}'\\)\n\" 2>&1)"
+    ]
+  }
+}
