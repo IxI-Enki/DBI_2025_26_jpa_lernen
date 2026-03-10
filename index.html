@@ -632,6 +632,7 @@ body:has(.sidebar-collapsed) #app-body {
   .mod-why:not(.why-expanded) .mod-why-text {
     display: -webkit-box;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -641,6 +642,7 @@ body:has(.sidebar-collapsed) #app-body {
     display: block;
     white-space: normal;
     -webkit-line-clamp: unset;
+    line-clamp: unset;
   }
   .mod-why:not(.why-expanded)::after {
     content: '▸ Details';
