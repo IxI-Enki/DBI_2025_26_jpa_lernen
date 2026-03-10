@@ -2078,7 +2078,7 @@ body:has(.sidebar-collapsed) #app-body {
   </div>
 
   <div class="hdr-progress">
-    <span class="hdr-prog-label" id="prog-label">0 / 80</span>
+    <span class="hdr-prog-label" id="prog-label">0 / 81</span>
     <div class="hdr-prog-track">
       <div class="hdr-prog-fill" id="prog-fill"></div>
     </div>
@@ -2229,7 +2229,7 @@ body:has(.sidebar-collapsed) #app-body {
 
   <div class="sb-divider"></div>
   <div class="sb-stats" id="sb-stats">
-    <span style="color:var(--green)"><strong id="sb-solved">0</strong>/80</span> gelöst ·
+    <span style="color:var(--green)"><strong id="sb-solved">0</strong>/<span id="sb-total">81</span></span> gelöst ·
     <span id="sb-hints" style="color:var(--yellow)">0</span> Hints ·
     <span id="sb-time" style="color:var(--text-muted)">0 min</span>
   </div>
@@ -2240,6 +2240,8 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="tier-row"><span class="tier-badge t2">Soll</span> Wichtig</div>
     <div class="tier-row"><span class="tier-badge t3">Kann</span> Fortgeschritten</div>
   </div>
+  <div class="sb-divider"></div>
+  <button class="btn-secondary" style="width:100%;font-size:.72rem;padding:.35rem .6rem" onclick="resetAllModules()">↺ Alle Module zurücksetzen</button>
 </nav>
 
 <!-- MAIN -->
@@ -2268,7 +2270,7 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(88,166,255,.1);color:var(--m1)">📦</div>
       <div class="mod-meta">
-        <div class="mod-eyebrow" style="color:var(--m1)">Modul 01 · Tier 1</div>
+        <div class="mod-eyebrow" style="color:var(--m1)">Modul 01 · Tier 1–3</div>
         <div class="mod-title">Entity &amp; Primärschlüssel</div>
         <div class="mod-subtitle">Die Basis-Annotationen jeder persistenten Klasse.</div>
       </div>
@@ -2303,7 +2305,7 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(63,185,80,.1);color:var(--m2)">📊</div>
       <div class="mod-meta">
-        <div class="mod-eyebrow" style="color:var(--m2)">Modul 02 · Tier 1–2</div>
+        <div class="mod-eyebrow" style="color:var(--m2)">Modul 02 · Tier 1–3</div>
         <div class="mod-title">Column Mapping &amp; Datentypen</div>
         <div class="mod-subtitle">Von <code style="color:var(--ann)">@Column</code> bis <code style="color:var(--ann)">@Lob</code> — wie JPA Java-Typen auf SQL abbildet.</div>
       </div>
@@ -2383,7 +2385,7 @@ body:has(.sidebar-collapsed) #app-body {
     </div>
     <div class="mod-prog-row">
       <div class="mod-prog-track"><div class="mod-prog-fill" id="mod-prog-3" style="background:var(--m3);width:0%"></div></div>
-      <span class="mod-prog-text" id="mod-prog-txt-3">0 / 10</span>
+      <span class="mod-prog-text" id="mod-prog-txt-3">0 / 11</span>
     </div>
     <div class="tasks-list" id="tasks-3"></div>
     <div class="mod-footer">
@@ -2392,7 +2394,7 @@ body:has(.sidebar-collapsed) #app-body {
       </button>
       <button class="btn-secondary" onclick="resetModule(3)">↺ Reset</button>
       <span class="kbd-hint"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> = validieren</span>
-      <span class="mod-score-note" id="mod-score-3">0 / 10</span>
+      <span class="mod-score-note" id="mod-score-3">0 / 11</span>
     </div>
   </section>
 
@@ -2407,7 +2409,7 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(210,168,255,.1);color:var(--m4)">🔗</div>
       <div class="mod-meta">
-        <div class="mod-eyebrow" style="color:var(--m4)">Modul 04 · Tier 2–3</div>
+        <div class="mod-eyebrow" style="color:var(--m4)">Modul 04 · Tier 1–2</div>
         <div class="mod-title">Relationships</div>
         <div class="mod-subtitle">Beziehungen zwischen Entities — die häufigste Fehlerquelle in JPA-Projekten.</div>
       </div>
@@ -2536,7 +2538,7 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(255,123,114,.1);color:var(--m7)">🔍</div>
       <div class="mod-meta">
-        <div class="mod-eyebrow" style="color:var(--m7)">Modul 07 · Tier 2</div>
+        <div class="mod-eyebrow" style="color:var(--m7)">Modul 07 · Tier 1–2</div>
         <div class="mod-title">JPQL Vertieft</div>
         <div class="mod-subtitle">JOIN FETCH, Aggregate, NamedQuery mit MEMBER OF &amp; Positional Parameters.</div>
       </div>
@@ -2576,7 +2578,7 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(201,209,217,.1);color:var(--m8)">⚙️</div>
       <div class="mod-meta">
-        <div class="mod-eyebrow" style="color:var(--m8)">Modul 08 · Tier 2</div>
+        <div class="mod-eyebrow" style="color:var(--m8)">Modul 08 · Tier 1–3</div>
         <div class="mod-title">Konfiguration &amp; Lifecycle</div>
         <div class="mod-subtitle">persistence.xml, Hibernate-Properties, @Column-Mapping und Lifecycle-Callbacks.</div>
       </div>
@@ -2774,7 +2776,7 @@ body:has(.sidebar-collapsed) #app-body {
       </div>
     </div>
     <div class="finish-grade" id="fin-grade"></div>
-    <div style="font-size:.76rem;color:var(--text-dim)">Alle 80 Aufgaben gelöst.<br>Viel Erfolg bei der Matura am 23. Juni 2026! 🍀</div>
+    <div style="font-size:.76rem;color:var(--text-dim)">Alle 81 Aufgaben gelöst.<br>Viel Erfolg bei der Matura am 23. Juni 2026! 🍀</div>
     <button class="btn-restart" onclick="restartAll()">↺ Neustart</button>
   </div>
 </div>
@@ -2824,13 +2826,13 @@ const MODULES = [
       doc: { title:'@Entity', concept:'Markiert eine Java-Klasse als <em>persistente Entity</em>. JPA verwaltet Instanzen dieser Klasse und mappt sie auf eine Datenbanktabelle.', when:'Immer wenn eine Klasse in der Datenbank gespeichert werden soll.', code:"<span class='a'>@[???]</span>\n<span class='k'>public class</span> <span class='t'>Student</span> {\n  <span class='c'>// JPA verwaltet diese Klasse</span>\n}" } },
     { id:"1-2",  tier:1, title:"Tabellennamen explizit setzen",
       html:`<span class="ann">@Entity</span><br><span class="ann">@</span><input class="code-input" data-ans="Table" style="width:58px" placeholder="???">(name = <span class="str">"students"</span>)<br><span class="kw">public class</span> <span class="tp">Student</span> { }`,
-      hint:["JPA nimmt standardmäßig den Klassennamen als Tabellennamen. Du willst stattdessen einen expliziten DB-Namen — wie heißt die Annotation dafür?","Der Name der Annotation ist das englische Wort für 'Tabelle' — kennst du aus SQL: TABLE.","→ <span class='hint-answer'>@Table</span>(name=\"students\") — überschreibt den Standardnamen. Wichtig bei DB-Namenskonventionen (snake_case, Plural)."],
+      hint:["JPA nimmt standardmäßig den Klassennamen als Tabellennamen. Du willst stattdessen einen expliziten DB-Namen — wie heißt die Annotation dafür?","Der Name der Annotation ist das englische Wort für 'Tabelle' — kennst du aus SQL: T***LE.","→ <span class='hint-answer'>@Table</span>(name=\"students\") — überschreibt den Standardnamen. Wichtig bei DB-Namenskonventionen (snake_case, Plural)."],
       memo:"<strong>@Entity</strong> = JPA-Einstiegspunkt. Ohne sie: kein Mapping, kein persist(), nichts.",
       explanation:"@Table(name=…) überschreibt den Standard-Tabellennamen (Klassenname). Wichtig wenn DB-Namenskonventionen andere Namen fordern.",
       doc: { title:'@Table', concept:'Überschreibt den <em>Tabellennamen</em> in der Datenbank. Ohne diese Annotation = Klassenname wird als Tabellenname verwendet.', when:'Wenn DB-Namenskonvention (z.B. Plural, snake_case) vom Klassennamen abweicht.', code:'<span class=\'a\'>@Entity</span>\n<span class=\'a\'>@[???]</span>(name = <span style=\'color:#a5d6ff\'>"students"</span>)\n<span class=\'k\'>public class</span> <span class=\'t\'>Student</span> { }' } },
     { id:"1-3",  tier:1, title:"Primärschlüssel annotieren",
       html:`<span class="ann">@</span><input class="code-input" data-ans="Id" style="width:34px" placeholder="?"><br><span class="kw">private</span> <span class="tp">Long</span> id;`,
-      hint:["Jede Entity braucht einen eindeutigen Identifier — JPA muss wissen, welches Feld der Primärschlüssel ist.","Die Annotation ist das Kurzwort für 'Identifier' — nur 2 Buchstaben: @Id.","→ <span class='hint-answer'>@Id</span> — genau ein Feld pro Entity muss damit annotiert sein. Kein @Id = Exception beim Start."],
+      hint:["Jede Entity braucht einen eindeutigen Identifier — JPA muss wissen, welches Feld der Primärschlüssel ist.","Die Annotation ist das Kurzwort für 'Identifier' — nur 2 Buchstaben: @I***.","→ <span class='hint-answer'>@Id</span> — genau ein Feld pro Entity muss damit annotiert sein. Kein @Id = Exception beim Start."],
       memo:"<strong>@Table</strong> ist optional — ohne sie nimmt JPA den Klassennamen. Beim HTL-Projekt oft nötig für snake_case-Konventionen.",
       explanation:"@Id kennzeichnet das Feld als Primärschlüssel. Jede Entity braucht genau einen @Id.",
       doc: { title:'@Id', concept:'Kennzeichnet das Feld als <em>Primärschlüssel</em> der Entity. Jede Entity-Klasse braucht genau ein @Id-Feld.', when:'Immer — keine Entity ohne Primärschlüssel.', code:"<span class='a'>@[???]</span>  <span class='c'>// ← Primärschlüssel</span>\n<span class='k'>private</span> <span class='t'>Long</span> id;" } },
@@ -2842,7 +2844,7 @@ const MODULES = [
       doc: { title:'GenerationType.IDENTITY', concept:'Delegiert die ID-Generierung an die <em>Datenbank</em>. Die DB vergibt die nächste ID automatisch (AUTO_INCREMENT bei MySQL, SERIAL bei PostgreSQL).', when:'Standard für MySQL, MariaDB, H2 — wenn die DB selbst nummeriert.', code:"<span class='a'>@GeneratedValue</span>(strategy =\n  <span class='t'>GenerationType</span>.<span style='color:#ffa657'>[???]</span>)\n<span class='k'>private</span> <span class='t'>Long</span> id;" } },
     { id:"1-5",  tier:1, title:"Sequenz-basierte ID-Generierung",
       html:`<span class="ann">@GeneratedValue</span>(strategy = <span class="tp">GenerationType</span>.<input class="code-input" data-ans="SEQUENCE" style="width:90px" placeholder="???">)`,
-      hint:["Du brauchst eine Strategie die IDs aus einer DB-Sequenz zieht — effizienter als IDENTITY weil mehrere IDs auf einmal reserviert werden.","Das Konzept heißt 'Sequenz' — die GenerationType-Konstante ist der englische Begriff: SEQUENCE.","→ <span class='hint-answer'>GenerationType.SEQUENCE</span> — Standard für PostgreSQL/Oracle. Effizienter durch allocationSize (default 50 IDs auf einmal)."],
+      hint:["Du brauchst eine Strategie die IDs aus einer DB-Sequenz zieht — effizienter als IDENTITY weil mehrere IDs auf einmal reserviert werden.","Das Konzept heißt 'Sequenz' — die GenerationType-Konstante ist der englische Begriff: SEQ***CE.","→ <span class='hint-answer'>GenerationType.SEQUENCE</span> — Standard für PostgreSQL/Oracle. Effizienter durch allocationSize (default 50 IDs auf einmal)."],
       memo:"<strong>IDENTITY</strong> = DB zählt hoch. Standard für MySQL/H2. PostgreSQL bevorzugt SEQUENCE.",
       explanation:"SEQUENCE nutzt eine DB-Sequenz — Standard in PostgreSQL und Oracle. Effizienter durch Batch-Allokation.",
       doc: { title:'GenerationType.SEQUENCE', concept:'Nutzt eine <em>DB-Sequenz</em> zur ID-Vergabe. Effizienter als IDENTITY, da mehrere IDs auf einmal reserviert werden können (allocationSize).', when:'Standard für PostgreSQL und Oracle.', code:'<span class=\'a\'>@GeneratedValue</span>(\n  strategy = <span class=\'t\'>GenerationType</span>.<span style=\'color:#ffa657\'>[???]</span>,\n  generator = <span style=\'color:#a5d6ff\'>"mySeq"</span>\n)' } },
@@ -2994,7 +2996,7 @@ const MODULES = [
       memo:"<strong>MANAGED</strong> = nach persist(), find(), merge() oder Query — JPA überwacht die Entity.",
       explanation:"Nach em.persist() wird die Entity MANAGED — der Persistence Context trackt sie und synchronisiert Änderungen bei commit().",
       doc: { title:'Entity Lifecycle: MANAGED', concept:'Nach <code>persist()</code>, <code>find()</code>, <code>merge()</code> oder einer Query ist die Entity <strong>MANAGED</strong> — JPA trackt alle Feldänderungen und synchronisiert sie automatisch.', when:'Nach jeder Operation die ein Objekt in den Persistence Context aufnimmt.', code:"em.persist(customer);\n<span class='c'>// Zustand: <span style='color:#ffa657'>[???]</span></span>\ncustomer.setName(<span class='str'>\"Neu\"</span>);\n<span class='c'>// → UPDATE bei commit()!</span>" } },
-    { id:"3-10", tier:2, title:"Lifecycle-Zustand: nach detach()",
+    { id:"3-10", tier:1, title:"Lifecycle-Zustand: nach detach()",
       html:`em.getTransaction().commit();<br>em.<span class="kw">detach</span>(customer);<br><span class="cmt">// Zustand: </span><input class="code-input" data-ans="DETACHED" style="width:120px" placeholder="???">`,
       hint:["detach() entfernt das Objekt aus dem Persistence Context — aber löscht es nicht aus der DB.","Das Objekt ist 'losgelöst' — nicht mehr von JPA verwaltet, aber existiert noch in der DB.","→ <span class='hint-answer'>DETACHED</span> — Änderungen werden nicht mehr getrackt. Nur merge() bringt es zurück."],
       memo:"<strong>DETACHED</strong> = nach detach(), clear() oder Session-Ende — Änderungen gehen verloren ohne merge().",
@@ -3038,7 +3040,7 @@ const MODULES = [
       memo:"<strong>@JoinColumn(name=...)</strong> benennt die FK-Spalte. Ohne: JPA generiert einen (oft hässlichen) Namen.",
       explanation:"LAZY: Die assoziierte Entity wird erst beim ersten Zugriff geladen (Proxy-Objekt). Standard bei @OneToMany und @ManyToMany. Achtung: @ManyToOne und @OneToOne sind standardmäßig EAGER — bei großen Datenmengen explizit auf LAZY setzen!",
       doc: { title:'FetchType.LAZY', concept:'Mit <em>LAZY</em> wird die assoziierte Entity erst beim ersten Zugriff geladen (Proxy). Standard-Defaults: <code>@OneToMany</code> = LAZY, <code>@ManyToMany</code> = LAZY, <code>@ManyToOne</code> = <strong>EAGER</strong>, <code>@OneToOne</code> = <strong>EAGER</strong>. EAGER kann N+1-Query-Probleme verursachen.', when:'@ManyToOne und @OneToOne explizit auf LAZY setzen wenn viele Objekte geladen werden.', code:"<span class='a'>@ManyToOne</span>(fetch = <span class='t'>FetchType</span>.<span style='color:#ffa657'>[???]</span>)\n<span class='k'>private</span> <span class='t'>Student</span> student;\n<span class='c'>// LAZY: Proxy bis student.getName() aufgerufen</span>\n<span class='c'>// EAGER: sofort per JOIN geladen</span>" } },
-    { id:"4-6",  tier:2, title:"Kaskadierung: Persist weitergeben",
+    { id:"4-6",  tier:1, title:"Kaskadierung: Persist weitergeben",
       html:`<span class="ann">@OneToMany</span>(mappedBy = <span class="str">"flight"</span>,<br>    cascade = <span class="tp">CascadeType</span>.<input class="code-input" data-ans="PERSIST" style="width:78px" placeholder="???">) <br><span class="kw">private</span> <span class="tp">List</span>&lt;<span class="tp">Booking</span>&gt; bookings;`,
       hint:["Beim Speichern eines Flugs sollen automatisch auch alle zugehörigen Buchungen gespeichert werden.","persist(flight) soll auch die Bookings persistieren — CascadeType.PER***.","→ <span class='hint-answer'>CascadeType.PERSIST</span> — persist() wird an die Kinder weitergegeben. Kein separater persist()-Aufruf nötig."],
       memo:"<strong>CascadeType.PERSIST</strong> = beim Speichern des Parents werden auch Children automatisch persistiert. Häufigster CascadeType.",
@@ -3096,7 +3098,7 @@ const MODULES = [
       doc: { title:'@DiscriminatorColumn', concept:'Definiert die <em>Spalte die den Typ jeder Zeile speichert</em>. JPA liest diesen Wert und instanziiert die richtige Subklasse.', when:'Pflicht bei SINGLE_TABLE-Strategie. Optional bei JOINED.', code:'<span class=\'a\'>@Inheritance</span>(strategy=<span class=\'t\'>InheritanceType</span>.SINGLE_TABLE)\n<span class=\'a\'>@Discriminator</span><span style=\'color:#ffa657\'>[???]</span>(name=<span style=\'color:#a5d6ff\'>"person_type"</span>)\n<span class=\'k\'>public abstract class</span> <span class=\'t\'>Person</span> { }\n<span class=\'c\'>// Spalte "person_type" unterscheidet Typen</span>' } },
     { id:"5-5",  tier:2, title:"Diskriminator-Wert für Subklasse",
       html:`<span class="ann">@</span><input class="code-input" data-ans="DiscriminatorValue" style="width:150px" placeholder="???">(<span class="str">"TEACHER"</span>)<br><span class="kw">public class</span> <span class="tp">Teacher</span> <span class="kw">extends</span> <span class="tp">Person</span> { }`,
-      hint:["Für jede Subklasse musst du angeben welcher Wert in der Diskriminator-Spalte eingetragen werden soll.","@Discriminator + Value — der konkrete Wert für diese Subklasse.","→ <span class='hint-answer'>@DiscriminatorValue</span>(\"STUDENT\") — wird automatisch in die DTYPE-Spalte geschrieben. Default: Klassenname."],
+      hint:["Für jede Subklasse musst du angeben welcher Wert in der Diskriminator-Spalte eingetragen werden soll.","@Discriminator*** — der konkrete Wert für diese Subklasse.","→ <span class='hint-answer'>@DiscriminatorValue</span>(\"STUDENT\") — wird automatisch in die DTYPE-Spalte geschrieben. Default: Klassenname."],
       memo:"<strong>@DiscriminatorColumn</strong> definiert die Typ-Spalte, <strong>@DiscriminatorValue</strong> setzt den Wert pro Subklasse.",
       explanation:"@DiscriminatorValue legt den konkreten Wert in der Diskriminator-Spalte fest. JPA bestimmt damit welche Klasse instanziiert wird.",
       doc: { title:'@DiscriminatorValue', concept:'Setzt den <em>konkreten Wert</em> in der Diskriminator-Spalte für diese Subklasse. JPA verwendet diesen Wert um beim Laden die richtige Klasse zu instanziieren.', when:'Auf jeder Subklasse bei SINGLE_TABLE oder JOINED-Strategie.', code:'<span class=\'a\'>@<span style=\'color:#ffa657\'>[???]</span></span>(<span style=\'color:#a5d6ff\'>"TEACHER"</span>)\n<span class=\'k\'>public class</span> <span class=\'t\'>Teacher</span> <span class=\'k\'>extends</span> <span class=\'t\'>Person</span> { }\n<span class=\'c\'>// Zeile mit person_type="TEACHER"</span>\n<span class=\'c\'>// → wird als Teacher instanziiert</span>' } },
@@ -3140,7 +3142,7 @@ const MODULES = [
       doc: { title:'@NamedQuery', concept:'Definiert eine <em>wiederverwendbare JPQL-Abfrage</em> direkt an der Entity-Klasse. Wird beim App-Start validiert — Syntaxfehler fallen sofort auf.', when:'Für häufig verwendete Abfragen, statt JPQL-Strings inline im Code.', code:'<span class=\'a\'>@Named</span><span style=\'color:#ffa657\'>[???]</span>(\n  name=<span style=\'color:#a5d6ff\'>"Student.findByName"</span>,\n  query=<span style=\'color:#a5d6ff\'>"SELECT s FROM Student s WHERE s.name = :n"</span>\n)\n<span class=\'k\'>public class</span> <span class=\'t\'>Student</span> { }' } },
     { id:"6-2",  tier:2, title:"Named Query aufrufen",
       html:`em.create<input class="code-input" data-ans="NamedQuery" style="width:104px" placeholder="???">(<span class="str">"Student.findAll"</span>)`,
-      hint:["Eine mit @NamedQuery definierte Query soll per Name aufgerufen werden. Welche EntityManager-Methode?","Du rufst eine benannte (Named) Query auf — create + Named + Query.","→ <span class='hint-answer'>createNamedQuery</span>(\"Student.findAll\") — typsicher mit createNamedQuery(name, Student.class) → TypedQuery&lt;Student&gt;."],
+      hint:["Eine mit @NamedQuery definierte Query soll per Name aufgerufen werden. Welche EntityManager-Methode?","Du rufst eine benannte Query auf — create + [Typ]***. Nicht verwechseln mit createQuery()!","→ <span class='hint-answer'>createNamedQuery</span>(\"Student.findAll\") — typsicher mit createNamedQuery(name, Student.class) → TypedQuery&lt;Student&gt;."],
       memo:"<strong>@NamedQuery</strong> wird beim Appstart validiert — ein häufig unterschätzter Vorteil gegenüber dynamischen Queries.",
       explanation:"createNamedQuery() ruft eine vordefinierte @NamedQuery auf — typsicherer als JPQL-Strings inline schreiben.",
       doc: { title:'createNamedQuery()', concept:'Ruft eine vordefinierte <code>@NamedQuery</code> auf. Typsicherer als JPQL-Strings direkt im Code schreiben.', when:'Überall wo @NamedQuery definiert wurde.', code:'em.create<span style=\'color:#ffa657\'>[???]</span>(<span style=\'color:#a5d6ff\'>"Student.findByName"</span>)\n  .setParameter(<span style=\'color:#a5d6ff\'>"n"</span>, <span style=\'color:#a5d6ff\'>"Max"</span>)\n  .getResultList();' } },
@@ -3152,13 +3154,13 @@ const MODULES = [
       doc: { title:'setParameter()', concept:'Bindet einen <em>Named-Parameter</em> (:name) oder positional Parameter (?1) in der JPQL-Query. Verhindert SQL-Injection.', when:'Immer wenn Query-Parameter aus User-Input kommen.', code:'em.createQuery(\n  <span style=\'color:#a5d6ff\'>"SELECT s FROM Student s WHERE s.name = :name"</span>\n)\n.set<span style=\'color:#ffa657\'>[???]</span>(<span style=\'color:#a5d6ff\'>"name"</span>, userInput)\n.getResultList();' } },
     { id:"6-4",  tier:1, title:"Query-Ergebnis als Liste",
       html:`<span class="tp">List</span>&lt;<span class="tp">Student</span>&gt; list = query.get<input class="code-input" data-ans="ResultList" style="width:96px" placeholder="???"> ();`,
-      hint:["Deine Query gibt mehrere Objekte zurück. Mit welcher Methode holst du sie als Java-List?","get + Result + List — Ergebnisliste holen.","→ <span class='hint-answer'>getResultList</span>() — gibt leere List wenn nichts gefunden (kein null!). Gegensatz: getSingleResult() für genau ein Ergebnis."],
+      hint:["Deine Query gibt mehrere Objekte zurück. Mit welcher Methode holst du sie als Java-List?","get + Res***List — holt die Ergebnisse als Java-Liste.","→ <span class='hint-answer'>getResultList</span>() — gibt leere List wenn nichts gefunden (kein null!). Gegensatz: getSingleResult() für genau ein Ergebnis."],
       memo:"<strong>setParameter()</strong> mit :namedParam ist sicherer als ?1 — Code ist lesbarer und Reihenfolge egal.",
       explanation:"getResultList() gibt alle Treffer als List zurück — leere Liste wenn nichts gefunden (kein null, kein Exception).",
       doc: { title:'getResultList()', concept:'Führt die Query aus und gibt alle Treffer als <code>List</code> zurück. Gibt immer eine Liste zurück — <em>leer</em> wenn nichts gefunden, nie null.', when:'Wenn 0 bis N Ergebnisse erwartet werden.', code:"<span class='t'>List</span>&lt;<span class='t'>Student</span>&gt; list = query.get<span style='color:#ffa657'>[???]</span>();\n<span class='c'>// leere Liste: new ArrayList&lt;&gt;()</span>\n<span class='c'>// nie: null</span>\n<span class='c'>// vs. getSingleResult() → wirft Exception</span>" } },
     { id:"6-5",  tier:2, title:"JPQL: Beziehung traversieren",
       html:`<span class="cmt">// Flüge mit Flugzeugen &gt; 200 Sitze</span><br>em.createQuery(<br>  <span class="str">"SELECT f FROM Flight f WHERE f.</span><input class="code-input" data-ans="plane" style="width:64px" placeholder="???"><span class="str">.seats &gt; 200"</span>);`,
-      hint:["In JPQL navigiert man über Java-Feldnamen, nicht über SQL-Joins. Flight hat ein Feld 'plane' vom Typ Plane.","Objekt-Navigation: flight.plane.seats — wie in Java!","→ f.<span class='hint-answer'>plane</span>.seats — JPQL nutzt Entity-Attribute, nicht Tabellenspalten."],
+      hint:["In JPQL navigiert man über Java-Feldnamen, nicht über SQL-Joins. Flight hat ein Feld 'plane' vom Typ Plane.","Objekt-Navigation: flight.[???].seats — du navigierst über den Java-Feldnamen.","→ f.<span class='hint-answer'>plane</span>.seats — JPQL nutzt Entity-Attribute, nicht Tabellenspalten."],
       memo:"<strong>JPQL-Navigation</strong> = Beziehungen mit Punkt traversieren: f.plane.seats statt SQL JOIN.",
       explanation:"JPQL erlaubt Objekt-Navigation über Punkt-Notation: f.plane.seats traversiert die @ManyToOne-Beziehung Flight→Plane und greift auf das seats-Feld zu. Im Test: 'Flüge mit Flugzeugen die mehr als 200 Sitzplätze aufweisen.'",
       doc: { title:'JPQL Pfad-Navigation', concept:'In JPQL können <em>Beziehungen per Punkt-Notation</em> traversiert werden — wie in Java. f.plane.seats navigiert von Flight über die plane-Beziehung zu Plane.seats.', when:'Immer wenn Felder über Beziehungen hinweg gefiltert oder selektiert werden.', code:"<span class='k'>SELECT</span> f <span class='k'>FROM</span> <span class='t'>Flight</span> f\n<span class='k'>WHERE</span> f.<span style='color:#ffa657'>[???]</span>.seats > 200\n<span class='c'>// → Impliziter JOIN auf Plane!</span>" } },
@@ -3176,19 +3178,19 @@ const MODULES = [
       doc: { title:'Named Parameter', concept:'<em>Named Parameters</em> (:name) in JPQL werden mit <code>setParameter("name", value)</code> gebunden. Sicher vor SQL-Injection und gut lesbar.', when:'Für alle parametrisierten JPQL-Queries — immer Named Parameters statt String-Konkatenation!', code:"<span class='k'>WHERE</span> b.firstName = :<span style='color:#ffa657'>[???]</span>\n  <span class='k'>AND</span> b.lastName = :lastName\n.setParameter(<span class='str'>\"firstName\"</span>, <span class='str'>\"Alice\"</span>)\n.setParameter(<span class='str'>\"lastName\"</span>, <span class='str'>\"Smith\"</span>)" } },
     { id:"6-8",  tier:2, title:"JPQL: Positional Parameter",
       html:`<span class="cmt">// Planes nach Typ suchen</span><br>em.createQuery(<br>  <span class="str">"SELECT p FROM Plane p WHERE p.pType = ?</span><input class="code-input" data-ans="1" style="width:30px" placeholder="?"><span class="str">"</span>)<br>.setParameter(<span class="pn">1</span>, <span class="str">"Boeing 777"</span>);`,
-      hint:["Positional Parameters werden mit ?N in der Query referenziert, wobei N die Position ist.","Der erste Parameter hat die Nummer 1, nicht 0. Also ?1, ?2, ?3 usw.","→ ?<span class='hint-answer'>1</span> — Positional Parameter. setParameter(1, value) bindet den Wert."],
+      hint:["Positional Parameters werden mit ?N in der Query referenziert, wobei N die Position ist.","Positional Parameters beginnen NICHT bei 0 — sie starten mit dem kleinstmöglichen positiven Integer.","→ ?<span class='hint-answer'>1</span> — Positional Parameter. setParameter(1, value) bindet den Wert."],
       memo:"<strong>Positional Parameter</strong> = ?1, ?2 in JPQL + setParameter(1, value). Alternative zu Named Parameters.",
       explanation:"Positional Parameters (?1) sind eine Alternative zu Named Parameters. Sie werden mit setParameter(1, \"Boeing 777\") gebunden. Zählung beginnt bei 1, nicht bei 0.",
       doc: { title:'Positional Parameter', concept:'<em>Positional Parameters</em> (?1, ?2) in JPQL werden mit <code>setParameter(1, value)</code> gebunden. Alternative zu Named Parameters — weniger lesbar, aber kürzer.', when:'In NamedQueries wenn Kürze gewünscht ist. Named Parameters sind meist besser lesbar.', code:"<span class='k'>WHERE</span> p.pType = ?<span style='color:#ffa657'>[?]</span>\n.setParameter(<span class='pn'>1</span>, <span class='str'>\"Boeing 777\"</span>)\n<span class='c'>// Zählung ab 1, nicht ab 0!</span>" } },
     { id:"6-9",  tier:2, title:"NamedQuery auf Entity definieren",
       html:`<span class="ann">@Entity</span><br><span class="ann">@NamedQuery</span>(<br>  name = <span class="str">"Flight.lessThanTwoBookings"</span>,<br>  query = <span class="str">"SELECT f FROM Flight f WHERE SIZE(f.</span><input class="code-input" data-ans="bookings" style="width:90px" placeholder="???"><span class="str">) &lt; 2"</span>)<br><span class="kw">public class</span> <span class="tp">Flight</span> { ... }`,
-      hint:["Die NamedQuery soll Flüge mit weniger als 2 Buchungen finden. SIZE() zählt Collection-Elemente.","Flight hat eine Collection namens 'bookings' — SIZE() zählt deren Elemente.","→ SIZE(f.<span class='hint-answer'>bookings</span>) — zählt die Anzahl der Bookings. &lt; 2 bedeutet: 0 oder 1 Buchung."],
+      hint:["Die NamedQuery soll Flüge mit weniger als 2 Buchungen finden. SIZE() zählt Collection-Elemente.","Flight hat eine Collection für seine Buchungen — SIZE() zählt deren Elemente. Wie heißt das Java-Feld?","→ SIZE(f.<span class='hint-answer'>bookings</span>) — zählt die Anzahl der Bookings. &lt; 2 bedeutet: 0 oder 1 Buchung."],
       memo:"<strong>@NamedQuery</strong> = vordefinierte JPQL auf der Entity-Klasse. SIZE() für Collection-Größe in JPQL.",
       explanation:"@NamedQuery wird auf der Entity-Klasse definiert und mit em.createNamedQuery() aufgerufen. SIZE(f.bookings) zählt die Elemente der bookings-Collection. Im Test: 'Flight.lessThanTwoBookings — Flüge mit weniger als 2 Buchungen.'",
       doc: { title:'@NamedQuery + SIZE()', concept:'<em>@NamedQuery</em> definiert eine vorkompilierte JPQL auf der Entity-Klasse. <code>SIZE(collection)</code> zählt Collection-Elemente in JPQL.', when:'Für häufig verwendete Queries — werden beim Deployment validiert (Tippfehler fallen früh auf).', code:"<span class='a'>@NamedQuery</span>(\n  name=<span class='str'>\"Flight.lessThanTwoBookings\"</span>,\n  query=<span class='str'>\"SELECT f FROM Flight f\n    WHERE SIZE(f.<span style='color:#ffa657'>[???]</span>) < 2\"</span>)" } },
     { id:"6-10", tier:2, title:"NamedQuery aufrufen",
       html:`<span class="cmt">// Vordefinierte Query aufrufen</span><br><span class="tp">TypedQuery</span>&lt;<span class="tp">Flight</span>&gt; q = em.create<input class="code-input" data-ans="NamedQuery" style="width:120px" placeholder="???">(  <span class="str">"Flight.lessThanTwoBookings"</span>, <span class="tp">Flight</span>.class);<br>List&lt;<span class="tp">Flight</span>&gt; result = q.getResultList();`,
-      hint:["NamedQueries werden NICHT mit createQuery aufgerufen — es gibt eine eigene Methode.","Die Methode heißt create + [Typ der Query] — eine benannte (named) Query.","→ em.create<span class='hint-answer'>NamedQuery</span>() — ruft eine @NamedQuery per Name auf."],
+      hint:["NamedQueries werden NICHT mit createQuery aufgerufen — es gibt eine eigene Methode.","Die Methode heißt create + [QueryTyp] — für vordefinierte, benannte Queries. Nicht createQuery()!","→ em.create<span class='hint-answer'>NamedQuery</span>() — ruft eine @NamedQuery per Name auf."],
       memo:"<strong>createNamedQuery(name, Class)</strong> = ruft @NamedQuery per Name auf. Wird beim Deployment vorab validiert.",
       explanation:"em.createNamedQuery(\"Flight.lessThanTwoBookings\", Flight.class) ruft die auf der Entity definierte @NamedQuery auf und gibt eine TypedQuery zurück.",
       doc: { title:'createNamedQuery()', concept:'Ruft eine <em>@NamedQuery</em> per Name auf und gibt eine TypedQuery zurück. NamedQueries werden beim Deployment <em>vorab validiert</em>.', when:'Zum Aufrufen vordefinierter Queries. Sicherer als createQuery() weil Syntax-Fehler früh erkannt werden.', code:"em.create<span style='color:#ffa657'>[???]</span>(\n  <span class='str'>\"Flight.lessThanTwoBookings\"</span>,\n  <span class='t'>Flight</span>.class)\n.getResultList();" } },
@@ -3196,28 +3198,28 @@ const MODULES = [
   { id:7, tasks:[
     { id:"7-1",  tier:1, title:"JOIN FETCH — N+1 vermeiden",
       html:`<span class="kw">SELECT</span> s <span class="kw">FROM</span> <span class="tp">Student</span> s <input class="code-input" data-ans="JOIN FETCH" style="width:108px" placeholder="???"> s.grades`,
-      hint:["Du lädst 100 Studenten — jeder hat Noten. JPA macht 1 + 100 = 101 separate Queries. Wie löst du das N+1-Problem in einer einzigen JPQL-Query?","Du verbindest (JOIN) und lädst gleichzeitig (FETCH) — JOIN ***.","→ <span class='hint-answer'>JOIN FETCH</span> s.noten — lädt Studenten UND Noten in einem Query. Bei *ToMany: DISTINCT nötig um Duplikate zu vermeiden."],
+      hint:["Du lädst 100 Studenten — jeder hat Noten. JPA macht 1 + 100 = 101 separate Queries. Wie löst du das N+1-Problem in einer einzigen JPQL-Query?","Du verbindest (JOIN) und lädst gleichzeitig — JOIN + ein Schlüsselwort das 'holen' bedeutet: F***CH.","→ <span class='hint-answer'>JOIN FETCH</span> s.noten — lädt Studenten UND Noten in einem Query. Bei *ToMany: DISTINCT nötig um Duplikate zu vermeiden."],
       memo:"<strong>JOIN FETCH</strong> löst das N+1-Problem — lädt Entity + Collection in einem einzigen SQL statt 1+N separaten Queries.",
       explanation:"JOIN FETCH lädt die assoziierte Collection in einem einzigen SQL-Statement statt N+1 separaten Queries. Ohne JOIN FETCH: 1 Query für 100 Students + 100 Queries für je ihre Grades = 101 SQLs!",
       doc: { title:'JOIN FETCH', concept:'Löst das <em>N+1-Query-Problem</em>: Lädt Entity + alle assoziierten Objekte in einem SQL-JOIN statt 1+N separaten Queries.', when:'Wenn LAZY-assoziierte Collections sicher innerhalb der TX gebraucht werden.', code:'em.createQuery(\n  <span style="color:#a5d6ff">"SELECT s FROM Student s\n   <span style="color:#ffa657">[???]</span> s.grades"</span>)\n.getResultList();\n<span class="c">// 1 SQL statt 1+N!</span>' } },
 
     { id:"7-2",  tier:1, title:"TypedQuery verwenden",
       html:`<input class="code-input" data-ans="TypedQuery" style="width:102px" placeholder="???">&lt;<span class="tp">Student</span>&gt; q = em.createQuery(<span class="str">"SELECT s FROM Student s"</span>, <span class="tp">Student</span>.class);`,
-      hint:["em.createQuery() gibt ein rohes Query-Objekt ohne Compile-Zeit-Typ zurück. Welches Interface gibt dir Typsicherheit?","Typed + Query — typsichere Query.","→ <span class='hint-answer'>TypedQuery</span>&lt;Student&gt; — kein Cast nötig! createQuery(jpql, Student.class) gibt TypedQuery&lt;Student&gt; zurück."],
+      hint:["em.createQuery() gibt ein rohes Query-Objekt ohne Compile-Zeit-Typ zurück. Welches Interface gibt dir Typsicherheit?","Typ***Query — ein typsicheres Interface statt dem rohen Query-Objekt.","→ <span class='hint-answer'>TypedQuery</span>&lt;Student&gt; — kein Cast nötig! createQuery(jpql, Student.class) gibt TypedQuery&lt;Student&gt; zurück."],
       memo:"<strong>JOIN FETCH</strong> löst das N+1-Problem. Immer dann verwenden wenn du sicher weißt dass die Assoziation gebraucht wird.",
       explanation:"TypedQuery<T> ist typsicher — kein Cast nötig, IDE-Support, Compile-Zeit-Fehler. Query (untyped) liefert immer Object und erfordert unsichere Casts.",
       doc: { title:'TypedQuery<T>', concept:'Typsichere Query-Variante — das Ergebnis wird direkt als <code>T</code> geliefert ohne Cast. Vermeidet ClassCastException zur Laufzeit.', when:'Immer wenn möglich statt roher Query — sicherer, besser lesbar.', code:'<span style="color:#ffa657">[???]</span>&lt;<span class="tp">Student</span>&gt; q =\n  em.createQuery(\n    <span style="color:#a5d6ff">"SELECT s FROM Student s"</span>,\n    <span class="tp">Student</span>.class);\n<span class="c">// kein (Student) Cast nötig!</span>' } },
 
-    { id:"7-3",  tier:1, title:"Ergebnismenge begrenzen (Paginierung)",
+    { id:"7-3",  tier:2, title:"Ergebnismenge begrenzen (Paginierung)",
       html:`em.createQuery(<span class="str">"SELECT s FROM Student s"</span>)\n   .setFirstResult(<span class="pn">0</span>).<input class="code-input" data-ans="setMaxResults" style="width:122px" placeholder="???">(10);`,
-      hint:["Du willst nur die ersten 10 Ergebnisse einer Query — wie begrenzt du die Ergebnismenge für Paginierung?","set + Max + Results — Maximum der Ergebnisse setzen.","→ <span class='hint-answer'>setMaxResults</span>(10) — zusammen mit setFirstResult(offset) für Paginierung. Übersetzt zu LIMIT in SQL."],
+      hint:["Du willst nur die ersten 10 Ergebnisse einer Query — wie begrenzt du die Ergebnismenge für Paginierung?","set + Max + Res***s — begrenzt die Ergebnismenge auf eine maximale Anzahl.","→ <span class='hint-answer'>setMaxResults</span>(10) — zusammen mit setFirstResult(offset) für Paginierung. Übersetzt zu LIMIT in SQL."],
       memo:"<strong>TypedQuery&lt;T&gt;</strong> verhindert ClassCastException zur Laufzeit — immer bevorzugen wenn der Typ bekannt ist.",
       explanation:"setFirstResult(offset) + setMaxResults(limit) ermöglichen Paginierung — JPA übersetzt das DB-spezifisch (LIMIT/OFFSET bei PostgreSQL, ROWNUM bei Oracle).",
       doc: { title:'setMaxResults / setFirstResult', concept:'Paginierung: <code>setFirstResult</code> = Offset (0-basiert), <code>setMaxResults</code> = maximale Anzahl Ergebnisse. DB-agnostisch.', when:'Für alle listenartigen REST-Endpoints, Tabellen mit vielen Einträgen.', code:'em.createQuery(...)\n   .setFirstResult(page * size)\n   .<span style="color:#ffa657">[???]</span>(size)\n   .getResultList();\n<span class="c">// Seite 2, 10 pro Seite: offset=10</span>' } },
 
     { id:"7-4",  tier:2, title:"Aggregat: Anzahl zählen",
       html:`<span class="kw">SELECT</span> <input class="code-input" data-ans="COUNT" style="width:60px" placeholder="???">(s) <span class="kw">FROM</span> <span class="tp">Student</span> s <span class="kw">WHERE</span> s.active = <span class="kw">true</span>`,
-      hint:["Du willst wissen wie viele Studenten in der DB sind — welche JPQL-Aggregatfunktion zählt Zeilen?","Zählen — COUNT (aus SQL bekannt, in JPQL identisch).","→ <span class='hint-answer'>COUNT</span>(s) — gibt Long zurück. Typisch mit TypedQuery&lt;Long&gt; und getSingleResult()."],
+      hint:["Du willst wissen wie viele Studenten in der DB sind — welche JPQL-Aggregatfunktion zählt Zeilen?","Zählen — COU*** (aus SQL bekannt, in JPQL identisch).","→ <span class='hint-answer'>COUNT</span>(s) — gibt Long zurück. Typisch mit TypedQuery&lt;Long&gt; und getSingleResult()."],
       memo:"<strong>setMaxResults()</strong> + <strong>setFirstResult()</strong> = Paginierung in JPA. DB-unabhängig — JPA übersetzt zu LIMIT/OFFSET.",
       explanation:"JPQL-Aggregate wie COUNT(e), SUM(e.field), AVG(e.field), MIN/MAX arbeiten mit Objekten/Feldern — nicht mit Spalten. Ergebnis per getSingleResult() holen (gibt Long zurück).",
       doc: { title:'COUNT / SUM / AVG / MIN / MAX', concept:'JPQL-Aggregatfunktionen arbeiten auf <em>Feldern der Entity</em>, nicht auf Spalten. Ergebnis per <code>getSingleResult()</code>.', when:'Für Statistiken, Reports, Validierungen.', code:'<span class="kw">SELECT</span> <span style="color:#ffa657">[???]</span>(s)\n<span class="kw">FROM</span> <span class="tp">Student</span> s\n<span class="kw">WHERE</span> s.active = <span class="k">true</span>\n<span class="c">// Long count = (Long) q.getSingleResult()</span>' } },
@@ -3245,7 +3247,7 @@ const MODULES = [
 
     { id:"7-8",  tier:2, title:"NamedQuery: Positional Parameter",
       html:`<span class="ann">@NamedQuery</span>(name = <span class="str">"Plane.findByPType"</span>,<br>  query = <span class="str">"SELECT p FROM Plane p WHERE p.pType = ?</span><input class="code-input" data-ans="1" style="width:30px" placeholder="?"><span class="str">"</span>)`,
-      hint:["In NamedQueries können auch Positional Parameters verwendet werden — ?N.","Positional Parameters beginnen bei ?1, nicht bei ?0.","→ ?<span class='hint-answer'>1</span> — Positional Parameter in der NamedQuery. Binding: setParameter(1, value)."],
+      hint:["In NamedQueries können auch Positional Parameters verwendet werden — ?N.","Positional Parameters beginnen nicht bei 0 — der kleinstmögliche positive Integer.","→ ?<span class='hint-answer'>1</span> — Positional Parameter in der NamedQuery. Binding: setParameter(1, value)."],
       memo:"<strong>?1 in NamedQuery</strong> = Positional Parameter. Wird beim Aufruf mit setParameter(1, value) gebunden.",
       explanation:"NamedQueries unterstützen sowohl Named (:name) als auch Positional (?1) Parameters. Im Test: 'Plane.findByPType — Plane-Entitäten die den angegebenen pType aufweisen, mittels Positional Parameter.'",
       doc: { title:'Positional Parameter in NamedQuery', concept:'Auch <em>NamedQueries</em> können Positional Parameters (?1, ?2) verwenden. Binding erfolgt beim Aufruf mit <code>setParameter(1, value)</code>.', when:'Wenn eine NamedQuery kurze, nummerierte Parameter haben soll.', code:"<span class='a'>@NamedQuery</span>(\n  name=<span class='str'>\"Plane.findByPType\"</span>,\n  query=<span class='str'>\"SELECT p FROM Plane p\n    WHERE p.pType = ?<span style='color:#ffa657'>[?]</span>\"</span>)" } },
@@ -3257,9 +3259,9 @@ const MODULES = [
       explanation:"In JPQL steht nach FROM der Java-Klassenname der Entity (Steward), nicht der SQL-Tabellenname. Dies ist ein fundamentaler Unterschied zu SQL. Im Test: 'Selektieren Sie alle Steward-Entitäten.'",
       doc: { title:'JPQL Entity-Name', concept:'In JPQL steht nach FROM der <em>Java-Klassenname</em> der Entity, nicht der SQL-Tabellenname. Fundamentaler Unterschied zu SQL.', when:'In jeder JPQL-Query. Häufiger Fehler: Tabellennamen statt Klassennamen verwenden.', code:"<span class='k'>SELECT</span> s <span class='k'>FROM</span> <span style='color:#ffa657'>[???]</span> s\n<span class='c'>// Entity-Klassenname, nicht Tabelle!</span>\n<span class='c'>// Steward (nicht stewards)</span>" } },
 
-    { id:"7-10", tier:3, title:"Genau ein Ergebnis erwarten",
+    { id:"7-10", tier:2, title:"Genau ein Ergebnis erwarten",
       html:`<span class="tp">Long</span> count = (<span class="tp">Long</span>) em.createQuery(<span class="str">"SELECT COUNT(s) FROM Student s"</span>).<input class="code-input" data-ans="getSingleResult" style="width:132px" placeholder="???">();`,
-      hint:["Deine Query soll genau ein Objekt zurückgeben — welche Methode wirft eine Exception wenn es 0 oder mehr als 1 Ergebnis gibt?","get + Single + Result — holt genau ein einzelnes Ergebnis.","→ <span class='hint-answer'>getSingleResult</span>() — NoResultException wenn leer, NonUniqueResultException wenn mehr als eins. Für COUNT/MAX immer korrekt."],
+      hint:["Deine Query soll genau ein Objekt zurückgeben — welche Methode wirft eine Exception wenn es 0 oder mehr als 1 Ergebnis gibt?","get + Sin***Result — holt genau ein einzelnes Ergebnis. Wirft Exception bei 0 oder >1 Treffern.","→ <span class='hint-answer'>getSingleResult</span>() — NoResultException wenn leer, NonUniqueResultException wenn mehr als eins. Für COUNT/MAX immer korrekt."],
       memo:"<strong>SELECT NEW</strong> erzeugt DTOs direkt in JPQL — spart den Overhead vollständig geladener Entities bei read-only Abfragen.",
       explanation:"getSingleResult() wirft eine Exception wenn kein Ergebnis oder mehr als eines gefunden wird: NoResultException (0 Treffer) bzw. NonUniqueResultException (>1 Treffer). Nur für Abfragen verwenden, die garantiert genau 1 Ergebnis liefern — z.B. COUNT, MAX, oder PK-Lookup.",
       doc: { title:'getSingleResult()', concept:'Gibt genau <em>ein</em> Ergebnis zurück. Wirft <code>NoResultException</code> bei 0 Treffern und <code>NonUniqueResultException</code> bei >1 Treffern. Für unsichere Abfragen besser <code>getResultList()</code> + isEmpty()-Check verwenden.', when:'Für COUNT, MAX/MIN-Aggregate. Bei User-Lookups besser getResultList() + isEmpty()-Check.', code:'<span class="tp">Long</span> count =\n  (<span class="tp">Long</span>) em.createQuery(\n    <span style="color:#a5d6ff">"SELECT COUNT(s)\n     FROM Student s"</span>\n  ).<span style="color:#ffa657">[???]</span>();\n<span class="c">// 0 Treffer → NoResultException</span>\n<span class="c">>1 Treffer → NonUniqueResultException</span>' } },
@@ -3268,7 +3270,7 @@ const MODULES = [
   { id:8, tasks:[
     { id:"8-1",  tier:1, title:"Persistence-Unit konfigurieren",
       html:`&lt;<input class="code-input" data-ans="persistence-unit" style="width:138px" placeholder="???"> name=<span class="str">"myPU"</span> transaction-type=<span class="str">"RESOURCE_LOCAL"</span>&gt;`,
-      hint:["In persistence.xml definierst du den Datenbankverbindungsblock. Wie heißt das XML-Element das alles konfiguriert?","persistence + Bindestrich + unit — das zentrale Konfig-Element.","→ <span class='hint-answer'>persistence-unit</span> name=\"myPU\" — enthält DataSource, Entities, Properties. In Quarkus durch application.properties ersetzt."],
+      hint:["In persistence.xml definierst du den Datenbankverbindungsblock. Wie heißt das XML-Element das alles konfiguriert?","pers***-unit — das zentrale Konfig-Element in der XML.","→ <span class='hint-answer'>persistence-unit</span> name=\"myPU\" — enthält DataSource, Entities, Properties. In Quarkus durch application.properties ersetzt."],
       memo:"<strong>getSingleResult()</strong> wirft Exceptions — nur verwenden wenn genau 1 Ergebnis garantiert ist (z.B. nach Unique Constraint).",
       explanation:"Die persistence.xml definiert die <strong>Persistence Unit</strong> (nicht den Persistence Context!). Bei Quarkus ersetzt application.properties die persistence.xml. Bei SE-Applikationen (ohne Container) ist RESOURCE_LOCAL korrekt — JTA nur mit Container (WildFly, GlassFish).",
       doc: { title:'persistence-unit', concept:'Konfigurationseinheit in der <em>persistence.xml</em> — definiert welche Entities, welche DataSource und welche Einstellungen verwendet werden. <strong>Achtung:</strong> <em>Persistence Unit</em> ≠ <em>Persistence Context</em>! Die Unit ist statische Konfiguration; der Context ist die Laufzeitinstanz des EntityManagers. Bei Quarkus ersetzt application.properties die persistence.xml.', when:'Für jede JPA-Applikation außerhalb von Quarkus. Quarkus: application.properties verwenden.', code:'&lt;<span style="color:#ffa657">[???]</span>\n  name="myPU"\n  transaction-type="RESOURCE_LOCAL"&gt;\n  &lt;class&gt;at.htl.Student&lt;/class&gt;\n&lt;/persistence-unit&gt;' } },
@@ -3289,21 +3291,21 @@ const MODULES = [
 
     { id:"8-4",  tier:1, title:"PrePersist: vor dem Insert",
       html:`<span class="ann">@</span><input class="code-input" data-ans="PrePersist" style="width:94px" placeholder="???">\n<span class="kw">void</span> onInsert() { this.createdAt = <span class="tp">LocalDateTime</span>.now(); }`,
-      hint:["Bevor ein Objekt erstmals in die DB geschrieben wird soll automatisch das Erstelldatum gesetzt werden. Welche Lifecycle-Annotation?","Pre (vorher) + Persist — vor dem ersten Speichern.","→ <span class='hint-answer'>@PrePersist</span> — Methode wird VOR dem ersten INSERT aufgerufen. Ideal für automatisches createdAt-Setzen."],
+      hint:["Bevor ein Objekt erstmals in die DB geschrieben wird soll automatisch das Erstelldatum gesetzt werden. Welche Lifecycle-Annotation?","Pre (vorher) + Per***st — Lifecycle-Callback vor dem ersten INSERT.","→ <span class='hint-answer'>@PrePersist</span> — Methode wird VOR dem ersten INSERT aufgerufen. Ideal für automatisches createdAt-Setzen."],
       memo:"<strong>log.sql=true</strong> ist das wichtigste Debug-Tool bei JPA — damit siehst du N+1-Probleme und ineffiziente Queries sofort.",
       explanation:"@PrePersist wird direkt vor dem INSERT aufgerufen — ideal für automatische Timestamps, ID-Generierung oder Validierung. Kein Rückgabewert, kein Parameter erlaubt.",
       doc: { title:'@PrePersist', concept:'Lifecycle-Callback: wird aufgerufen <em>bevor</em> <code>persist()</code> ein INSERT ausführt. Ideal für automatische createdAt-Timestamps.', when:'Für automatische Audit-Felder: createdAt, createdBy, UUID-Generierung.', code:'<span style="color:#ffa657">@[???]</span>\n<span class="kw">void</span> onInsert() {\n  this.createdAt =\n    <span class="tp">LocalDateTime</span>.now();\n}\n<span class="c">// kein Parameter, kein return!</span>' } },
 
     { id:"8-5",  tier:2, title:"PreUpdate: vor dem Update",
       html:`<span class="ann">@</span><input class="code-input" data-ans="PreUpdate" style="width:88px" placeholder="???">\n<span class="kw">void</span> onUpdate() { this.updatedAt = <span class="tp">LocalDateTime</span>.now(); }`,
-      hint:["Bei jedem UPDATE soll updatedAt automatisch auf now() gesetzt werden. Welche Lifecycle-Annotation?","Pre (vorher) + Update — vor jedem Speichern eines geänderten Objekts.","→ <span class='hint-answer'>@PreUpdate</span> — Methode wird VOR jedem UPDATE aufgerufen. Zusammen mit @PrePersist für vollständiges Audit-Tracking."],
+      hint:["Bei jedem UPDATE soll updatedAt automatisch auf now() gesetzt werden. Welche Lifecycle-Annotation?","Pre (vorher) + Upd***e — Lifecycle-Callback vor jedem UPDATE-Statement.","→ <span class='hint-answer'>@PreUpdate</span> — Methode wird VOR jedem UPDATE aufgerufen. Zusammen mit @PrePersist für vollständiges Audit-Tracking."],
       memo:"<strong>@PrePersist</strong> für Felder die nur beim ersten INSERT gesetzt werden — zusammen mit @PreUpdate für vollständiges Audit-Tracking.",
       explanation:"@PreUpdate: direkt vor jedem UPDATE-Statement. @PostLoad: nach dem Laden aus der DB. @PostPersist: nach dem INSERT. @PreRemove: vor dem DELETE. Alle sind optionale Methoden in der Entity-Klasse.",
       doc: { title:'@PreUpdate / @PostLoad', concept:'Entity Lifecycle Callbacks: <code>@PreUpdate</code> vor UPDATE, <code>@PostLoad</code> nach SELECT, <code>@PostPersist</code> nach INSERT, <code>@PreRemove</code> vor DELETE.', when:'Für updatedAt-Timestamps (@PreUpdate), berechnete Felder befüllen (@PostLoad), Audit-Log (@PostPersist).', code:'<span style="color:#ffa657">@[???]</span>   // vor UPDATE\n<span class="kw">void</span> onUpdate() {\n  this.updatedAt =\n    <span class="tp">LocalDateTime</span>.now();\n}' } },
 
     { id:"8-6",  tier:1, title:"Spaltenname überschreiben (@Column)",
       html:`<span class="cmt">// Java-Feld 'operator' → DB-Spalte 'flightoperator'</span><br><span class="ann">@Column</span>(name = <span class="str">"<input class="code-input" data-ans="flightoperator" style="width:130px" placeholder="???">"</span>)<br><span class="kw">private</span> <span class="tp">String</span> operator;`,
-      hint:["Das Java-Feld heißt 'operator', soll aber in einer anders benannten DB-Spalte gespeichert werden.","@Column(name=...) überschreibt den Standard-Spaltennamen. Laut Angabe: 'flightoperator'.","→ <span class='hint-answer'>flightoperator</span> — @Column(name=\"flightoperator\") mappt das Feld auf die gewünschte Spalte."],
+      hint:["Das Java-Feld heißt 'operator', soll aber in einer anders benannten DB-Spalte gespeichert werden.","@Column(name=...) überschreibt den Standard-Spaltennamen. Laut Angabe: 'flight***ator'.","→ <span class='hint-answer'>flightoperator</span> — @Column(name=\"flightoperator\") mappt das Feld auf die gewünschte Spalte."],
       memo:"<strong>@Column(name=...)</strong> = überschreibt den DB-Spaltennamen. Java-Feld und DB-Spalte müssen nicht gleich heißen.",
       explanation:"@Column(name=\"flightoperator\") speichert das Java-Feld 'operator' in der DB-Spalte 'flightoperator'. Im Test: 'Die Membervariable operator soll in der Datenbankspalte flightoperator gespeichert werden.'",
       doc: { title:'@Column(name=...)', concept:'Überschreibt den <em>DB-Spaltennamen</em> für ein Entity-Feld. Ohne @Column verwendet JPA den Java-Feldnamen als Spaltennamen.', when:'Wenn Java-Feldname und DB-Spaltenname abweichen sollen (z.B. reservierte Wörter, Naming-Konventionen).', code:"<span class='a'>@Column</span>(name=<span class='str'>\"<span style='color:#ffa657'>[???]</span>\"</span>)\n<span class='k'>private</span> <span class='t'>String</span> operator;\n<span class='c'>// DB-Spalte: flightoperator</span>\n<span class='c'>// Java-Feld: operator</span>" } },
@@ -3317,7 +3319,7 @@ const MODULES = [
 
     { id:"8-8",  tier:2, title:"persistence.xml: DB-Dialekt",
       html:`<span class="cmt">&lt;!-- PostgreSQL Dialekt --&gt;</span><br>&lt;property<br>  name=<span class="str">"hibernate.dialect"</span><br>  value=<span class="str">"org.hibernate.dialect.</span><input class="code-input" data-ans="PostgreSQLDialect" style="width:165px" placeholder="???"><span class="str">"</span>/&gt;`,
-      hint:["Hibernate muss wissen, welche Datenbank verwendet wird, um SQL korrekt zu generieren.","Für PostgreSQL: PostgreSQL + Dialect.","→ <span class='hint-answer'>PostgreSQLDialect</span> — optimiert SQL-Generierung für PostgreSQL-spezifische Features."],
+      hint:["Hibernate muss wissen, welche Datenbank verwendet wird, um SQL korrekt zu generieren.","Für PostgreSQL: Postgre***Dialect — DB-Name + Dialect.","→ <span class='hint-answer'>PostgreSQLDialect</span> — optimiert SQL-Generierung für PostgreSQL-spezifische Features."],
       memo:"<strong>Hibernate Dialect</strong> = sagt Hibernate welche DB-spezifische SQL-Syntax zu verwenden ist.",
       explanation:"Der Hibernate-Dialekt steuert die SQL-Generierung für eine spezifische Datenbank. PostgreSQLDialect für PostgreSQL. Steht in der persistence.xml des Test-Projekts.",
       doc: { title:'Hibernate Dialect', concept:'Steuert die <em>DB-spezifische SQL-Generierung</em>. Jede Datenbank hat eigene SQL-Syntax und Features.', when:'Immer in persistence.xml — muss zur verwendeten Datenbank passen.', code:"&lt;property\n  name=<span class='str'>\"hibernate.dialect\"</span>\n  value=<span class='str'>\"org.hibernate.dialect.<span style='color:#ffa657'>[???]</span>\"</span>/&gt;" } },
@@ -3585,7 +3587,7 @@ function validateModule(modId) {
     const banner = document.getElementById(`done-banner-${modId}`);
     if (banner) banner.classList.add('show');
     fireConfetti();
-    if (totalSolved === 80) setTimeout(showFinish, 1000);
+    if (totalSolved === TOTAL_TASKS) setTimeout(showFinish, 1000);
     else if (modId < 8) setTimeout(() => showModule(modId + 1), 1600);
   } else {
     SFX.err();
@@ -3668,6 +3670,47 @@ function resetModule(modId) {
   updateModProgress(modId);
   updateReviewPanel();
   toast(`Modul ${modId} zurückgesetzt`, 'info');
+}
+
+function resetAllModules() {
+  if (!confirm('Alle Module zurücksetzen? Gesamter Fortschritt geht verloren.')) return;
+  MODULES.forEach(mod => {
+    mod.tasks.forEach(task => {
+      delete state.solved[task.id];
+      delete state.attempts[task.id];
+      delete state.hintsUsed[task.id];
+      const card = document.getElementById(`card-${task.id}`);
+      if (!card) return;
+      card.classList.remove('solved','has-error');
+      card.querySelectorAll('.code-input').forEach(inp => {
+        inp.value = ''; inp.disabled = false;
+        inp.classList.remove('correct','wrong','ok');
+        inp.placeholder = '???';
+      });
+      const si = document.getElementById(`status-${task.id}`);
+      if (si) { si.textContent = '○'; si.className = 'task-status-icon'; }
+      const ep = document.getElementById(`expl-${task.id}`);
+      if (ep) ep.classList.remove('show');
+      const mp = document.getElementById(`memo-${task.id}`);
+      if (mp) mp.classList.remove('show');
+      const hp = document.getElementById(`hint-panel-${task.id}`);
+      if (hp) { hp.innerHTML = ''; hp.classList.remove('show'); }
+      const hb = document.getElementById(`hint-btn-${task.id}`);
+      if (hb) { hb.disabled = false; hb.classList.remove('used','hint-btn-l0','hint-btn-l1','hint-btn-l2'); hb.innerHTML = '💭 Konzept'; }
+      const rb = document.getElementById(`reveal-btn-${task.id}`);
+      if (rb) rb.classList.remove('show-reveal');
+      const ab = document.getElementById(`att-${task.id}`);
+      if (ab) { ab.style.display = 'none'; ab.className = 'attempt-badge'; ab.textContent = ''; }
+    });
+    updateNavDone(mod.id, false);
+    updateModProgress(mod.id);
+  });
+  state.score = 0; state.streak = 0; state.hintCount = 0;
+  save();
+  updateGlobalUI();
+  updateReviewPanel();
+  showModule(1);
+  toast('Alle Module zurückgesetzt', 'info');
 }
 
 // ══════════════════════════════════════════════════════════
@@ -3806,7 +3849,7 @@ function showXP(element) {
 // ══════════════════════════════════════════════════════════
 function fireConfetti() {
   const colors = ['#58a6ff','#3fb950','#e3b341','#d2a8ff','#ffa657','#79c0ff','#ff7b72'];
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < TOTAL_TASKS; i++) {
     const p = document.createElement('div');
     p.className = 'confetti-piece';
     p.style.cssText = `
@@ -3853,25 +3896,28 @@ function updateGlobalUI() {
   else sb.classList.remove('glow');
 
   document.getElementById('sb-solved').textContent = totalSolved;
+  const sbTotal = document.getElementById('sb-total');
+  if (sbTotal) sbTotal.textContent = TOTAL_TASKS;
   document.getElementById('sb-hints').textContent  = state.hintCount;
   document.getElementById('sb-time').textContent   = mins > 0 ? `${mins} min` : '< 1 min';
 }
 
 function updateModProgress(modId) {
   const mod = MODULES.find(m => m.id === modId);
+  const total = mod.tasks.length;
   const solved = mod.tasks.filter(t => state.solved[t.id]).length;
-  const pct = (solved / 10) * 100;
+  const pct = (solved / total) * 100;
 
   const mfill = document.getElementById(`mod-prog-${modId}`);
   const mtxt  = document.getElementById(`mod-prog-txt-${modId}`);
   if (mfill) mfill.style.width = pct + '%';
-  if (mtxt)  mtxt.textContent  = `${solved} / 10`;
+  if (mtxt)  mtxt.textContent  = `${solved} / ${total}`;
 
   // Sidebar mini progress
   const sfill = document.getElementById(`nav-prog-${modId}`);
   const scnt  = document.getElementById(`nav-cnt-${modId}`);
   if (sfill) sfill.style.width = pct + '%';
-  if (scnt)  scnt.textContent  = `${solved}/10`;
+  if (scnt)  scnt.textContent  = `${solved}/${total}`;
 
   // 10-dot sidebar visualization
   const dotsRow = document.getElementById(`nav-dots-${modId}`);
@@ -3886,9 +3932,9 @@ function updateModProgress(modId) {
   }
 
   const note = document.getElementById(`mod-score-${modId}`);
-  if (note) note.textContent = `${solved} / 10`;
+  if (note) note.textContent = `${solved} / ${total}`;
 
-  if (solved === 10) updateNavDone(modId, true);
+  if (solved === total) updateNavDone(modId, true);
 }
 
 function updateNavDone(modId, done = true) {
@@ -4241,7 +4287,7 @@ function buildMobileNav() {
   scroll.innerHTML = '';
   MODULES.forEach(mod => {
     const solved = mod.tasks.filter(t => state.solved[t.id]).length;
-    const isDone = solved === 10;
+    const isDone = solved === mod.tasks.length;
     const isActive = mod.id === state.currentModule;
     const mc = MOD_COLOR[mod.id] || '#58a6ff';
     const mcRgb = MOB_MC_RGB[mod.id] || '88,166,255';
