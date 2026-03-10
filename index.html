@@ -3422,9 +3422,14 @@ function renderAll() {
 
       // Attach input listeners
       card.querySelectorAll('.code-input').forEach(inp => {
-        // Enter / Tab → next unfilled input
+        // Enter / Tab → next unfilled input, Shift+Tab → previous input
         inp.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === 'Tab') {
+          if (e.key === 'Tab' && e.shiftKey) {
+            e.preventDefault();
+            const allInputs = [...document.getElementById(`tasks-${mod.id}`).querySelectorAll('.code-input:not(:disabled)')];
+            const i = allInputs.indexOf(inp);
+            if (i > 0) allInputs[i-1].focus();
+          } else if (e.key === 'Enter' || e.key === 'Tab') {
             e.preventDefault();
             const allInputs = [...document.getElementById(`tasks-${mod.id}`).querySelectorAll('.code-input:not(:disabled)')];
             const i = allInputs.indexOf(inp);
