@@ -2157,7 +2157,7 @@ body:has(.sidebar-collapsed) #app-body {
         <span class="nav-check" id="nav-check-3"></span>
       </div>
       <div class="nav-dots-row" id="nav-dots-3">
-        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
+        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
       </div>
     </div>
   </button>
@@ -2374,6 +2374,11 @@ body:has(.sidebar-collapsed) #app-body {
         <span class="lc-arrow">──→──</span>
         <span class="lc-op">flush()</span>
         <span class="lc-desc">→ SQL sofort ausführen</span>
+
+        <span class="lc-state">MANAGED</span>
+        <span class="lc-arrow">──→──</span>
+        <span class="lc-op">refresh()</span>
+        <span class="lc-desc">→ DB-Stand neu laden</span>
       </div>
     </div>
     <div class="mod-prog-row">
@@ -2995,6 +3000,12 @@ const MODULES = [
       memo:"<strong>DETACHED</strong> = nach detach(), clear() oder Session-Ende — Änderungen gehen verloren ohne merge().",
       explanation:"Nach em.detach() ist die Entity DETACHED — sie existiert noch in der DB, aber JPA trackt keine Änderungen mehr. merge() kann sie zurückbringen.",
       doc: { title:'Entity Lifecycle: DETACHED', concept:'Nach <code>detach()</code>, <code>clear()</code> oder Session-Ende ist die Entity <strong>DETACHED</strong> — sie existiert in der DB, aber Änderungen werden nicht mehr getrackt.', when:'Nach detach(), clear(), oder wenn der EntityManager geschlossen wird.', code:"em.detach(customer);\n<span class='c'>// Zustand: <span style='color:#ffa657'>[???]</span></span>\ncustomer.setName(<span class='str'>\"Neu\"</span>);\n<span class='c'>// → KEINE Auswirkung auf DB!</span>\n<span class='c'>// merge() nötig zum Zurückbringen</span>" } },
+    { id:"3-11", tier:1, title:"DB-Zustand neu laden (refresh)",
+      html:`<span class="cmt">// Lokale Änderungen verwerfen,</span><br><span class="cmt">// DB-Zustand neu laden:</span><br>em.<input class="code-input" data-ans="refresh" style="width:72px" placeholder="???">(student);`,
+      hint:["Du hast ein managed Objekt im Code verändert, willst aber den originalen DB-Zustand wiederherstellen — welche EM-Methode?","Das Gegenteil von 'schreiben zur DB' — du lädst NEU: ref***resh.","→ <span class='hint-answer'>refresh</span>(entity) — überschreibt alle lokalen Änderungen mit dem aktuellen DB-Stand. Entity bleibt MANAGED."],
+      memo:"<strong>refresh()</strong> = DB-Stand neu laden. Überschreibt lokale Änderungen. Entity bleibt MANAGED (Folie 8).",
+      explanation:"em.refresh() lädt den aktuellen DB-Zustand und überschreibt alle lokalen Änderungen am managed Objekt. Die Entity bleibt MANAGED. Nützlich wenn parallele Prozesse die DB verändert haben. Folie 8 listet die 4 Kern-Methoden: persist, merge, refresh, remove.",
+      doc: { title:'refresh()', concept:'Lädt den <em>aktuellen DB-Zustand</em> und überschreibt alle lokalen Änderungen am managed Objekt. Die Entity bleibt MANAGED.', when:'Wenn lokale Änderungen verworfen und der aktuelle DB-Stand geladen werden soll (Folie 8).', code:"student.setName(<span class='str'>\"Falsch\"</span>);\nem.<span style='color:#ffa657'>[???]</span>(student);\n<span class='c'>// student.getName() → DB-Wert!</span>\n<span class='c'>// Lokale Änderung verworfen</span>" } },
   ]},
   { id:4, tasks:[
     { id:"4-1",  tier:1, title:"One-To-Many Beziehung",
@@ -3331,6 +3342,7 @@ const MODULES = [
 // ══════════════════════════════════════════════════════════
 // MODULE COLORS
 // ══════════════════════════════════════════════════════════
+const TOTAL_TASKS = MODULES.reduce((s,m) => s + m.tasks.length, 0);
 const MOD_COLOR = {1:'#58a6ff',2:'#3fb950',3:'#e3b341',4:'#d2a8ff',5:'#ffa657',6:'#79c0ff',7:'#ff7b72',8:'#c9d1d9'};
 const MOD_RGB   = {1:'88,166,255',2:'63,185,80',3:'227,179,65',4:'210,168,255',5:'255,166,87',6:'121,192,255',7:'255,123,114',8:'201,209,217'};
 
@@ -3817,12 +3829,12 @@ function fireConfetti() {
 // ══════════════════════════════════════════════════════════
 function updateGlobalUI() {
   const totalSolved = Object.keys(state.solved).length;
-  const pct = Math.round((totalSolved / 80) * 100);
+  const pct = Math.round((totalSolved / TOTAL_TASKS) * 100);
   const mins = Math.floor((Date.now() - state.startTime) / 60000);
 
   document.getElementById('prog-fill').style.width = pct + '%';
   document.getElementById('prog-pct').textContent = pct + '%';
-  document.getElementById('prog-label').textContent = `${totalSolved}/80`;
+  document.getElementById('prog-label').textContent = `${totalSolved}/${TOTAL_TASKS}`;
   animateCount(document.getElementById('score-val'), state.score);
   document.getElementById('streak-val').textContent = state.streak;
 
