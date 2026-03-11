@@ -319,6 +319,26 @@ a { color: var(--accent); }
 }
 #sidebar::-webkit-scrollbar { width: 3px; }
 #sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+/* ── Resize handle for sidebar ──── */
+.sb-resize-handle {
+  position: absolute; top: 0; right: -3px; bottom: 0; width: 6px;
+  cursor: col-resize; z-index: 25;
+  background: transparent;
+  transition: background .15s;
+}
+.sb-resize-handle:hover, .sb-resize-handle.dragging {
+  background: rgba(88,166,255,.3);
+}
+/* ── Resize handle for cheatsheet ──── */
+.cs-resize-handle {
+  position: absolute; top: 0; left: -3px; bottom: 0; width: 6px;
+  cursor: col-resize; z-index: 301;
+  background: transparent;
+  transition: background .15s;
+}
+.cs-resize-handle:hover, .cs-resize-handle.dragging {
+  background: rgba(88,166,255,.3);
+}
 
 /* ── Collapsible Sidebar (Gaming HUD) ──── */
 .sb-toggle {
@@ -701,6 +721,23 @@ body:has(.sidebar-collapsed) #app-body {
   position: relative;
   transform-origin: center top;
 }
+/* ── Collapsible unsolved cards ──── */
+.task-card:not(.solved):not(.card-expanded) .code-block,
+.task-card:not(.solved):not(.card-expanded) .task-hint-panel,
+.task-card:not(.solved):not(.card-expanded) .task-memo,
+.task-card:not(.solved):not(.card-expanded) .task-explanation {
+  display: none;
+}
+.task-card:not(.solved):not(.card-expanded) .task-head {
+  border-bottom: none; cursor: pointer;
+}
+.task-card:not(.solved):not(.card-expanded) .task-head::after {
+  content: "\25BC"; font-size: .5rem; color: var(--text-dim); margin-left: auto; padding-left: .5rem;
+}
+.task-card.card-expanded:not(.solved) .task-head::after {
+  content: "\25B2"; font-size: .5rem; color: var(--text-dim); margin-left: auto; padding-left: .5rem;
+}
+.task-card:not(.solved) .task-head { cursor: pointer; }
 /* Hover lift — subtle, not distracting */
 .task-card:not(.solved):hover {
   transform: translateY(-1px);
@@ -749,6 +786,10 @@ body:has(.sidebar-collapsed) #app-body {
 .module-section.is-entering .task-card:nth-child(8)  { animation-delay:245ms; }
 .module-section.is-entering .task-card:nth-child(9)  { animation-delay:275ms; }
 .module-section.is-entering .task-card:nth-child(10) { animation-delay:305ms; }
+.module-section.is-entering .task-card:nth-child(11) { animation-delay:330ms; }
+.module-section.is-entering .task-card:nth-child(12) { animation-delay:355ms; }
+.module-section.is-entering .task-card:nth-child(13) { animation-delay:375ms; }
+.module-section.is-entering .task-card:nth-child(14) { animation-delay:395ms; }
 
 /* ── Solved ripple animation ─────── */
 @keyframes solveRipple {
@@ -2078,7 +2119,7 @@ body:has(.sidebar-collapsed) #app-body {
   </div>
 
   <div class="hdr-progress">
-    <span class="hdr-prog-label" id="prog-label">0 / 81</span>
+    <span class="hdr-prog-label" id="prog-label">0 / 89</span>
     <div class="hdr-prog-track">
       <div class="hdr-prog-fill" id="prog-fill"></div>
     </div>
@@ -2117,6 +2158,7 @@ body:has(.sidebar-collapsed) #app-body {
 
 <!-- SIDEBAR -->
 <nav id="sidebar">
+  <div class="sb-resize-handle" id="sb-resize"></div>
   <button class="sb-toggle" title="Sidebar ein-/ausklappen" aria-label="Sidebar toggle"></button>
   <div class="sb-label" style="padding-bottom:.35rem;border-bottom:1px solid var(--border);margin-bottom:.5rem;padding-left:1rem;padding-right:1rem;display:flex;justify-content:space-between;align-items:center">
     <span>Lehrplan</span>
@@ -2170,7 +2212,7 @@ body:has(.sidebar-collapsed) #app-body {
         <span class="nav-check" id="nav-check-4"></span>
       </div>
       <div class="nav-dots-row" id="nav-dots-4">
-        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
+        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
       </div>
     </div>
   </button>
@@ -2196,7 +2238,7 @@ body:has(.sidebar-collapsed) #app-body {
         <span class="nav-check" id="nav-check-6"></span>
       </div>
       <div class="nav-dots-row" id="nav-dots-6">
-        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
+        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
       </div>
     </div>
   </button>
@@ -2209,7 +2251,7 @@ body:has(.sidebar-collapsed) #app-body {
         <span class="nav-check" id="nav-check-7"></span>
       </div>
       <div class="nav-dots-row" id="nav-dots-7">
-        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
+        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
       </div>
     </div>
   </button>
@@ -2229,7 +2271,7 @@ body:has(.sidebar-collapsed) #app-body {
 
   <div class="sb-divider"></div>
   <div class="sb-stats" id="sb-stats">
-    <span style="color:var(--green)"><strong id="sb-solved">0</strong>/<span id="sb-total">81</span></span> gelöst ·
+    <span style="color:var(--green)"><strong id="sb-solved">0</strong>/<span id="sb-total">89</span></span> gelöst ·
     <span id="sb-hints" style="color:var(--yellow)">0</span> Hints ·
     <span id="sb-time" style="color:var(--text-muted)">0 min</span>
   </div>
@@ -2420,7 +2462,7 @@ body:has(.sidebar-collapsed) #app-body {
     </div>
     <div class="mod-prog-row">
       <div class="mod-prog-track"><div class="mod-prog-fill" id="mod-prog-4" style="background:var(--m4);width:0%"></div></div>
-      <span class="mod-prog-text" id="mod-prog-txt-4">0 / 10</span>
+      <span class="mod-prog-text" id="mod-prog-txt-4">0 / 12</span>
     </div>
     <div class="tasks-list" id="tasks-4"></div>
     <div class="mod-footer">
@@ -2429,7 +2471,7 @@ body:has(.sidebar-collapsed) #app-body {
       </button>
       <button class="btn-secondary" onclick="resetModule(4)">↺ Reset</button>
       <span class="kbd-hint"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> = validieren</span>
-      <span class="mod-score-note" id="mod-score-4">0 / 10</span>
+      <span class="mod-score-note" id="mod-score-4">0 / 12</span>
     </div>
   </section>
 
@@ -2479,7 +2521,7 @@ body:has(.sidebar-collapsed) #app-body {
     <div class="mod-header">
       <div class="mod-icon" style="background:rgba(121,192,255,.1);color:var(--m6)">🔍</div>
       <div class="mod-meta">
-        <div class="mod-eyebrow" style="color:var(--m6)">Modul 06 · Tier 2–3</div>
+        <div class="mod-eyebrow" style="color:var(--m6)">Modul 06 · Tier 1–2</div>
         <div class="mod-title">JPQL &amp; NamedQuery</div>
         <div class="mod-subtitle">Von <code style="color:var(--ann)">createQuery</code> zu <code style="color:var(--ann)">@NamedQuery</code> — Named &amp; Positional Parameters.</div>
       </div>
@@ -2509,7 +2551,7 @@ body:has(.sidebar-collapsed) #app-body {
 
     <div class="mod-prog-row">
       <div class="mod-prog-track"><div class="mod-prog-fill" id="mod-prog-6" style="background:var(--m6);width:0%"></div></div>
-      <span class="mod-prog-text" id="mod-prog-txt-6">0 / 10</span>
+      <span class="mod-prog-text" id="mod-prog-txt-6">0 / 12</span>
     </div>
     <div class="tasks-list" id="tasks-6"></div>
     <div class="mod-footer">
@@ -2518,7 +2560,7 @@ body:has(.sidebar-collapsed) #app-body {
       </button>
       <button class="btn-secondary" onclick="resetModule(6)">↺ Reset</button>
       <span class="kbd-hint"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> = validieren</span>
-      <span class="mod-score-note" id="mod-score-6">0 / 10</span>
+      <span class="mod-score-note" id="mod-score-6">0 / 12</span>
     </div>
   </section>
 
@@ -2549,7 +2591,7 @@ body:has(.sidebar-collapsed) #app-body {
     </div>
     <div class="mod-prog-row">
       <div class="mod-prog-track"><div class="mod-prog-fill" id="mod-prog-7" style="background:var(--m7);width:0%"></div></div>
-      <span class="mod-prog-text" id="mod-prog-txt-7">0 / 10</span>
+      <span class="mod-prog-text" id="mod-prog-txt-7">0 / 14</span>
     </div>
     <div class="tasks-list" id="tasks-7"></div>
     <div class="mod-footer">
@@ -2558,7 +2600,7 @@ body:has(.sidebar-collapsed) #app-body {
       </button>
       <button class="btn-secondary" onclick="resetModule(7)">↺ Reset</button>
       <span class="kbd-hint"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> = validieren</span>
-      <span class="mod-score-note" id="mod-score-7">0 / 10</span>
+      <span class="mod-score-note" id="mod-score-7">0 / 14</span>
     </div>
   </section>
 
@@ -2625,6 +2667,7 @@ body:has(.sidebar-collapsed) #app-body {
 
 <div id="cheatsheet-backdrop" onclick="closeCheatsheet()"></div>
 <div id="cheatsheet">
+  <div class="cs-resize-handle" id="cs-resize"></div>
   <div class="cs-header">
     <span class="cs-title">📋 JPA Cheat Sheet</span>
     <div style="display:flex;gap:.4rem;align-items:center">
@@ -2657,13 +2700,15 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="cs-row"><span class="cs-ann">em.find(C,id)</span><span class="cs-desc">Laden per PK</span></div>
       <div class="cs-row"><span class="cs-ann">em.merge(e)</span><span class="cs-desc">DETACHED → neue MANAGED Kopie</span></div>
       <div class="cs-row"><span class="cs-ann">em.remove(e)</span><span class="cs-desc">MANAGED → REMOVED</span></div>
+      <div class="cs-row"><span class="cs-ann">em.refresh(e)</span><span class="cs-desc">DB-Stand neu laden (überschreibt lokale Änderungen)</span></div>
       <div class="cs-row"><span class="cs-ann">em.flush()</span><span class="cs-desc">SQL sofort ausführen</span></div>
-      <div class="cs-row"><span class="cs-ann">em.clear()</span><span class="cs-desc">Context leeren</span></div>
+      <div class="cs-row"><span class="cs-ann">em.clear()</span><span class="cs-desc">Context leeren (alle → DETACHED)</span></div>
     </div>
     <div class="cs-group">
       <div class="cs-group-title">Relationships</div>
+      <div class="cs-row"><span class="cs-ann">@OneToOne</span><span class="cs-desc">1:1-Beziehung (Default: EAGER!)</span></div>
       <div class="cs-row"><span class="cs-ann">@OneToMany</span><span class="cs-desc">mappedBy, cascade, orphanRemoval</span></div>
-      <div class="cs-row"><span class="cs-ann">@ManyToOne</span><span class="cs-desc">fetch = LAZY (Standard empfohlen)</span></div>
+      <div class="cs-row"><span class="cs-ann">@ManyToOne</span><span class="cs-desc">FK-Seite, fetch = LAZY empfohlen</span></div>
       <div class="cs-row"><span class="cs-ann">@ManyToMany</span><span class="cs-desc">@JoinTable für Zwischentabelle</span></div>
       <div class="cs-row"><span class="cs-ann">@JoinColumn</span><span class="cs-desc">FK-Spaltenname definieren</span></div>
       <div class="cs-row"><span class="cs-ann">CascadeType</span><span class="cs-desc">ALL, PERSIST, MERGE, REMOVE, REFRESH</span></div>
@@ -2688,12 +2733,15 @@ body:has(.sidebar-collapsed) #app-body {
   
     <div class="cs-section">
       <div class="cs-section-title">JPQL Vertieft</div>
+      <div class="cs-row"><span>JOIN</span><code style="color:var(--m7);font-size:.68rem">SELECT f FROM Flight f JOIN f.plane p WHERE p.seats &gt; 200</code></div>
       <div class="cs-row"><span>JOIN FETCH</span><code style="color:var(--m7);font-size:.68rem">SELECT f FROM Flight f JOIN FETCH f.bookings</code></div>
+      <div class="cs-row"><span>LEFT JOIN FETCH</span><code style="color:var(--m7);font-size:.68rem">... LEFT JOIN FETCH p.behandlungen (auch leere Collections)</code></div>
+      <div class="cs-row"><span>DISTINCT</span><code style="color:var(--m7);font-size:.68rem">SELECT DISTINCT p FROM Patient p JOIN ... (Duplikate vermeiden)</code></div>
       <div class="cs-row"><span>TypedQuery</span><code style="color:var(--m7);font-size:.68rem">TypedQuery&lt;T&gt; q = em.createQuery("...", T.class)</code></div>
-      <div class="cs-row"><span>Path-Navigation</span><code style="color:var(--m7);font-size:.68rem">WHERE f.plane.seats &gt; 200</code></div>
+      <div class="cs-row"><span>Entity als Param</span><code style="color:var(--m7);font-size:.68rem">WHERE b.patient = :patient (ganze Entity, nicht ID!)</code></div>
+      <div class="cs-row"><span>SIZE() + Param</span><code style="color:var(--m7);font-size:.68rem">WHERE SIZE(v.patienten) &gt; :count</code></div>
       <div class="cs-row"><span>Aggregate</span><code style="color:var(--m7);font-size:.68rem">SELECT COUNT(s), AVG(s.grade) FROM Student s</code></div>
       <div class="cs-row"><span>GROUP BY</span><code style="color:var(--m7);font-size:.68rem">GROUP BY s.dept HAVING COUNT(s) &gt; 5</code></div>
-      <div class="cs-row"><span>SIZE()</span><code style="color:var(--m7);font-size:.68rem">HAVING SIZE(f.bookings) &lt; 2</code></div>
       <div class="cs-row"><span>MEMBER OF</span><code style="color:var(--m7);font-size:.68rem">WHERE :plane MEMBER OF t.planes</code></div>
     </div>
 
@@ -2776,7 +2824,7 @@ body:has(.sidebar-collapsed) #app-body {
       </div>
     </div>
     <div class="finish-grade" id="fin-grade"></div>
-    <div style="font-size:.76rem;color:var(--text-dim)">Alle 81 Aufgaben gelöst.<br>Viel Erfolg bei der Matura am 23. Juni 2026! 🍀</div>
+    <div style="font-size:.76rem;color:var(--text-dim)">Alle 89 Aufgaben gelöst.<br>Viel Erfolg bei der Matura am 23. Juni 2026! 🍀</div>
     <button class="btn-restart" onclick="restartAll()">↺ Neustart</button>
   </div>
 </div>
@@ -3070,6 +3118,18 @@ const MODULES = [
       memo:"<strong>@OneToOne</strong> Default ist EAGER — bei großen Objektgraphen kann das zu Performance-Problemen führen.",
       explanation:"CascadeType.ALL umfasst: PERSIST, MERGE, REMOVE, REFRESH, DETACH. Praktisch, aber mit Vorsicht — unbeabsichtigtes Löschen möglich!",
       doc: { title:'CascadeType.ALL', concept:'Umfasst <em>alle</em> CascadeTypes: PERSIST, MERGE, REMOVE, REFRESH, DETACH. Alle Operationen auf dem Elternteil werden auf die Kinder weitergeleitet.', when:'Wenn Kind-Objekte vollständig vom Elternteil abhängig sind (Owned-Relationship).', code:"<span class='a'>@OneToMany</span>(cascade = <span class='t'>CascadeType</span>.<span style='color:#ffa657'>[???]</span>)\n<span class='k'>private</span> <span class='t'>List</span>&lt;<span class='t'>Grade</span>&gt; grades;\n<span class='c'>// = PERSIST + MERGE + REMOVE + ...</span>" } },
+    { id:"4-11", tier:1, title:"Eins-zu-Eins-Beziehung",
+      html:`<span class="cmt">// Flight hat genau ein Plane</span><br><span class="ann">@</span><input class="code-input" data-ans="OneToOne" style="width:88px" placeholder="???">\n<span class="kw">private</span> <span class="tp">Plane</span> plane;`,
+      hint:["Ein Flug hat genau ein Flugzeug, ein Flugzeug gehört genau einem Flug — welche Beziehungsannotation?","Eine-zu-Ei*** — @OneToO***.","→ <span class='hint-answer'>@OneToOne</span> — Default ist EAGER! FK liegt in der Tabelle der annotierenden Entity. Im Test: Flight → Plane."],
+      memo:"<strong>@OneToOne</strong> = genau ein Objekt pro Seite. Default ist EAGER — bei großen Objektgraphen kann das Performance-Probleme verursachen.",
+      explanation:"@OneToOne mappt eine 1:1-Beziehung. Im Test_02: Flight hat genau ein Plane. Der FK liegt standardmäßig in der Tabelle der Entity mit der Annotation. Achtung: Default FetchType ist EAGER (nicht LAZY wie bei @OneToMany)!",
+      doc: { title:'@OneToOne', concept:'Mappt eine <em>1:1-Beziehung</em>. FK liegt in der Tabelle der annotierenden Entity. <strong>Default: EAGER</strong> — anders als @OneToMany (LAZY).', when:'Wenn genau ein Objekt mit genau einem anderen verknüpft ist (Flight→Plane, User→Profile).', code:"<span class='a'>@<span style='color:#ffa657'>[???]</span></span>\n<span class='k'>private</span> <span class='t'>Plane</span> plane;\n<span class='c'>// FK: plane_id in flight-Tabelle</span>\n<span class='c'>// Default: EAGER Loading!</span>" } },
+    { id:"4-12", tier:1, title:"ManyToMany-Beziehung",
+      html:`<span class="cmt">// FirstClassBooking ↔ mehrere Stewards</span><br><span class="ann">@</span><input class="code-input" data-ans="ManyToMany" style="width:108px" placeholder="???">\n<span class="kw">private</span> <span class="tp">List</span>&lt;<span class="tp">Steward</span>&gt; stewards;`,
+      hint:["Eine First-Class-Buchung hat mehrere Stewards, ein Steward betreut mehrere Buchungen — welche Annotation?","Viele zu Viele — @Ma***yToMa***.","→ <span class='hint-answer'>@ManyToMany</span> — erzeugt automatisch eine Join-Tabelle. Bei bidirektional: eine Seite braucht mappedBy."],
+      memo:"<strong>@ManyToMany</strong> erzeugt automatisch eine Join-Tabelle. Bei bidirektional: genau EINE Seite bekommt mappedBy.",
+      explanation:"@ManyToMany erstellt automatisch eine Verknüpfungstabelle. Im Test_02: FirstClassBooking ↔ Steward. Bei bidirektionaler Beziehung: eine Seite definiert mappedBy, die andere ist der Owner.",
+      doc: { title:'@ManyToMany', concept:'Mappt eine <em>N:M-Beziehung</em>. JPA erzeugt automatisch eine Join-Tabelle. Bei bidirektional: eine Seite = Owner, andere Seite = mappedBy.', when:'Wenn mehrere Objekte mit mehreren anderen verknüpft sind (Test: FirstClassBooking ↔ Steward).', code:"<span class='a'>@<span style='color:#ffa657'>[???]</span></span>\n<span class='k'>private</span> <span class='t'>List</span>&lt;<span class='t'>Steward</span>&gt; stewards;\n<span class='c'>// → Join-Tabelle wird erzeugt</span>" } },
   ]},
   { id:5, tasks:[
     { id:"5-1",  tier:2, title:"Alle Subklassen in eine Tabelle",
@@ -3194,6 +3254,18 @@ const MODULES = [
       memo:"<strong>createNamedQuery(name, Class)</strong> = ruft @NamedQuery per Name auf. Wird beim Deployment vorab validiert.",
       explanation:"em.createNamedQuery(\"Flight.lessThanTwoBookings\", Flight.class) ruft die auf der Entity definierte @NamedQuery auf und gibt eine TypedQuery zurück.",
       doc: { title:'createNamedQuery()', concept:'Ruft eine <em>@NamedQuery</em> per Name auf und gibt eine TypedQuery zurück. NamedQueries werden beim Deployment <em>vorab validiert</em>.', when:'Zum Aufrufen vordefinierter Queries. Sicherer als createQuery() weil Syntax-Fehler früh erkannt werden.', code:"em.create<span style='color:#ffa657'>[???]</span>(\n  <span class='str'>\"Flight.lessThanTwoBookings\"</span>,\n  <span class='t'>Flight</span>.class)\n.getResultList();" } },
+    { id:"6-11", tier:1, title:"Entity als ganzer JPQL-Parameter",
+      html:`<span class="cmt">// Patient als Entity per Named Parameter übergeben</span><br>em.createQuery(<span class="str">"SELECT b FROM Behandlung b WHERE b.<input class="code-input" data-ans="patient" style="width:72px" placeholder="???"> = :patient"</span>)\n  .setParameter(<span class="str">"patient"</span>, patientSchmidt);`,
+      hint:["Die Behandlung hat eine @ManyToOne-Beziehung zu Patient. Du vergleichst NICHT die ID, sondern die ganze Entity.","In JPQL navigierst du über den Java-Feldnamen der Beziehung — wie heißt das Feld in Behandlung?","→ b.<span class='hint-answer'>patient</span> = :patient — JPA vergleicht automatisch über die ID. Du übergibst die ganze Entity, nicht die ID!"],
+      memo:"<strong>Entity als Parameter</strong>: JPA vergleicht automatisch über den PK. setParameter() akzeptiert ganze Entities, nicht nur primitive Werte.",
+      explanation:"In JPQL kann eine ganze Entity als Named Parameter übergeben werden — JPA vergleicht automatisch über den Primärschlüssel. Im Test_02b: 'Der Patient soll als ganze Entität per Named Parameter übergeben werden.' Das ist eleganter als die ID manuell zu extrahieren.",
+      doc: { title:'Entity als Parameter', concept:'JPQL akzeptiert <em>ganze Entities</em> als Parameter — JPA löst das automatisch über den PK auf. Eleganter als manuelle ID-Extraktion.', when:'Wenn du bereits eine Entity-Referenz hast und danach filtern willst (Test_02b).', code:"em.createQuery(\n  <span class='str'>\"SELECT b FROM Behandlung b\n   WHERE b.<span style='color:#ffa657'>[???]</span> = :patient\"</span>)\n.setParameter(<span class='str'>\"patient\"</span>, entity);\n<span class='c'>// JPA vergleicht über den PK</span>" } },
+    { id:"6-12", tier:1, title:"JPQL: Expliziter JOIN mit WHERE",
+      html:`<span class="cmt">// Flüge mit Planes > 200 Sitze</span><br><span class="kw">SELECT</span> f <span class="kw">FROM</span> <span class="tp">Flight</span> f <input class="code-input" data-ans="JOIN" style="width:48px" placeholder="???"> f.plane p <span class="kw">WHERE</span> p.seats &gt; <span class="pn">200</span>`,
+      hint:["Du musst Flight mit Plane verbinden, um auf plane.seats zugreifen zu können. Welches JPQL-Schlüsselwort?","Wie in SQL — das Schlüsselwort für Tabellenverbindung: J***N.","→ <span class='hint-answer'>JOIN</span> f.plane p — JPQL JOIN navigiert über Java-Felder, nicht über FK-Spalten! Der Alias p erlaubt Zugriff auf p.seats."],
+      memo:"<strong>JPQL JOIN</strong> navigiert über Java-Feldnamen (f.plane), nicht über DB-Spalten. Der Alias nach dem JOIN erlaubt WHERE-Zugriff.",
+      explanation:"JPQL JOIN navigiert über Beziehungsfelder: 'JOIN f.plane p' verbindet Flight mit dem zugehörigen Plane-Objekt. Anders als SQL-JOIN: kein ON nötig, JPA kennt die Beziehung. Im Test_02: 'jene Flüge, die mit Flugzeugen durchgeführt wurden, die mehr als 200 Sitzplätze aufweisen'.",
+      doc: { title:'JPQL JOIN', concept:'Verbindet Entities über <em>Beziehungsfelder</em> — nicht über FK-Spalten wie in SQL. Kein ON nötig, JPA kennt die Beziehung aus den Annotationen.', when:'Wenn du über eine Beziehung filtern musst (Test_02: Flight→Plane→seats).', code:"<span class='kw'>SELECT</span> f <span class='kw'>FROM</span> <span class='t'>Flight</span> f\n  <span style='color:#ffa657'>[???]</span> f.plane p\n  <span class='kw'>WHERE</span> p.seats > 200\n<span class='c'>// Navigation über Java-Feld!</span>" } },
   ]},
   { id:7, tasks:[
     { id:"7-1",  tier:1, title:"JOIN FETCH — N+1 vermeiden",
@@ -3265,6 +3337,30 @@ const MODULES = [
       memo:"<strong>SELECT NEW</strong> erzeugt DTOs direkt in JPQL — spart den Overhead vollständig geladener Entities bei read-only Abfragen.",
       explanation:"getSingleResult() wirft eine Exception wenn kein Ergebnis oder mehr als eines gefunden wird: NoResultException (0 Treffer) bzw. NonUniqueResultException (>1 Treffer). Nur für Abfragen verwenden, die garantiert genau 1 Ergebnis liefern — z.B. COUNT, MAX, oder PK-Lookup.",
       doc: { title:'getSingleResult()', concept:'Gibt genau <em>ein</em> Ergebnis zurück. Wirft <code>NoResultException</code> bei 0 Treffern und <code>NonUniqueResultException</code> bei >1 Treffern. Für unsichere Abfragen besser <code>getResultList()</code> + isEmpty()-Check verwenden.', when:'Für COUNT, MAX/MIN-Aggregate. Bei User-Lookups besser getResultList() + isEmpty()-Check.', code:'<span class="tp">Long</span> count =\n  (<span class="tp">Long</span>) em.createQuery(\n    <span style="color:#a5d6ff">"SELECT COUNT(s)\n     FROM Student s"</span>\n  ).<span style="color:#ffa657">[???]</span>();\n<span class="c">// 0 Treffer → NoResultException</span>\n<span class="c">>1 Treffer → NonUniqueResultException</span>' } },
+    { id:"7-11", tier:1, title:"SIZE() mit Named Parameter Schwellwert",
+      html:`<span class="cmt">// NamedQuery: Versicherungen mit mehr als :count Patienten</span><br><span class="ann">@NamedQuery</span>(name=<span class="str">"Versicherung.noOfCustomers"</span>,<br>  query=<span class="str">"SELECT v FROM Versicherung v WHERE <input class="code-input" data-ans="SIZE" style="width:48px" placeholder="???">(v.patienten) &gt; :count"</span>)`,
+      hint:["Du willst die Anzahl der Elemente in einer Collection zählen — welche JPQL-Funktion?","Die JPQL-Funktion misst die 'Größe' einer Collection: S***E().","→ <span class='hint-answer'>SIZE</span>(v.patienten) > :count — SIZE() zählt Collection-Elemente. Der Schwellwert kommt als Named Parameter."],
+      memo:"<strong>SIZE(collection)</strong> zählt Elemente einer Beziehungs-Collection in JPQL. Threshold als Named Parameter = flexibel wiederverwendbar.",
+      explanation:"SIZE() ist eine JPQL-Funktion die die Anzahl der Elemente einer Collection zählt. Im Test_02b: 'Alle Versicherungen, die mehr als 2 Patienten haben. Übergabe der Patientenanzahl mittels Named Parameter.' Der Schwellwert wird flexibel per :count übergeben.",
+      doc: { title:'SIZE() mit Parameter', concept:'<code>SIZE(collection)</code> zählt Elemente einer Beziehungs-Collection. Kombiniert mit Named Parameter für flexible Schwellwerte.', when:'Wenn du nach Anzahl verknüpfter Objekte filtern willst (Test_02b: Versicherungen mit >N Patienten).', code:"<span class='kw'>WHERE</span> <span style='color:#ffa657'>[???]</span>(v.patienten) > :count\n<span class='c'>// SIZE() = JPQL Collection-Zähler</span>\n<span class='c'>// :count = flexibler Schwellwert</span>" } },
+    { id:"7-12", tier:1, title:"@NamedQuery mit JOIN FETCH",
+      html:`<span class="cmt">// Patient laden MIT initialisierten Behandlungen</span><br><span class="ann">@NamedQuery</span>(name=<span class="str">"Patient.bySVNR"</span>,<br>  query=<span class="str">"SELECT p FROM Patient p <input class="code-input" data-ans="JOIN FETCH" style="width:108px" placeholder="???"> p.behandlungen WHERE p.svnr = :svnr"</span>)`,
+      hint:["Die Behandlungen sollen 'bereits durch die Query initialisiert' sein — also nicht erst bei Zugriff nachgeladen.","Du kombinierst einen JOIN der gleichzeitig lädt: JOIN + F***CH.","→ <span class='hint-answer'>JOIN FETCH</span> p.behandlungen — auch in @NamedQuery verwendbar. Initialisiert die Collection sofort statt Lazy Loading."],
+      memo:"<strong>JOIN FETCH in @NamedQuery</strong> = Collection wird schon durch die Query geladen. Kein LazyInitializationException nach Session-Ende.",
+      explanation:"JOIN FETCH kann direkt in einer @NamedQuery verwendet werden. Im Test_02b: 'Patient.bySVNR: Lädt einen Patienten anhand seiner SVNR, wobei seine Behandlungen bereits durch die Query initialisiert sein sollen.' Das verhindert LazyInitializationException außerhalb der Session.",
+      doc: { title:'JOIN FETCH in NamedQuery', concept:'<code>JOIN FETCH</code> kann auch innerhalb einer <code>@NamedQuery</code> verwendet werden. Initialisiert Lazy-Collections <em>sofort</em> bei der Abfrage.', when:'Wenn du weißt, dass die Collection immer gebraucht wird (Test_02b: Patient mit Behandlungen).', code:"@NamedQuery(\n  query=<span class='str'>\"SELECT p FROM Patient p\n    <span style='color:#ffa657'>[???]</span> p.behandlungen\n    WHERE p.svnr = :svnr\"</span>)\n<span class='c'>// Behandlungen sofort geladen!</span>" } },
+    { id:"7-13", tier:2, title:"DISTINCT: Duplikate vermeiden",
+      html:`<span class="cmt">// Patienten die von Ärztin Huber behandelt wurden</span><br><span class="kw">SELECT</span> <input class="code-input" data-ans="DISTINCT" style="width:78px" placeholder="???"> p <span class="kw">FROM</span> <span class="tp">Patient</span> p <span class="kw">JOIN</span> p.behandlungen b <span class="kw">WHERE</span> b.arzt.nachname = <span class="str">'Huber'</span>`,
+      hint:["Ein Patient kann mehrere Behandlungen bei Huber haben — ohne ein Schlüsselwort erscheint er mehrfach in der Ergebnisliste.","Wie in SQL — das Schlüsselwort das Duplikate entfernt: DIS***CT.","→ SELECT <span class='hint-answer'>DISTINCT</span> p — entfernt doppelte Ergebnisse. In JPQL genauso wie in SQL. Wichtig bei JOINs über *ToMany!"],
+      memo:"<strong>DISTINCT</strong> in JPQL wie in SQL — entfernt Duplikate. Pflicht bei JOINs über @OneToMany / @ManyToMany Collections.",
+      explanation:"DISTINCT verhindert doppelte Ergebnisse. Im Test_02b: 'Alle Patienten, die von Ärztin Huber behandelt wurden' — ein Patient mit 3 Behandlungen bei Huber würde ohne DISTINCT 3x erscheinen. Bei JOIN FETCH erzeugt JPA automatisch Duplikate für jedes Collection-Element.",
+      doc: { title:'DISTINCT', concept:'Entfernt <em>Duplikate</em> aus dem Ergebnis — wie in SQL. <strong>Pflicht</strong> bei JOINs über *ToMany-Collections, sonst erscheinen Elternentities mehrfach.', when:'Bei allen JOINs über @OneToMany/@ManyToMany — auch bei JOIN FETCH.', code:"<span class='kw'>SELECT</span> <span style='color:#ffa657'>[???]</span> p\n<span class='kw'>FROM</span> <span class='t'>Patient</span> p\n<span class='kw'>JOIN</span> p.behandlungen b\n<span class='kw'>WHERE</span> b.arzt.nachname = <span class='str'>'Huber'</span>" } },
+    { id:"7-14", tier:2, title:"LEFT JOIN FETCH (auch leere Collections)",
+      html:`<span class="cmt">// ALLE Patienten laden, auch ohne Behandlungen</span><br><span class="kw">SELECT</span> p <span class="kw">FROM</span> <span class="tp">Patient</span> p <input class="code-input" data-ans="LEFT JOIN FETCH" style="width:148px" placeholder="???"> p.behandlungen`,
+      hint:["JOIN FETCH filtert Patienten OHNE Behandlungen weg — du brauchst eine Variante die auch leere Collections behält.","Wie in SQL: ein LEFT JOIN behält die linke Seite auch ohne Match. L*** JOIN F***.","→ <span class='hint-answer'>LEFT JOIN FETCH</span> p.behandlungen — lädt auch Patienten OHNE Behandlungen (leere Liste statt rausfiltern)."],
+      memo:"<strong>LEFT JOIN FETCH</strong> vs <strong>JOIN FETCH</strong>: LEFT behält Entities auch ohne verknüpfte Objekte (leere Collection). JOIN FETCH filtert sie weg!",
+      explanation:"LEFT JOIN FETCH behält alle Entities der linken Seite, auch wenn die verknüpfte Collection leer ist. Normales JOIN FETCH würde Patienten ohne Behandlungen komplett aus dem Ergebnis entfernen. Im Test_02b wird LEFT JOIN FETCH für Patient.bySVNR bevorzugt.",
+      doc: { title:'LEFT JOIN FETCH', concept:'Wie JOIN FETCH, aber <em>behält Entities</em> auch wenn die Collection leer ist. Ohne LEFT: Entities ohne verknüpfte Objekte werden gefiltert.', when:'Wenn auch Entities ohne verknüpfte Objekte im Ergebnis sein sollen (z.B. neue Patienten ohne Behandlungen).', code:"<span class='kw'>SELECT</span> p <span class='kw'>FROM</span> <span class='t'>Patient</span> p\n  <span style='color:#ffa657'>[???]</span> p.behandlungen\n<span class='c'>// LEFT = auch Patienten ohne</span>\n<span class='c'>// Behandlungen (leere Liste)</span>" } },
   ]},
 
   { id:8, tasks:[
@@ -3434,8 +3530,26 @@ function renderAll() {
       `;
       container.appendChild(card);
 
+      // Click task-head to expand/collapse unsolved cards
+      const head = card.querySelector('.task-head');
+      head.addEventListener('click', e => {
+        if (card.classList.contains('solved')) return;
+        if (e.target.closest('button')) return; // don't toggle on button clicks
+        card.classList.toggle('card-expanded');
+        if (card.classList.contains('card-expanded')) {
+          const inp = card.querySelector('.code-input:not(:disabled)');
+          if (inp) setTimeout(() => inp.focus(), 50);
+        }
+      });
+
       // Attach input listeners
       card.querySelectorAll('.code-input').forEach(inp => {
+        // Auto-expand card on focus
+        inp.addEventListener('focus', () => {
+          if (!card.classList.contains('card-expanded') && !card.classList.contains('solved')) {
+            card.classList.add('card-expanded');
+          }
+        });
         // Enter / Tab → next unfilled input, Shift+Tab → previous input
         inp.addEventListener('keydown', e => {
           if (e.key === 'Tab' && e.shiftKey) {
@@ -3463,6 +3577,17 @@ function renderAll() {
         });
       });
     });
+    // Add expand/collapse toggle to module footer
+    const footer = document.getElementById(`module-${mod.id}`)?.querySelector('.mod-footer');
+    if (footer && !document.getElementById(`expand-toggle-${mod.id}`)) {
+      const btn = document.createElement('button');
+      btn.id = `expand-toggle-${mod.id}`;
+      btn.className = 'btn-secondary';
+      btn.style.cssText = 'font-size:.65rem;padding:.25rem .5rem;';
+      btn.textContent = '▼ Alle aufklappen';
+      btn.onclick = () => toggleExpandAll(mod.id);
+      footer.insertBefore(btn, footer.querySelector('.kbd-hint'));
+    }
     restoreSolved(mod.id);
     updateModProgress(mod.id);
   });
@@ -3670,6 +3795,18 @@ function resetModule(modId) {
   updateModProgress(modId);
   updateReviewPanel();
   toast(`Modul ${modId} zurückgesetzt`, 'info');
+}
+
+function toggleExpandAll(modId) {
+  const container = document.getElementById(`tasks-${modId}`);
+  const cards = container.querySelectorAll('.task-card:not(.solved)');
+  const allExpanded = [...cards].every(c => c.classList.contains('card-expanded'));
+  cards.forEach(c => {
+    if (allExpanded) c.classList.remove('card-expanded');
+    else c.classList.add('card-expanded');
+  });
+  const btn = document.getElementById(`expand-toggle-${modId}`);
+  if (btn) btn.textContent = allExpanded ? '▼ Alle aufklappen' : '▲ Alle einklappen';
 }
 
 function resetAllModules() {
@@ -4167,6 +4304,45 @@ document.addEventListener('DOMContentLoaded', () => {
     pop.addEventListener('mouseenter', () => clearTimeout(_popoverHideTimer));
     pop.addEventListener('mouseleave', hideDocPopover);
   }
+});
+
+// ══════════════════════════════════════════════════════════
+// RESIZABLE PANELS (sidebar + cheatsheet)
+// ══════════════════════════════════════════════════════════
+function initResize(handleId, targetId, side) {
+  const handle = document.getElementById(handleId);
+  const target = document.getElementById(targetId);
+  if (!handle || !target) return;
+  let startX, startW;
+  handle.addEventListener('mousedown', e => {
+    e.preventDefault();
+    startX = e.clientX; startW = target.offsetWidth;
+    handle.classList.add('dragging');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    const onMove = ev => {
+      const dx = ev.clientX - startX;
+      const newW = side === 'right' ? Math.max(120, Math.min(500, startW + dx))
+                                     : Math.max(280, Math.min(800, startW - dx));
+      target.style.width = newW + 'px';
+    };
+    const onUp = () => {
+      handle.classList.remove('dragging');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      localStorage.setItem(`resize-${targetId}`, target.style.width);
+    };
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  });
+  const saved = localStorage.getItem(`resize-${targetId}`);
+  if (saved) target.style.width = saved;
+}
+document.addEventListener('DOMContentLoaded', () => {
+  initResize('sb-resize', 'sidebar', 'right');
+  initResize('cs-resize', 'cheatsheet', 'left');
 });
 
 // ══════════════════════════════════════════════════════════
