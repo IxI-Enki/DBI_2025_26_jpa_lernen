@@ -2186,7 +2186,7 @@ body:has(.sidebar-collapsed) #app-body {
         <span class="nav-check" id="nav-check-2"></span>
       </div>
       <div class="nav-dots-row" id="nav-dots-2">
-        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
+        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
       </div>
     </div>
   </button>
@@ -2199,7 +2199,7 @@ body:has(.sidebar-collapsed) #app-body {
         <span class="nav-check" id="nav-check-3"></span>
       </div>
       <div class="nav-dots-row" id="nav-dots-3">
-        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
+        <span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span><span class="nav-dot"></span>
       </div>
     </div>
   </button>
@@ -2358,7 +2358,7 @@ body:has(.sidebar-collapsed) #app-body {
     </div>
     <div class="mod-prog-row">
       <div class="mod-prog-track"><div class="mod-prog-fill" id="mod-prog-2" style="background:var(--m2);width:0%"></div></div>
-      <span class="mod-prog-text" id="mod-prog-txt-2">0 / 10</span>
+      <span class="mod-prog-text" id="mod-prog-txt-2">0 / 11</span>
     </div>
     <div class="tasks-list" id="tasks-2"></div>
     <div class="mod-footer">
@@ -2367,7 +2367,7 @@ body:has(.sidebar-collapsed) #app-body {
       </button>
       <button class="btn-secondary" onclick="resetModule(2)">↺ Reset</button>
       <span class="kbd-hint"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> = validieren</span>
-      <span class="mod-score-note" id="mod-score-2">0 / 10</span>
+      <span class="mod-score-note" id="mod-score-2">0 / 11</span>
     </div>
   </section>
 
@@ -2427,7 +2427,7 @@ body:has(.sidebar-collapsed) #app-body {
     </div>
     <div class="mod-prog-row">
       <div class="mod-prog-track"><div class="mod-prog-fill" id="mod-prog-3" style="background:var(--m3);width:0%"></div></div>
-      <span class="mod-prog-text" id="mod-prog-txt-3">0 / 11</span>
+      <span class="mod-prog-text" id="mod-prog-txt-3">0 / 12</span>
     </div>
     <div class="tasks-list" id="tasks-3"></div>
     <div class="mod-footer">
@@ -2436,7 +2436,7 @@ body:has(.sidebar-collapsed) #app-body {
       </button>
       <button class="btn-secondary" onclick="resetModule(3)">↺ Reset</button>
       <span class="kbd-hint"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> = validieren</span>
-      <span class="mod-score-note" id="mod-score-3">0 / 11</span>
+      <span class="mod-score-note" id="mod-score-3">0 / 12</span>
     </div>
   </section>
 
@@ -2693,6 +2693,7 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="cs-row"><span class="cs-ann">@Lob</span><span class="cs-desc">CLOB (String) oder BLOB (byte[])</span></div>
       <div class="cs-row"><span class="cs-ann">@Access</span><span class="cs-desc">AccessType.FIELD oder PROPERTY</span></div>
       <div class="cs-row"><span class="cs-ann">BigDecimal</span><span class="cs-desc">Exakter Typ für Geldbeträge</span></div>
+      <div class="cs-row"><span class="cs-ann">@Enumerated</span><span class="cs-desc">STRING (Textname) oder ORDINAL (Position)</span></div>
     </div>
     <div class="cs-group">
       <div class="cs-group-title">EntityManager</div>
@@ -2702,6 +2703,7 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="cs-row"><span class="cs-ann">em.remove(e)</span><span class="cs-desc">MANAGED → REMOVED</span></div>
       <div class="cs-row"><span class="cs-ann">em.refresh(e)</span><span class="cs-desc">DB-Stand neu laden (überschreibt lokale Änderungen)</span></div>
       <div class="cs-row"><span class="cs-ann">em.flush()</span><span class="cs-desc">SQL sofort ausführen</span></div>
+      <div class="cs-row"><span class="cs-ann">tx.rollback()</span><span class="cs-desc">Transaktion rückgängig (im catch!)</span></div>
       <div class="cs-row"><span class="cs-ann">em.clear()</span><span class="cs-desc">Context leeren (alle → DETACHED)</span></div>
     </div>
     <div class="cs-group">
@@ -2712,6 +2714,7 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="cs-row"><span class="cs-ann">@ManyToMany</span><span class="cs-desc">@JoinTable für Zwischentabelle</span></div>
       <div class="cs-row"><span class="cs-ann">@JoinColumn</span><span class="cs-desc">FK-Spaltenname definieren</span></div>
       <div class="cs-row"><span class="cs-ann">CascadeType</span><span class="cs-desc">ALL, PERSIST, MERGE, REMOVE, REFRESH</span></div>
+      <div class="cs-row"><span class="cs-ann">FetchType Defaults</span><span class="cs-desc">*ToOne=EAGER, *ToMany=LAZY</span></div>
     </div>
     <div class="cs-group">
       <div class="cs-group-title">Vererbung</div>
@@ -2742,6 +2745,8 @@ body:has(.sidebar-collapsed) #app-body {
       <div class="cs-row"><span>SIZE() + Param</span><code style="color:var(--m7);font-size:.68rem">WHERE SIZE(v.patienten) &gt; :count</code></div>
       <div class="cs-row"><span>Aggregate</span><code style="color:var(--m7);font-size:.68rem">SELECT COUNT(s), AVG(s.grade) FROM Student s</code></div>
       <div class="cs-row"><span>GROUP BY</span><code style="color:var(--m7);font-size:.68rem">GROUP BY s.dept HAVING COUNT(s) &gt; 5</code></div>
+      <div class="cs-row"><span>ORDER BY</span><code style="color:var(--m7);font-size:.68rem">ORDER BY f.departureDate DESC (ASC = Default)</code></div>
+      <div class="cs-row"><span>BETWEEN</span><code style="color:var(--m7);font-size:.68rem">WHERE b.kosten BETWEEN ?1 AND ?2</code></div>
       <div class="cs-row"><span>MEMBER OF</span><code style="color:var(--m7);font-size:.68rem">WHERE :plane MEMBER OF t.planes</code></div>
     </div>
 
@@ -2862,13 +2867,13 @@ function animateCount(el, target) {
 }
 
 // ══════════════════════════════════════════════════════════
-// DATA — 6 × 10 Tasks with tier & explanation
+// DATA — 8 Modules, 91 Tasks with tier & explanation
 // ══════════════════════════════════════════════════════════
 const MODULES = [
   { id:1, tasks:[
     { id:"1-1",  tier:1, title:"Klasse als Entity markieren",
       html:`<span class="ann">@</span><input class="code-input" data-ans="Entity" style="width:76px" placeholder="???"><br><span class="kw">public class</span> <span class="tp">Student</span> { }`,
-      hint:["JPA soll eine Java-Klasse als Datenbanktabelle behandeln. Ohne eine spezielle Annotation weiß JPA nicht einmal, dass diese Klasse existiert.","Die Annotation heißt genau wie das Konzept: du willst eine <em>Entity</em> deklarieren — also @[Konzeptname].","→ <span class='hint-answer'>@Entity</span> — die 'Ich existiere in der DB'-Erklärung. Ohne sie ignoriert JPA die Klasse komplett."],
+      hint:["JPA soll eine Java-Klasse als Datenbanktabelle behandeln. Ohne eine spezielle Annotation weiß JPA nicht einmal, dass diese Klasse existiert.","Die Annotation heißt genau wie das Konzept: du willst eine <em>Ent***ty</em> deklarieren — also @[Konzeptname].","→ <span class='hint-answer'>@Entity</span> — die 'Ich existiere in der DB'-Erklärung. Ohne sie ignoriert JPA die Klasse komplett."],
       memo:"<strong>@Entity</strong> = JPA-Einstiegspunkt. Ohne sie: kein Mapping, kein persist(), nichts.",
       explanation:"@Entity markiert eine Java-Klasse als JPA-verwaltete Datenbank-Entity — ohne diese Annotation ignoriert JPA die Klasse vollständig.",
       doc: { title:'@Entity', concept:'Markiert eine Java-Klasse als <em>persistente Entity</em>. JPA verwaltet Instanzen dieser Klasse und mappt sie auf eine Datenbanktabelle.', when:'Immer wenn eine Klasse in der Datenbank gespeichert werden soll.', code:"<span class='a'>@[???]</span>\n<span class='k'>public class</span> <span class='t'>Student</span> {\n  <span class='c'>// JPA verwaltet diese Klasse</span>\n}" } },
@@ -2988,6 +2993,12 @@ const MODULES = [
       memo:"<strong>columnDefinition</strong> = freie DDL-Definition. Macht die App DB-spezifisch — nur wenn nötig (Folie 14).",
       explanation:"columnDefinition erlaubt freie SQL-Typdefinition — z.B. 'TEXT' für PostgreSQL statt VARCHAR(255).",
       doc: { title:'columnDefinition', concept:'Erlaubt freie SQL-Typdefinition direkt in der Annotation — überschreibt was Hibernate normalerweise generieren würde.', when:"Für DB-spezifische Typen wie PostgreSQL's TEXT, JSONB, ARRAY oder andere spezielle Typen.", code:'<span class=\'a\'>@Column</span>(column<span style=\'color:#ffa657\'>[???]</span> = <span style=\'color:#a5d6ff\'>"TEXT"</span>)\n<span class=\'k\'>private</span> <span class=\'t\'>String</span> content;\n<span class=\'c\'>// Hibernate schreibt TEXT statt VARCHAR</span>' } },
+    { id:"2-11", tier:2, title:"Enum-Feld als Text speichern",
+      html:`<span class="ann">@Enumerated</span>(EnumType.<input class="code-input" data-ans="STRING" style="width:72px" placeholder="???">)<br><span class="kw">private</span> <span class="tp">Status</span> status;`,
+      hint:["Ohne @Enumerated speichert JPA Enums als Ordinal-Zahl (0, 1, 2...). Wie speicherst du stattdessen den Namen als Text?","Das Gegenteil von ORDINAL — der String-Name des Enum-Werts: STR***.","→ EnumType.<span class='hint-answer'>STRING</span> — speichert 'ACTIVE', 'INACTIVE' statt 0, 1. Sicherer bei Enum-Reihenfolge-Änderungen."],
+      memo:"<strong>@Enumerated(EnumType.STRING)</strong> = Enum als Textname speichern. ORDINAL (Default) ist fragil bei Reihenfolge-Änderungen.",
+      explanation:"@Enumerated(EnumType.STRING) speichert den Enum-Namen als Text in der DB. Default ist ORDINAL (0, 1, 2...) — das bricht wenn Enum-Werte umsortiert oder eingefügt werden. STRING ist daher Best Practice.",
+      doc: { title:'@Enumerated', concept:'Steuert wie ein <em>Java-Enum</em> in der DB gespeichert wird. <code>STRING</code> = Textname, <code>ORDINAL</code> = Position (0,1,2...).', when:'Bei jedem Enum-Feld in einer Entity. STRING ist Best Practice.', code:"<span class='a'>@Enumerated</span>(EnumType.<span style='color:#ffa657'>[???]</span>)\n<span class='k'>private</span> <span class='t'>Status</span> status;\n<span class='c'>// DB: 'ACTIVE' statt 0</span>" } },
   ]},
   { id:3, tasks:[
     { id:"3-1",  tier:1, title:"Transaktion starten",
@@ -3056,6 +3067,12 @@ const MODULES = [
       memo:"<strong>refresh()</strong> = DB-Stand neu laden. Überschreibt lokale Änderungen. Entity bleibt MANAGED (Folie 8).",
       explanation:"em.refresh() lädt den aktuellen DB-Zustand und überschreibt alle lokalen Änderungen am managed Objekt. Die Entity bleibt MANAGED. Nützlich wenn parallele Prozesse die DB verändert haben. Folie 8 listet die 4 Kern-Methoden: persist, merge, refresh, remove.",
       doc: { title:'refresh()', concept:'Lädt den <em>aktuellen DB-Zustand</em> und überschreibt alle lokalen Änderungen am managed Objekt. Die Entity bleibt MANAGED.', when:'Wenn lokale Änderungen verworfen und der aktuelle DB-Stand geladen werden soll (Folie 8).', code:"student.setName(<span class='str'>\"Falsch\"</span>);\nem.<span style='color:#ffa657'>[???]</span>(student);\n<span class='c'>// student.getName() → DB-Wert!</span>\n<span class='c'>// Lokale Änderung verworfen</span>" } },
+    { id:"3-12", tier:1, title:"Transaktion zurückrollen",
+      html:`<span class="kw">try</span> {<br>  em.getTransaction().begin();<br>  em.persist(student);<br>  em.getTransaction().commit();<br>} <span class="kw">catch</span> (Exception e) {<br>  em.getTransaction().<input class="code-input" data-ans="rollback" style="width:80px" placeholder="???"> ();<br>}`,
+      hint:["Im catch-Block soll die Transaktion rückgängig gemacht werden — alle Änderungen verwerfen.","Das Gegenteil von commit() — roll***back.","→ <span class='hint-answer'>rollback</span>() — verwirft alle Änderungen der Transaktion. Immer im catch-Block aufrufen!"],
+      memo:"<strong>rollback()</strong> = Transaktion rückgängig machen. Immer in catch/finally. Gegenstück zu commit().",
+      explanation:"rollback() verwirft alle Änderungen der aktuellen Transaktion. Standard-Pattern: begin() im try, commit() am Ende, rollback() im catch. Ohne rollback() bleibt die TX in einem inkonsistenten Zustand.",
+      doc: { title:'rollback()', concept:'Verwirft alle Änderungen der aktuellen Transaktion. <em>Pflicht im catch-Block</em> — ohne rollback() bleibt die TX inkonsistent.', when:'Immer wenn commit() fehlschlagen könnte — also bei jedem persist/merge/remove.', code:"<span class='k'>try</span> {\n  em.getTransaction().begin();\n  em.persist(entity);\n  em.getTransaction().commit();\n} <span class='k'>catch</span> (Exception e) {\n  em.getTransaction().<span style='color:#ffa657'>[???]</span>();\n}" } },
   ]},
   { id:4, tasks:[
     { id:"4-1",  tier:1, title:"One-To-Many Beziehung",
@@ -3158,7 +3175,7 @@ const MODULES = [
       doc: { title:'@DiscriminatorColumn', concept:'Definiert die <em>Spalte die den Typ jeder Zeile speichert</em>. JPA liest diesen Wert und instanziiert die richtige Subklasse.', when:'Pflicht bei SINGLE_TABLE-Strategie. Optional bei JOINED.', code:'<span class=\'a\'>@Inheritance</span>(strategy=<span class=\'t\'>InheritanceType</span>.SINGLE_TABLE)\n<span class=\'a\'>@Discriminator</span><span style=\'color:#ffa657\'>[???]</span>(name=<span style=\'color:#a5d6ff\'>"person_type"</span>)\n<span class=\'k\'>public abstract class</span> <span class=\'t\'>Person</span> { }\n<span class=\'c\'>// Spalte "person_type" unterscheidet Typen</span>' } },
     { id:"5-5",  tier:2, title:"Diskriminator-Wert für Subklasse",
       html:`<span class="ann">@</span><input class="code-input" data-ans="DiscriminatorValue" style="width:150px" placeholder="???">(<span class="str">"TEACHER"</span>)<br><span class="kw">public class</span> <span class="tp">Teacher</span> <span class="kw">extends</span> <span class="tp">Person</span> { }`,
-      hint:["Für jede Subklasse musst du angeben welcher Wert in der Diskriminator-Spalte eingetragen werden soll.","@Discriminator*** — der konkrete Wert für diese Subklasse.","→ <span class='hint-answer'>@DiscriminatorValue</span>(\"STUDENT\") — wird automatisch in die DTYPE-Spalte geschrieben. Default: Klassenname."],
+      hint:["Für jede Subklasse musst du angeben welcher Wert in der Diskriminator-Spalte eingetragen werden soll.","@Discriminator*** — der konkrete Wert für diese Subklasse.","→ <span class='hint-answer'>@DiscriminatorValue</span>(\"TEACHER\") — wird automatisch in die DTYPE-Spalte geschrieben. Default: Klassenname."],
       memo:"<strong>@DiscriminatorColumn</strong> definiert die Typ-Spalte, <strong>@DiscriminatorValue</strong> setzt den Wert pro Subklasse.",
       explanation:"@DiscriminatorValue legt den konkreten Wert in der Diskriminator-Spalte fest. JPA bestimmt damit welche Klasse instanziiert wird.",
       doc: { title:'@DiscriminatorValue', concept:'Setzt den <em>konkreten Wert</em> in der Diskriminator-Spalte für diese Subklasse. JPA verwendet diesen Wert um beim Laden die richtige Klasse zu instanziieren.', when:'Auf jeder Subklasse bei SINGLE_TABLE oder JOINED-Strategie.', code:'<span class=\'a\'>@<span style=\'color:#ffa657\'>[???]</span></span>(<span style=\'color:#a5d6ff\'>"TEACHER"</span>)\n<span class=\'k\'>public class</span> <span class=\'t\'>Teacher</span> <span class=\'k\'>extends</span> <span class=\'t\'>Person</span> { }\n<span class=\'c\'>// Zeile mit person_type="TEACHER"</span>\n<span class=\'c\'>// → wird als Teacher instanziiert</span>' } },
@@ -3186,12 +3203,12 @@ const MODULES = [
       memo:"<strong>N+1 Problem</strong> = 1 Query holt N Entitäten, dann N weitere Queries für Lazy-Beziehungen. Lösung: JOIN FETCH.",
       explanation:"Das N+1-Select Problem entsteht bei Lazy Loading: 1 Query lädt N Flights, dann löst jeder Zugriff auf flight.getBookings() eine weitere Query aus → N+1 Queries statt 1. Lösung: JOIN FETCH in der JPQL-Query.",
       doc: { title:'N+1 Select Problem', concept:'1 Query lädt N Entitäten, dann löst jeder Zugriff auf eine <em>Lazy-Beziehung</em> eine weitere Query aus → N+1 Queries statt 1. Massives Performance-Problem.', when:'Bei jeder @OneToMany/@ManyToMany Beziehung mit LAZY Loading und Iteration über die Ergebnisliste.', code:"<span class='c'>// 1 Query: SELECT f FROM Flight f</span>\n<span class='c'>// N Queries: für JEDEN Flight</span>\n<span class='c'>//   → SELECT b FROM Booking b</span>\n<span class='c'>//     WHERE b.flight_id = ?</span>\n<span class='c'>// Lösung: JOIN FETCH!</span>" } },
-    { id:"5-10", tier:2, title:"N+1 Lösung: JOIN FETCH",
-      html:`<span class="cmt">// N+1 Problem lösen:</span><br><span class="tp">List</span>&lt;<span class="tp">Flight</span>&gt; flights = em.createQuery(<br>  <span class="str">"SELECT f FROM Flight f</span><br>   <span class="str"> JOIN </span><input class="code-input" data-ans="FETCH" style="width:72px" placeholder="???"><span class="str"> f.bookings"</span>,<br>  <span class="tp">Flight</span>.class).getResultList();`,
-      hint:["Statt N+1 einzelner Queries soll EINE Query sowohl Flights als auch Bookings laden.","JOIN allein reicht nicht — JPA muss wissen, dass die Beziehungsdaten auch initialisiert werden sollen.","→ JOIN <span class='hint-answer'>FETCH</span> — lädt die Beziehung in derselben Query mit. Keine zusätzlichen SELECTs."],
-      memo:"<strong>JOIN FETCH</strong> = lädt Beziehungen in einer Query statt N+1 separater Queries. Die wichtigste JPQL-Optimierung.",
-      explanation:"JOIN FETCH f.bookings lädt Flights UND Bookings in einem einzigen SQL JOIN — statt N+1 separater Queries. Es ist die Standard-Lösung für das N+1-Select Problem.",
-      doc: { title:'JOIN FETCH', concept:'Lädt Beziehungen in <em>einer einzigen Query</em> statt N+1 separater Queries. Die wichtigste Performance-Optimierung in JPQL.', when:'Bei jeder Lazy-Beziehung die in einer Schleife zugegriffen wird.', code:"<span class='k'>SELECT</span> f <span class='k'>FROM</span> <span class='t'>Flight</span> f\n  <span class='k'>JOIN</span> <span style='color:#ffa657'>[???]</span> f.bookings\n<span class='c'>// 1 SQL statt N+1!</span>" } },
+    { id:"5-10", tier:1, title:"Standard-FetchType: @ManyToOne",
+      html:`<span class="cmt">// Was ist der DEFAULT FetchType</span><br><span class="cmt">// für @ManyToOne und @OneToOne?</span><br><span class="ann">@ManyToOne</span> <span class="cmt">// → fetch = FetchType.</span><input class="code-input" data-ans="EAGER" style="width:72px" placeholder="???">`,
+      hint:["@OneToMany und @ManyToMany sind standardmäßig LAZY. Aber was ist der Default bei @ManyToOne?","Bei *ToOne-Beziehungen (Single-Objekt, nicht Collection) ist der Default das Gegenteil von LAZY.","→ FetchType.<span class='hint-answer'>EAGER</span> — @ManyToOne und @OneToOne laden standardmäßig sofort mit. @*ToMany hingegen: LAZY."],
+      memo:"<strong>FetchType-Defaults</strong>: @ManyToOne/@OneToOne = EAGER (sofort laden). @OneToMany/@ManyToMany = LAZY (erst bei Zugriff).",
+      explanation:"@ManyToOne und @OneToOne laden standardmäßig EAGER — das referenzierte Single-Objekt wird sofort mitgeladen. @OneToMany und @ManyToMany sind LAZY — Collections werden erst bei Zugriff geladen. Im Test: Flight.plane ist @ManyToOne → EAGER by default.",
+      doc: { title:'FetchType Defaults', concept:'<em>@ManyToOne/@OneToOne</em> → EAGER (sofort). <em>@OneToMany/@ManyToMany</em> → LAZY (bei Zugriff). Diese Defaults sind eine der häufigsten Prüfungsfragen.', when:'Beim Design von Entity-Beziehungen und zur Performance-Optimierung.', code:"<span class='a'>@ManyToOne</span> <span class='c'>// Default: EAGER</span>\n<span class='a'>@OneToOne</span>  <span class='c'>// Default: EAGER</span>\n<span class='a'>@OneToMany</span> <span class='c'>// Default: LAZY</span>\n<span class='a'>@ManyToMany</span><span class='c'>// Default: LAZY</span>" } },
   ]},
   { id:6, tasks:[
     { id:"6-1",  tier:2, title:"Named Query auf Klasse definieren",
@@ -3248,12 +3265,12 @@ const MODULES = [
       memo:"<strong>@NamedQuery</strong> = vordefinierte JPQL auf der Entity-Klasse. SIZE() für Collection-Größe in JPQL.",
       explanation:"@NamedQuery wird auf der Entity-Klasse definiert und mit em.createNamedQuery() aufgerufen. SIZE(f.bookings) zählt die Elemente der bookings-Collection. Im Test: 'Flight.lessThanTwoBookings — Flüge mit weniger als 2 Buchungen.'",
       doc: { title:'@NamedQuery + SIZE()', concept:'<em>@NamedQuery</em> definiert eine vorkompilierte JPQL auf der Entity-Klasse. <code>SIZE(collection)</code> zählt Collection-Elemente in JPQL.', when:'Für häufig verwendete Queries — werden beim Deployment validiert (Tippfehler fallen früh auf).', code:"<span class='a'>@NamedQuery</span>(\n  name=<span class='str'>\"Flight.lessThanTwoBookings\"</span>,\n  query=<span class='str'>\"SELECT f FROM Flight f\n    WHERE SIZE(f.<span style='color:#ffa657'>[???]</span>) < 2\"</span>)" } },
-    { id:"6-10", tier:2, title:"NamedQuery aufrufen",
-      html:`<span class="cmt">// Vordefinierte Query aufrufen</span><br><span class="tp">TypedQuery</span>&lt;<span class="tp">Flight</span>&gt; q = em.create<input class="code-input" data-ans="NamedQuery" style="width:120px" placeholder="???">(  <span class="str">"Flight.lessThanTwoBookings"</span>, <span class="tp">Flight</span>.class);<br>List&lt;<span class="tp">Flight</span>&gt; result = q.getResultList();`,
-      hint:["NamedQueries werden NICHT mit createQuery aufgerufen — es gibt eine eigene Methode.","Die Methode heißt create + [QueryTyp] — für vordefinierte, benannte Queries. Nicht createQuery()!","→ em.create<span class='hint-answer'>NamedQuery</span>() — ruft eine @NamedQuery per Name auf."],
-      memo:"<strong>createNamedQuery(name, Class)</strong> = ruft @NamedQuery per Name auf. Wird beim Deployment vorab validiert.",
-      explanation:"em.createNamedQuery(\"Flight.lessThanTwoBookings\", Flight.class) ruft die auf der Entity definierte @NamedQuery auf und gibt eine TypedQuery zurück.",
-      doc: { title:'createNamedQuery()', concept:'Ruft eine <em>@NamedQuery</em> per Name auf und gibt eine TypedQuery zurück. NamedQueries werden beim Deployment <em>vorab validiert</em>.', when:'Zum Aufrufen vordefinierter Queries. Sicherer als createQuery() weil Syntax-Fehler früh erkannt werden.', code:"em.create<span style='color:#ffa657'>[???]</span>(\n  <span class='str'>\"Flight.lessThanTwoBookings\"</span>,\n  <span class='t'>Flight</span>.class)\n.getResultList();" } },
+    { id:"6-10", tier:2, title:"JPQL: Ergebnisse sortieren",
+      html:`<span class="cmt">// Flüge nach Abflugdatum absteigend sortieren</span><br>em.createQuery(<br>  <span class="str">"SELECT f FROM Flight f </span><input class="code-input" data-ans="ORDER BY" style="width:90px" placeholder="???"><span class="str"> f.departureDate DESC"</span>,<br>  <span class="tp">Flight</span>.class).getResultList();`,
+      hint:["Du willst die Ergebnisse sortieren — in SQL verwendest du dafür eine bestimmte Klausel nach der WHERE/FROM-Klausel.","Die JPQL-Syntax ist identisch zu SQL: ORD*** B*** — zwei Schlüsselwörter.","→ <span class='hint-answer'>ORDER BY</span> f.departureDate DESC — sortiert absteigend. ASC für aufsteigend (Default)."],
+      memo:"<strong>ORDER BY</strong> in JPQL funktioniert wie in SQL. ASC = aufsteigend (Default), DESC = absteigend. Verwendet Entity-Feldnamen, nicht Spaltennamen.",
+      explanation:"ORDER BY in JPQL sortiert Ergebnisse nach einem oder mehreren Feldern. Syntax identisch zu SQL, aber mit Entity-Attributnamen statt Spaltennamen. ASC ist der Default, DESC muss explizit angegeben werden.",
+      doc: { title:'ORDER BY', concept:'Sortiert JPQL-Ergebnisse nach Entity-Attributen. Syntax wie SQL, aber mit <em>Java-Feldnamen</em> statt DB-Spaltennamen.', when:'Wenn Ergebnisse in bestimmter Reihenfolge benötigt werden.', code:"<span class='k'>SELECT</span> f <span class='k'>FROM</span> <span class='t'>Flight</span> f\n  <span style='color:#ffa657'>[???]</span> f.departureDate <span class='k'>DESC</span>\n<span class='c'>// ASC = aufsteigend (Default)</span>" } },
     { id:"6-11", tier:1, title:"Entity als ganzer JPQL-Parameter",
       html:`<span class="cmt">// Patient als Entity per Named Parameter übergeben</span><br>em.createQuery(<span class="str">"SELECT b FROM Behandlung b WHERE b.<input class="code-input" data-ans="patient" style="width:72px" placeholder="???"> = :patient"</span>)\n  .setParameter(<span class="str">"patient"</span>, patientSchmidt);`,
       hint:["Die Behandlung hat eine @ManyToOne-Beziehung zu Patient. Du vergleichst NICHT die ID, sondern die ganze Entity.","In JPQL navigierst du über den Java-Feldnamen der Beziehung — wie heißt das Feld in Behandlung?","→ b.<span class='hint-answer'>patient</span> = :patient — JPA vergleicht automatisch über die ID. Du übergibst die ganze Entity, nicht die ID!"],
@@ -3317,12 +3334,12 @@ const MODULES = [
       explanation:":plane MEMBER OF t.planes prüft, ob das per NamedParameter übergebene Plane-Objekt in der planes-Collection des TireType enthalten ist. Im Test: 'TireType.findForPlane — TireType-Entitäten die für ein per NamedParameter übergebenes Flugzeug passen.'",
       doc: { title:'MEMBER OF', concept:'Prüft ob ein Objekt <em>in einer Collection enthalten</em> ist. Ideal für @ManyToMany: <code>:param MEMBER OF entity.collection</code>.', when:'Für Abfragen die prüfen ob ein Objekt in einer Beziehungs-Collection vorkommt.', code:"<span class='k'>SELECT</span> t <span class='k'>FROM</span> <span class='t'>TireType</span> t\n<span class='k'>WHERE</span> :<span style='color:#ffa657'>[???]</span> <span class='k'>MEMBER OF</span> t.planes\n<span class='c'>// → findet TireTypes für ein Plane</span>" } },
 
-    { id:"7-8",  tier:2, title:"NamedQuery: Positional Parameter",
-      html:`<span class="ann">@NamedQuery</span>(name = <span class="str">"Plane.findByPType"</span>,<br>  query = <span class="str">"SELECT p FROM Plane p WHERE p.pType = ?</span><input class="code-input" data-ans="1" style="width:30px" placeholder="?"><span class="str">"</span>)`,
-      hint:["In NamedQueries können auch Positional Parameters verwendet werden — ?N.","Positional Parameters beginnen nicht bei 0 — der kleinstmögliche positive Integer.","→ ?<span class='hint-answer'>1</span> — Positional Parameter in der NamedQuery. Binding: setParameter(1, value)."],
-      memo:"<strong>?1 in NamedQuery</strong> = Positional Parameter. Wird beim Aufruf mit setParameter(1, value) gebunden.",
-      explanation:"NamedQueries unterstützen sowohl Named (:name) als auch Positional (?1) Parameters. Im Test: 'Plane.findByPType — Plane-Entitäten die den angegebenen pType aufweisen, mittels Positional Parameter.'",
-      doc: { title:'Positional Parameter in NamedQuery', concept:'Auch <em>NamedQueries</em> können Positional Parameters (?1, ?2) verwenden. Binding erfolgt beim Aufruf mit <code>setParameter(1, value)</code>.', when:'Wenn eine NamedQuery kurze, nummerierte Parameter haben soll.', code:"<span class='a'>@NamedQuery</span>(\n  name=<span class='str'>\"Plane.findByPType\"</span>,\n  query=<span class='str'>\"SELECT p FROM Plane p\n    WHERE p.pType = ?<span style='color:#ffa657'>[?]</span>\"</span>)" } },
+    { id:"7-8",  tier:2, title:"JPQL: Bereichsabfrage BETWEEN",
+      html:`<span class="cmt">// Behandlungen im Kostenbereich filtern</span><br><span class="ann">@NamedQuery</span>(name = <span class="str">"Behandlung.costsInRange"</span>,<br>  query = <span class="str">"SELECT b FROM Behandlung b WHERE b.kosten </span><input class="code-input" data-ans="BETWEEN" style="width:90px" placeholder="???"><span class="str"> ?1 AND ?2"</span>)`,
+      hint:["Du willst Werte in einem bestimmten Bereich filtern — zwischen einem Minimum und Maximum.","In SQL und JPQL gibt es ein Schlüsselwort für 'zwischen ... und ...': BET***N.","→ <span class='hint-answer'>BETWEEN</span> ?1 AND ?2 — Bereichsabfrage. Equivalent zu: kosten >= ?1 AND kosten <= ?2."],
+      memo:"<strong>BETWEEN ?1 AND ?2</strong> = Bereichsabfrage in JPQL. Inklusiv an beiden Enden. Equivalent zu >= AND <=.",
+      explanation:"BETWEEN ist ein JPQL-Operator für Bereichsabfragen. 'b.kosten BETWEEN ?1 AND ?2' ist equivalent zu 'b.kosten >= ?1 AND b.kosten <= ?2'. Im Test_02b: Behandlungskosten filtern — eine typische Variation von 'costsMoreThan'.",
+      doc: { title:'BETWEEN', concept:'Filtert Werte in einem <em>inklusiven Bereich</em>. Equivalent zu <code>>= AND <=</code>. Funktioniert mit Zahlen, Datumsangaben und Strings.', when:'Für Bereichsabfragen — Preise, Datumsintervalle, Score-Bereiche.', code:"<span class='k'>SELECT</span> b <span class='k'>FROM</span> <span class='t'>Behandlung</span> b\n  <span class='k'>WHERE</span> b.kosten <span style='color:#ffa657'>[???]</span> ?1 <span class='k'>AND</span> ?2\n<span class='c'>// inklusiv: >= ?1 UND <= ?2</span>" } },
 
     { id:"7-9",  tier:1, title:"JPQL: alle Stewards selektieren",
       html:`<span class="cmt">// Alle Steward-Entitäten laden</span><br><span class="tp">List</span>&lt;<span class="tp">Steward</span>&gt; stewards = em.createQuery(<br>  <span class="str">"SELECT s FROM </span><input class="code-input" data-ans="Steward" style="width:80px" placeholder="???"><span class="str"> s"</span>,<br>  <span class="tp">Steward</span>.class).getResultList();`,
@@ -3477,6 +3494,18 @@ function loadState() {
 }
 
 // ══════════════════════════════════════════════════════════
+// Expand a collapsed card and focus the target input
+function expandCardAndFocus(targetInput) {
+  const card = targetInput.closest('.task-card');
+  if (card && !card.classList.contains('card-expanded') && !card.classList.contains('solved')) {
+    card.classList.add('card-expanded');
+    const head = card.querySelector('.task-head');
+    if (head) head.tabIndex = -1;
+  }
+  targetInput.focus();
+  targetInput.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
 // RENDER
 // ══════════════════════════════════════════════════════════
 function renderAll() {
@@ -3580,24 +3609,18 @@ function renderAll() {
           }
         });
         // Enter / Tab → next unfilled input, Shift+Tab → previous input
+        // Expands collapsed cards automatically before focusing
         inp.addEventListener('keydown', e => {
           if (e.key === 'Tab' && e.shiftKey) {
             e.preventDefault();
             const allInputs = [...document.getElementById(`tasks-${mod.id}`).querySelectorAll('.code-input:not(:disabled)')];
             const i = allInputs.indexOf(inp);
-            // #region agent log
-            if (i > 0) fetch('http://127.0.0.1:7252/ingest/f1cd9ac5-094e-4c9b-9708-19552699e81d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'b25357'},body:JSON.stringify({sessionId:'b25357',location:'index.html:tab-handler',message:'tab move',data:{dir:'prev',fromIndex:i,toIndex:i-1},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
-            // #endregion
-            if (i > 0) allInputs[i-1].focus();
+            if (i > 0) expandCardAndFocus(allInputs[i - 1]);
           } else if (e.key === 'Enter' || e.key === 'Tab') {
             e.preventDefault();
             const allInputs = [...document.getElementById(`tasks-${mod.id}`).querySelectorAll('.code-input:not(:disabled)')];
             const i = allInputs.indexOf(inp);
-            // #region agent log
-            const nextEl = i < allInputs.length - 1 ? allInputs[i+1] : null;
-            fetch('http://127.0.0.1:7252/ingest/f1cd9ac5-094e-4c9b-9708-19552699e81d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'b25357'},body:JSON.stringify({sessionId:'b25357',location:'index.html:tab-handler',message:'tab move',data:{dir:'next',fromIndex:i,toIndex:nextEl?i+1:null},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
-            // #endregion
-            if (i < allInputs.length - 1) allInputs[i+1].focus();
+            if (i < allInputs.length - 1) expandCardAndFocus(allInputs[i + 1]);
             else document.getElementById(`tasks-${mod.id}`).closest('.module-section').querySelector('.btn-validate')?.focus();
           }
         });
