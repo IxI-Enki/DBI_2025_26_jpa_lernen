@@ -3567,9 +3567,13 @@ function renderAll() {
       }
       setHeadTabIndex();
 
+      let lastFocusExpand = 0;
+
       head.addEventListener('click', e => {
         if (card.classList.contains('solved')) return;
-        if (e.target.closest('button')) return; // don't toggle on button clicks
+        if (e.target.closest('button')) return;
+        // Skip if focus JUST expanded the card (focus fires before click)
+        if (Date.now() - lastFocusExpand < 300) return;
         card.classList.toggle('card-expanded');
         setHeadTabIndex();
         if (card.classList.contains('card-expanded')) {
@@ -3581,11 +3585,9 @@ function renderAll() {
       head.addEventListener('focus', () => {
         if (card.classList.contains('solved')) return;
         if (!card.classList.contains('card-expanded')) {
-          // #region agent log
-          fetch('http://127.0.0.1:7252/ingest/f1cd9ac5-094e-4c9b-9708-19552699e81d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'b25357'},body:JSON.stringify({sessionId:'b25357',location:'index.html:head-focus',message:'head focus expand',data:{cardId:card.id},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
-          // #endregion
           card.classList.add('card-expanded');
           setHeadTabIndex();
+          lastFocusExpand = Date.now();
           const inp = card.querySelector('.code-input:not(:disabled)');
           if (inp) setTimeout(() => inp.focus(), 50);
         }
