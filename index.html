@@ -3532,13 +3532,41 @@ function renderAll() {
 
       // Click task-head to expand/collapse unsolved cards
       const head = card.querySelector('.task-head');
+      function setHeadTabIndex() {
+        const expanded = card.classList.contains('card-expanded') || card.classList.contains('solved');
+        head.tabIndex = expanded ? -1 : 0;
+      }
+      setHeadTabIndex();
+
       head.addEventListener('click', e => {
         if (card.classList.contains('solved')) return;
         if (e.target.closest('button')) return; // don't toggle on button clicks
         card.classList.toggle('card-expanded');
+        setHeadTabIndex();
         if (card.classList.contains('card-expanded')) {
           const inp = card.querySelector('.code-input:not(:disabled)');
           if (inp) setTimeout(() => inp.focus(), 50);
+        }
+      });
+
+      head.addEventListener('focus', () => {
+        if (card.classList.contains('solved')) return;
+        if (!card.classList.contains('card-expanded')) {
+          // #region agent log
+          fetch('http://127.0.0.1:7252/ingest/f1cd9ac5-094e-4c9b-9708-19552699e81d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'b25357'},body:JSON.stringify({sessionId:'b25357',location:'index.html:head-focus',message:'head focus expand',data:{cardId:card.id},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
+          // #endregion
+          card.classList.add('card-expanded');
+          setHeadTabIndex();
+          const inp = card.querySelector('.code-input:not(:disabled)');
+          if (inp) setTimeout(() => inp.focus(), 50);
+        }
+      });
+
+      card.addEventListener('focusin', (e) => {
+        if (card.classList.contains('solved')) return;
+        if (!card.classList.contains('card-expanded') && card.contains(e.target) && e.target !== head) {
+          card.classList.add('card-expanded');
+          setHeadTabIndex();
         }
       });
 
@@ -3548,6 +3576,7 @@ function renderAll() {
         inp.addEventListener('focus', () => {
           if (!card.classList.contains('card-expanded') && !card.classList.contains('solved')) {
             card.classList.add('card-expanded');
+            setHeadTabIndex();
           }
         });
         // Enter / Tab → next unfilled input, Shift+Tab → previous input
@@ -3556,11 +3585,18 @@ function renderAll() {
             e.preventDefault();
             const allInputs = [...document.getElementById(`tasks-${mod.id}`).querySelectorAll('.code-input:not(:disabled)')];
             const i = allInputs.indexOf(inp);
+            // #region agent log
+            if (i > 0) fetch('http://127.0.0.1:7252/ingest/f1cd9ac5-094e-4c9b-9708-19552699e81d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'b25357'},body:JSON.stringify({sessionId:'b25357',location:'index.html:tab-handler',message:'tab move',data:{dir:'prev',fromIndex:i,toIndex:i-1},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
+            // #endregion
             if (i > 0) allInputs[i-1].focus();
           } else if (e.key === 'Enter' || e.key === 'Tab') {
             e.preventDefault();
             const allInputs = [...document.getElementById(`tasks-${mod.id}`).querySelectorAll('.code-input:not(:disabled)')];
             const i = allInputs.indexOf(inp);
+            // #region agent log
+            const nextEl = i < allInputs.length - 1 ? allInputs[i+1] : null;
+            fetch('http://127.0.0.1:7252/ingest/f1cd9ac5-094e-4c9b-9708-19552699e81d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'b25357'},body:JSON.stringify({sessionId:'b25357',location:'index.html:tab-handler',message:'tab move',data:{dir:'next',fromIndex:i,toIndex:nextEl?i+1:null},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
+            // #endregion
             if (i < allInputs.length - 1) allInputs[i+1].focus();
             else document.getElementById(`tasks-${mod.id}`).closest('.module-section').querySelector('.btn-validate')?.focus();
           }
@@ -3601,6 +3637,8 @@ function restoreSolved(modId) {
     const card = document.getElementById(`card-${task.id}`);
     if (!card) return;
     card.classList.add('solved');
+    const h = card.querySelector('.task-head');
+    if (h) h.tabIndex = -1;
     card.querySelectorAll('.code-input').forEach(inp => {
       inp.value = inp.dataset.ans;
       inp.classList.add('ok');
@@ -3804,6 +3842,8 @@ function toggleExpandAll(modId) {
   cards.forEach(c => {
     if (allExpanded) c.classList.remove('card-expanded');
     else c.classList.add('card-expanded');
+    const h = c.querySelector('.task-head');
+    if (h) h.tabIndex = c.classList.contains('card-expanded') ? -1 : 0;
   });
   const btn = document.getElementById(`expand-toggle-${modId}`);
   if (btn) btn.textContent = allExpanded ? '▼ Alle aufklappen' : '▲ Alle einklappen';
