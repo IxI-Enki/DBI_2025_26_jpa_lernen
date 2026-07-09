@@ -1,4 +1,20 @@
-# Maven
+# ==============================================================================
+# Private / local-only (not for public release)
+# ==============================================================================
+
+# Professor materials and course exercises
+_DOCS_/_docs_from_professor/
+repos_from_professor/
+jpa2_exercises/
+
+# Local archives and tooling config
+.archives/
+.claude/
+
+# ==============================================================================
+# Build: Maven
+# ==============================================================================
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -10,13 +26,27 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
-# IDE
+# ==============================================================================
+# Java
+# ==============================================================================
+
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.log
+hs_err_pid*
+
+# ==============================================================================
+# IDE and editors
+# ==============================================================================
+
 .idea/
 *.iml
 *.iws
 *.ipr
 .vscode/
-.claude/
 .classpath
 .project
 .settings/
@@ -24,37 +54,26 @@ buildNumber.properties
 *.swo
 *~
 
-# Java
-*.class
-*.log
-*.jar
-*.war
-*.ear
-*.nar
-hs_err_pid*
+# ==============================================================================
+# Uebungen (per-exercise build and IDE artifacts)
+# ==============================================================================
 
-# OS
-.DS_Store
-Thumbs.db
-
-# H2 Database
-*.db
-*.mv.db
-*.trace.db
-
-# Übungen (jede Übung hat eigenes .gitignore)
 Uebungen/**/target/
 Uebungen/**/.classpath
 Uebungen/**/.project
 Uebungen/**/.settings/
 
-# Professors Repos
-repos_from_professor/
+# ==============================================================================
+# Local databases (H2)
+# ==============================================================================
 
-# Professors Dokumente (nicht oeffentlich)
-_DOCS_/_docs_from_professor/
+*.db
+*.mv.db
+*.trace.db
 
-# Professors Uebungsangaben (nicht oeffentlich)
-jpa2_exercises/Test_02.given/
-jpa2_exercises/Test_02b.given/
-.archives/.archived__index_v02.html
+# ==============================================================================
+# Operating system
+# ==============================================================================
+
+.DS_Store
+Thumbs.db
