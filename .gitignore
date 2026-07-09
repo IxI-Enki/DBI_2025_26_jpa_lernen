@@ -16,6 +16,7 @@ buildNumber.properties
 *.iws
 *.ipr
 .vscode/
+.claude/
 .classpath
 .project
 .settings/
@@ -52,6 +53,8 @@ repos_from_professor/
 
 # Professors Dokumente (nicht oeffentlich)
 _DOCS_/_docs_from_professor/
-jpa2_exercises/Test_02b.given/.downloaded_zip/angabe_jpa2_wh.zip
-jpa2_exercises/Test_02.given/.downloaded_zip/abgabe_RITT.zip
+
+# Professors Uebungsangaben (nicht oeffentlich)
+jpa2_exercises/Test_02.given/
+jpa2_exercises/Test_02b.given/
 .archives/.archived__index_v02.html
